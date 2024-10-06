@@ -8,3 +8,4 @@ export * from "./Form";
 export * from "./Toast";
 export * from "./Toaster";
 export * from "./Textarea";
+export * from "./Marquee";

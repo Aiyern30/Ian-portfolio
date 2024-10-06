@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Image } from "primereact/image";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ConfettiButton } from "../magicui/Confetti";
 const projects = [
   // {
@@ -165,7 +165,7 @@ const projects = [
       "Shadcn UI",
     ],
     description:
-      "Decentralized voting technology offers significant cost savings by reducing the need for physical polling places, poll workers, and printed materials, allowing citizens to vote remotely from anywhere, even if abroad or in hospitals, thus enhancing democratic participation. Additionally, this system can be applied within organizations, enabling employees to participate in decision-making through voting, which can build reputation reports based on their voting accuracy and activeness. These reports could provide valuable insights for hiring decisions, particularly in roles that require strong decision-making skills, such as HR, recruiting audits, and quantitative analysis.",
+      "Decentralized voting technology reduces costs by eliminating the need for physical polling places and allows remote voting, boosting democratic participation. It can also be used in organizations, enabling employees to vote on decisions and generate reputation reports based on accuracy and activity. These reports can inform hiring decisions for roles requiring strong decision-making skills, such as HR and recruiting audits.",
     imageUrl: "/Devmatch.png",
     livePreviewUrl:
       "https://devfolio.co/projects/decentralized-voting-system-peyouth-aa44",
@@ -173,8 +173,26 @@ const projects = [
   },
 ];
 import { Badge, Skeleton } from "@/components/ui";
+import { MarqueCard } from "./MarqueCard";
 
 export default function ProjectsSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // You can adjust the breakpoint (768px is typical for mobile)
+    };
+
+    // Run on mount and on window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const icon = <i className="pi pi-search"></i>;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -214,141 +232,138 @@ export default function ProjectsSection() {
           <div className="font-primary">Recent Projects</div>
           <div className="h-1 w-64 bg-white mx-auto text-center mt-4"></div>
         </div>
-        <div className="flex flex-col items-center justify-center">
-          <div
-            className={`flex justify-center items-center w-full md:w-3/4 mx-auto mt-4 text-black h-16 ${
-              projects.length <= 3 ? "hidden" : ""
-            }`}
-          >
-            <button
-              onClick={prevProjects}
-              className="mx-4 w-32 h-12 rounded-xl bg-white hover:opacity-80"
-            >
-              Previous
-            </button>
-            <button
-              onClick={nextProjects}
-              className="mx-4 w-32 h-12 rounded-xl bg-white hover:opacity-80"
-            >
-              Next
-            </button>
-          </div>
-
-          {currentProjects.map((project) => (
+        {isMobile ? (
+          <MarqueCard data={projects} />
+        ) : (
+          <div className="flex flex-col items-center justify-center">
             <div
-              key={project.id}
-              className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
+              className={`flex justify-center items-center w-full md:w-3/4 mx-auto mt-4 text-black h-16 ${
+                projects.length <= 3 ? "hidden" : ""
+              }`}
             >
-              <motion.div
-                className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              <button
+                onClick={prevProjects}
+                className="mx-4 w-32 h-12 rounded-xl bg-white hover:opacity-80"
               >
-                <div className="text-lg font-semibold text-tertiary">
-                  Featured project {project.id}
-                </div>
-                <div className="text-2xl font-bold">{project.title}</div>
+                Previous
+              </button>
+              <button
+                onClick={nextProjects}
+                className="mx-4 w-32 h-12 rounded-xl bg-white hover:opacity-80"
+              >
+                Next
+              </button>
+            </div>
 
-                <div className="bg-secondary opacity-80 p-4 rounded-xl flex-1">
-                  <div className="text-justify">{project.description}</div>
-                  <div className="flex md:flex-row justify-start space-x-0 md:space-x-5 space-y-2 md:space-y-0 my-3">
-                    <div className="cursor-pointer space-x-5">
-                      <ConfettiButton
-                        className="hover:underline"
-                        onClick={() =>
-                          window.open(
-                            project.livePreviewUrl,
-                            "_blank",
-                            "noopener noreferrer"
-                          )
-                        }
-                      >
-                        Live Preview
-                      </ConfettiButton>
-
-                      <ConfettiButton
-                        className="hover:underline"
-                        onClick={() =>
-                          window.open(
-                            project.githubRepo,
-                            "_blank",
-                            "noopener noreferrer"
-                          )
-                        }
-                      >
-                        View Code
-                      </ConfettiButton>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="w-full md:w-1/2 flex items-center justify-center flex-1"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            {currentProjects.map((project) => (
+              <div
+                key={project.id}
+                className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
               >
                 <motion.div
-                  className="w-full h-64 flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
-                  layoutId={`image${project.id}`}
-                >
-                  <Image
-                    src={project.imageUrl}
-                    alt={`${project.title} Dashboard`}
-                    width="400"
-                    height="300"
-                    indicatorIcon={icon}
-                    preview
-                    className="bg-gray-400"
-                  />
+  className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
+  whileHover={{ scale: 1.1 }}
+  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+>
+  <div className="text-lg font-semibold text-tertiary">
+    Featured project {project.id}
+  </div>
+  <div className="text-2xl font-bold">{project.title}</div>
 
-                  <div className="flex flex-wrap gap-2 justify-center mt-2">
-                    {project.label.map((label) => (
-                      <Badge
-                        key={label}
-                        variant="secondary"
-                        className="text-xs"
-                      >
-                        {label}
-                      </Badge>
-                    ))}
-                  </div>
+  <div className="bg-secondary opacity-80 p-4 rounded-xl flex-1">
+    <div className="text-justify">{project.description}</div>
+
+    {/* Update button layout to stack in a single column on small screens */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
+      <ConfettiButton
+        className="hover:underline w-full"
+        onClick={() =>
+          window.open(project.livePreviewUrl, "_blank", "noopener noreferrer")
+        }
+      >
+        Live Preview
+      </ConfettiButton>
+
+      <ConfettiButton
+        className="hover:underline w-full"
+        onClick={() =>
+          window.open(project.githubRepo, "_blank", "noopener noreferrer")
+        }
+      >
+        View Code
+      </ConfettiButton>
+    </div>
+  </div>
+</motion.div>
+
+                <motion.div
+                  className="w-full md:w-1/2 flex items-center justify-center flex-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <motion.div
+                    className="w-full h-64 flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
+                    layoutId={`image${project.id}`}
+                  >
+                    <Image
+                      src={project.imageUrl}
+                      alt={`${project.title} Dashboard`}
+                      width="400"
+                      height="300"
+                      indicatorIcon={icon}
+                      preview
+                      className="bg-gray-400"
+                    />
+
+                    <div className="flex flex-wrap gap-2 justify-center mt-2">
+                      {project.label.map((label) => (
+                        <Badge
+                          key={label}
+                          variant="secondary"
+                          className="text-xs"
+                        >
+                          {label}
+                        </Badge>
+                      ))}
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            </div>
-          ))}
-          {[...Array(skeletonsToShow)].map((_, index) => (
-            <div
-              key={`skeleton-${index}`}
-              className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
-            >
-              <motion.div
-                className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              </div>
+            ))}
+            {[...Array(skeletonsToShow)].map((_, index) => (
+              <div
+                key={`skeleton-${index}`}
+                className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
               >
-                <Skeleton className="h-6 w-40" />
-                <Skeleton className="h-8 w-64" />
-                <div className="bg-purple-800 opacity-60 p-4 rounded-xl flex-1 ">
-                  <Skeleton className="h-32 w-full" />
-                  <div className="flex md:flex-row justify-start space-x-0 md:space-x-5 space-y-2 md:space-y-0 my-3">
-                    <div className="space-x-5">
-                      <Skeleton className="h-8 w-24 inline-block" />
-                      <Skeleton className="h-8 w-24 inline-block" />
+                <motion.div
+                  className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Skeleton className="h-6 w-40" />
+                  <Skeleton className="h-8 w-64" />
+                  <div className="bg-purple-800 opacity-60 p-4 rounded-xl flex-1 ">
+                    <Skeleton className="h-32 w-full" />
+                    <div className="flex md:flex-row justify-start space-x-0 md:space-x-5 space-y-2 md:space-y-0 my-3">
+                      <div className="space-x-5">
+                        <Skeleton className="h-8 w-24 inline-block" />
+                        <Skeleton className="h-8 w-24 inline-block" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="w-full md:w-1/2 flex items-center justify-center flex-1"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Skeleton className="w-[400px] h-[200px]" />
-              </motion.div>
-            </div>
-          ))}
-        </div>
+                </motion.div>
+                <motion.div
+                  className="w-full md:w-1/2 flex items-center justify-center flex-1"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Skeleton className="w-[400px] h-[200px]" />
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </>
   );
