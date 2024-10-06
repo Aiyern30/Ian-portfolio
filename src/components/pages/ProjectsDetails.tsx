@@ -20,10 +20,10 @@ const projects = [
     title: "Music Application with Spotify (SpotWave)",
     label: [
       "Spotify",
-      "Next.js",
+      "NextJS",
       "Tailwind CSS",
       "Framer Motion",
-      "React.js",
+      "React",
       "Vercel",
       "TypeScript",
       "Shadcn UI",
@@ -42,9 +42,9 @@ const projects = [
     label: [
       "Firebase",
       "NextAuth",
-      "Next.js",
+      "NextJS",
       "Tailwind CSS",
-      "React.js",
+      "React",
       "Vercel",
       "TypeScript",
       "Shadcn UI",
@@ -60,9 +60,9 @@ const projects = [
     id: 3,
     title: "Reka Konsult Company Profile",
     label: [
-      "Next.js",
+      "NextJS",
       "Tailwind CSS",
-      "React.js",
+      "React",
       "Vercel",
       "TypeScript",
       "Shadcn UI",
@@ -107,7 +107,7 @@ const projects = [
     id: 5,
     title: "Canva Hackathon (Poll Generator)",
     label: [
-      "React.js, Next.js",
+      "React, NextJS",
       "Canva App SDK",
       "quickChart API",
       "qrcode API",
@@ -163,7 +163,6 @@ const projects = [
       "Tailwind Css",
       "TypeScript",
       "Shadcn UI",
-      "",
     ],
     description:
       "Decentralized voting technology offers significant cost savings by reducing the need for physical polling places, poll workers, and printed materials, allowing citizens to vote remotely from anywhere, even if abroad or in hospitals, thus enhancing democratic participation. Additionally, this system can be applied within organizations, enabling employees to participate in decision-making through voting, which can build reputation reports based on their voting accuracy and activeness. These reports could provide valuable insights for hiring decisions, particularly in roles that require strong decision-making skills, such as HR, recruiting audits, and quantitative analysis.",
@@ -173,14 +172,10 @@ const projects = [
     githubRepo: "https://github.com/Aiyern30/Voting-System-DevMatch-Hackathon-",
   },
 ];
-import { Badge, Button, Skeleton } from "@/components/ui";
+import { Badge, Skeleton } from "@/components/ui";
 
 export default function ProjectsSection() {
-  const [selectedImage, setSelectedImage] = useState<{
-    id: string;
-    src: string;
-    alt: string;
-  } | null>(null);
+  const icon = <i className="pi pi-search"></i>;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const projectsToShow = 3;
@@ -294,7 +289,7 @@ export default function ProjectsSection() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <motion.div
-                  className="w-full h-full flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
+                  className="w-full h-64 flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
                   layoutId={`image${project.id}`}
                 >
                   <Image
@@ -302,7 +297,9 @@ export default function ProjectsSection() {
                     alt={`${project.title} Dashboard`}
                     width="400"
                     height="300"
+                    indicatorIcon={icon}
                     preview
+                    className="bg-gray-400"
                   />
 
                   <div className="flex flex-wrap gap-2 justify-center mt-2">
