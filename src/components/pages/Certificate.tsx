@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui";
+import { useMediaQuery } from "react-responsive";
+import Gallery from "./Gallery";
 
 const certificates = [
   {
@@ -75,14 +77,21 @@ const certificates = [
   },
 ];
 
+const galleryImages = certificates.map(cert => ({
+  title: cert.title,
+  imageUrl: cert.imageUrl, 
+}));
+
 const Certificate = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
   return (
     <div className="flex flex-col items-center w-full py-10">
       <div className="text-5xl text-center relative mb-8">
         <div className="font-primary text-white">Certificates</div>
         <div className="h-1 w-32 bg-white mx-auto text-center mt-4"></div>
       </div>
-      <div className="flex flex-wrap justify-center space-x-4">
+      {isMobile ? <Gallery images={galleryImages}/> : <div className="flex flex-wrap justify-center space-x-4">
         {certificates.map((cert, index) => (
           <motion.div
             key={index}
@@ -112,7 +121,8 @@ const Certificate = () => {
             </a>
           </motion.div>
         ))}
-      </div>
+      </div>}
+      
     </div>
   );
 };
