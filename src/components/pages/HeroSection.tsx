@@ -41,24 +41,30 @@ export default function HeroSection() {
         </BoxReveal>
       </div>
 
-      <BoxReveal boxColor={"#763CAC"} duration={0.5}>
-        <div className="flex flex-col text-white font-primary space-y-5 mt-8 text-justify md:text-left">
-          <div className="text-3xl md:text-7xl text-center">
-            I'm a Full-stack Developer
-          </div>
-          <div className="text-base md:text-xl">
-            with a passion for coding and creating impactful projects.
-            Currently, I'm pursuing a degree in Computer Science at Asia Pacific
-            University, Malaysia.
-          </div>
-          <div className="pt-4 text-base md:text-xl">
-            With 5 years of software development experience that began in high
-            school, I've honed my skills in various technologies. I believe in
-            the importance of both functionality and design. I strive to create
-            solutions that are as visually appealing as they are effective.
-          </div>
-        </div>
-      </BoxReveal>
+    <BoxReveal boxColor={"#763CAC"} duration={0.5}>
+  <div className="flex flex-col text-white font-primary space-y-4 mt-8 text-justify md:text-left">
+    <div className="text-3xl md:text-7xl text-center">
+      I'm a Full-stack Developer
+    </div>
+    <div className="text-base md:text-lg">
+      with a passion for coding and creating impactful projects.
+      Currently, I'm pursuing a degree in Computer Science at Asia Pacific
+      University, Malaysia.
+    </div>
+    <div className="pt-4 text-base md:text-lg">
+      With 5 years of software development experience that began in high
+      school, I've honed my skills in various technologies. I believe in
+      the importance of both functionality and design. I strive to create
+      solutions that are as visually appealing as they are effective.
+    </div>
+    <div className="pt-4 text-base md:text-lg">
+      I am also keen to learn about Web3 and actively participate in
+      numerous hackathons and workshops to enhance my skills and knowledge
+      in this exciting field.
+    </div>
+  </div>
+</BoxReveal>
+
       {isMobile && (
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="flex flex-wrap justify-center md:justify-center mx-auto w-full md:w-72 mt-10 space-x-2">
