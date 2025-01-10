@@ -42,7 +42,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
       <Image
         src={item.imageUrl}
         alt={item.title}
-        style={{ display: "block" }}
+        style={{ width: "100%", display: "block" }}
       />
     );
   };
