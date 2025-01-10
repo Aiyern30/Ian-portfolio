@@ -1,17 +1,17 @@
 import { Card } from "primereact/card";
-import { Image } from 'primereact/image';
+import { Image } from "primereact/image";
 import { ConfettiButton } from "../magicui/Confetti";
 import Marquee from "../ui/Marquee";
 
 const ProjectCard = ({
-    id,
+  id,
   imageUrl,
   title,
   description,
   livePreviewUrl,
   githubRepo,
 }: {
-    id:string;
+  id: string;
   imageUrl: string;
   title: string;
   description: string;
@@ -68,8 +68,8 @@ export function MarqueCard({ data }: { data: any[] }) {
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl ">
       <Marquee pauseOnHover className="[--duration:20s]">
-        {data.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+        {data.map((project, index) => (
+          <ProjectCard key={project.id || index} {...project} />
         ))}
       </Marquee>
     </div>

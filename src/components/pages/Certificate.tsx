@@ -78,7 +78,7 @@ const Certificate = () => {
       setStartIndex(startIndex - 1);
     }
   };
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 1028 });
   const galleryImages = certificates.map((cert) => ({
     title: cert.title,
     imageUrl: cert.imageUrl,

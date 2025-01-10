@@ -29,21 +29,27 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
   const itemTemplate = (item: Image) => {
     return (
-      <Image
-        src={item.imageUrl}
-        alt={item.title}
-        style={{ width: "100%", display: "block" }}
-      />
+      <div style={{ position: "relative", width: "100%", height: "360px" }}>
+        <Image
+          src={item.imageUrl}
+          alt={item.title}
+          fill
+          style={{ objectFit: "cover" }}
+        />
+      </div>
     );
   };
 
   const thumbnailTemplate = (item: Image) => {
     return (
-      <Image
-        src={item.imageUrl}
-        alt={item.title}
-        style={{ width: "100%", display: "block" }}
-      />
+      <div style={{ position: "relative", width: "120px", height: "80px" }}>
+        <Image
+          src={item.imageUrl}
+          alt={item.title}
+          fill
+          style={{ objectFit: "cover" }}
+        />
+      </div>
     );
   };
 
