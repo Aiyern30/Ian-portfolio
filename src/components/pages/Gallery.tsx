@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { Galleria } from "primereact/galleria";

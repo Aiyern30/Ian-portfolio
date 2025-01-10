@@ -1,3 +1,6 @@
+// HeroSection.tsx
+
+"use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BoxReveal } from "@/components/magicui/index";
@@ -10,17 +13,15 @@ export default function HeroSection() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
-    // Set isMounted to true once the component has mounted (client-side)
-    setIsMounted(true);
+    setIsMounted(true); // Only mount client-side
   }, []);
 
   if (!isMounted) {
-    // Render nothing or a loading spinner during SSR
-    return null;
+    return null; // Return nothing during SSR
   }
 
   return (
-    <div className="container flex flex-col items-center md:items-start ">
+    <div className="container flex flex-col items-center md:items-start">
       <div className="flex flex-col md:flex-row items-center md:space-x-5 w-full">
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="relative mb-6 md:mb-0">
@@ -80,6 +81,7 @@ export default function HeroSection() {
       {isMobile && (
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="flex flex-wrap justify-center md:justify-center mx-auto w-full md:w-72 mt-10 space-x-2">
+            {/* Wrap the SocialIcon inside Avatar components */}
             <Avatar
               shape="square"
               size={48}

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -67,17 +69,17 @@ const Certificate = () => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 3;
 
-  const handleNext = () => {
-    if (startIndex + itemsPerPage < certificates.length) {
-      setStartIndex(startIndex + 1);
-    }
-  };
+  // const handleNext = () => {
+  //   if (startIndex + itemsPerPage < certificates.length) {
+  //     setStartIndex(startIndex + 1);
+  //   }
+  // };
 
-  const handlePrevious = () => {
-    if (startIndex > 0) {
-      setStartIndex(startIndex - 1);
-    }
-  };
+  // const handlePrevious = () => {
+  //   if (startIndex > 0) {
+  //     setStartIndex(startIndex - 1);
+  //   }
+  // };
   const isMobile = useMediaQuery({ maxWidth: 1028 });
   const galleryImages = certificates.map((cert) => ({
     title: cert.title,
