@@ -1,4 +1,4 @@
-import { IconCloud } from "../magicui/Icon-cloud";
+import { IconCloud } from "../magicui";
 
 const slugs = [
   "devpost",
@@ -53,6 +53,14 @@ const slugs = [
   "rstudio",
   "canva",
   "notion",
+  "strapi",
+  "apollographql",
+  "autodesk",
+  "axios",
+  "xampp",
+  "ethereum",
+  "ethers",
+  "solana",
 ];
 export default function GlobalSection() {
   const images = slugs.map(
