@@ -11,5 +11,4 @@ export { default as GradualSpacing } from "./Gradual-spacing";
 export { default as BoxReveal } from "./Box-reveal";
 export { default as SparklesText } from "./Sparkles-text";
 export * from "./Shimmer-button";
-export { default as IconCloud } from "./Icon-cloud";
 export { default as OrbitingCircles } from "./Orbiting-circles";

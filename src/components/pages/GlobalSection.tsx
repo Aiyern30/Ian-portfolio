@@ -1,4 +1,5 @@
-import { IconCloud } from "../magicui";
+import { IconCloud } from "../magicui/Icon-cloud";
+
 const slugs = [
   "devpost",
   "sublimetext",
@@ -54,6 +55,9 @@ const slugs = [
   "notion",
 ];
 export default function GlobalSection() {
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
+  );
   return (
     <div className="container flex flex-col items-center text-center text-white">
       <div className="text-5xl text-center relative mb-8">
@@ -67,7 +71,7 @@ export default function GlobalSection() {
         the tools and technologies I have learned and worked with.
       </div>
 
-      <IconCloud iconSlugs={slugs} />
+      <IconCloud images={images} />
     </div>
   );
 }
