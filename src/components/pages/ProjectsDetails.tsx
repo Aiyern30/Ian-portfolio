@@ -47,7 +47,7 @@ const projects = [
     description:
       "Recently, I joined the YTL Cement IT department, focusing on developing an e-invoice system. The system manages driver e-invoices and supports role-based access for submitting documents to LHDN. I worked on key features such as income and expenses tracking, statement of accounts, and invoice reporting using Microsoft Power BI and Report Builder.",
     imageUrl: "/Dos-portal.png",
-    livePreviewUrl: null,
+    livePreviewUrl: "https://dos.uat4ytlcement.com/",
     githubRepo: null,
   },
 
@@ -65,45 +65,45 @@ const projects = [
     description:
       "Developed the landing page for the Sino Mobile and Heavy Equipment (SMHE) website, focusing on showcasing trucks for sale. Key features include a Media Center, About Us section, detailed truck pages with overview and specifications, and options for users to contact sales or download brochures. Integrated Google Maps to display workshop and factory locations for easy navigation.",
     imageUrl: "/SMHE.png",
-    livePreviewUrl: "https://smhe.uat4ytlcement.com/",
+    livePreviewUrl: "https://smhe.my",
     githubRepo: null,
   },
 
-  // {
-  //   title: "Expenses Tracker (SplitTrack)",
-  //   label: [
-  //     "Firebase",
-  //     "NextAuth",
-  //     "NextJS",
-  //     "Tailwind CSS",
-  //     "React",
-  //     "Vercel",
-  //     "TypeScript",
-  //     "Shadcn UI",
-  //     "Lucide react",
-  //   ],
-  //   description:
-  //     "The Expenses Tracker is a robust application designed to help users efficiently manage their finances. Track your expenses daily, monthly, and yearly, and gain detailed insights into your spending habits. Key features include expense tracking, managing friend expenses, and effective group expense management during trips.",
-  //   imageUrl: "/Split-Track.png",
-  //   livePreviewUrl: "https://split-track.vercel.app/",
-  //   githubRepo: "https://github.com/Aiyern30/SplitTrack",
-  // },
   {
-    title: "Pet Care",
+    title: "Expenses Tracker (SplitTrack)",
     label: [
-      "HTML",
-      "CSS",
-      "JavaScripts",
-      "PHP",
-      "MySQL",
-      "MyPhpAdmin",
-      "ChartJS",
+      "Firebase",
+      "NextAuth",
+      "NextJS",
+      "Tailwind CSS",
+      "React",
+      "Vercel",
+      "TypeScript",
+      "Shadcn UI",
+      "Lucide react",
     ],
     description:
-      "This website provides a comprehensive platform for pet care services. Customers can easily book appointments for their pets, including surgeries and other medical needs. The platform also features a community blog where users can chat, share posts, and read knowledge articles about pet care. For business owners and staff, the website offers robust tools to manage operations effectively, including full CRUD functionality for managing appointments, customer data, and services. Additionally, it includes features to view receipts and generate detailed payment reports with visually appealing charts, streamlining administrative tasks.",
-    // imageUrl: "/Split-Track.png",
-    githubRepo: "https://github.com/Aiyern30/Pet-Care",
+      "The Expenses Tracker is a robust application designed to help users efficiently manage their finances. Track your expenses daily, monthly, and yearly, and gain detailed insights into your spending habits. Key features include expense tracking, managing friend expenses, and effective group expense management during trips.",
+    imageUrl: "/Split-Track.png",
+    livePreviewUrl: "https://split-track.vercel.app/",
+    githubRepo: "https://github.com/Aiyern30/SplitTrack",
   },
+  // {
+  //   title: "Pet Care",
+  //   label: [
+  //     "HTML",
+  //     "CSS",
+  //     "JavaScripts",
+  //     "PHP",
+  //     "MySQL",
+  //     "MyPhpAdmin",
+  //     "ChartJS",
+  //   ],
+  //   description:
+  //     "This website provides a comprehensive platform for pet care services. Customers can easily book appointments for their pets, including surgeries and other medical needs. The platform also features a community blog where users can chat, share posts, and read knowledge articles about pet care. For business owners and staff, the website offers robust tools to manage operations effectively, including full CRUD functionality for managing appointments, customer data, and services. Additionally, it includes features to view receipts and generate detailed payment reports with visually appealing charts, streamlining administrative tasks.",
+  //   // imageUrl: "/Split-Track.png",
+  //   githubRepo: "https://github.com/Aiyern30/Pet-Care",
+  // },
   {
     title: "Reka Konsult Company Profile",
     label: [
