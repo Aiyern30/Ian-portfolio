@@ -34,3 +34,10 @@
 .social-icon:hover .social-svg-icon {
   fill: #ff5722;
 }
+.p-button-icon-only {
+  display: none;
+}
+
+.p-galleria-thumbnail-item {
+  overflow: hidden;
+}

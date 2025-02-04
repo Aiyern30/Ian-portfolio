@@ -88,8 +88,6 @@ const Certificate = () => {
   return (
     <>
       {isMobile ? (
-        <Gallery images={galleryImages} />
-      ) : (
         <div className="flex flex-col items-center w-full py-10">
           <div className="text-5xl text-center relative mb-8">
             <div className="font-primary text-white">Certificates</div>
@@ -103,7 +101,7 @@ const Certificate = () => {
           >
             <CarouselContent>
               {certificates.map((cert, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/2">
                   <div className="p-4">
                     <motion.div
                       className="bg-white rounded-lg shadow-lg p-4"
@@ -137,10 +135,13 @@ const Certificate = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="text-white" />
-            <CarouselNext className="text-white" />
+            <CarouselPrevious className="text-white ml-4" />
+            <CarouselNext className="text-white mr-4" />
           </Carousel>
         </div>
+      ) : (
+        <Gallery images={galleryImages} />
+        
       )}
     </>
   );

@@ -57,14 +57,10 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
   return (
     <div className="card">
-      <div className="mb-3">
-        <Button icon="pi pi-minus" onClick={prev} />
-        <Button
-          icon="pi pi-plus"
-          onClick={next}
-          className="p-button-secondary ml-2"
-        />
-      </div>
+      <div className="text-5xl text-center relative mb-8">
+            <div className="font-primary text-white">Certificates</div>
+            <div className="h-1 w-32 bg-white mx-auto text-center mt-4"></div>
+          </div>
 
       <Galleria
         value={images}
