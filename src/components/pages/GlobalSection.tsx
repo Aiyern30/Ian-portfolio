@@ -67,7 +67,7 @@ export default function GlobalSection() {
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );
   return (
-    <div className="container flex flex-col items-center text-center text-white">
+    <div className="container flex flex-col justify-center items-center text-center text-white min-h-screen">
       <div className="text-5xl text-center relative mb-8">
         <div className="font-primary">Tools & Technologies</div>
         <div className="h-1 w-44 bg-white mx-auto text-center mt-4"></div>

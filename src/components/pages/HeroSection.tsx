@@ -21,7 +21,7 @@ export default function HeroSection() {
   }
 
   return (
-    <div className="container flex flex-col items-center md:items-start">
+    <div className="container flex flex-col justify-center items-center md:items-start min-h-screen">
       <div className="flex flex-col md:flex-row items-center md:space-x-5 w-full">
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="relative mb-6 md:mb-0">
