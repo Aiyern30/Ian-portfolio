@@ -239,7 +239,7 @@ export default function ProjectsSection() {
   const icon = <i className="pi pi-search"></i>;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const projectsToShow = 3;
+  const projectsToShow = isMobile ? 1 : 3;
 
   const nextProjects = () => {
     setCurrentIndex(
@@ -268,24 +268,22 @@ export default function ProjectsSection() {
   return (
     <>
       <section
-        className="  text-white container mx-auto space-y-8 select-none mb-20 relative"
+        className="  text-white container mx-auto select-none mb-20 relative"
         id="projects"
       >
         <FaChevronLeft
           onClick={prevProjects}
-          className="w-32 h-12  absolute top-1/2 left-0 cursor-pointer"
+          className="w-32 h-12  absolute top-1/2 -left-10 sm:left-0 cursor-pointer"
         />
         <FaChevronRight
           onClick={nextProjects}
-          className="w-32 h-12  absolute top-1/2 right-0 cursor-pointer"
+          className="w-32 h-12  absolute top-1/2 -right-10 sm:right-0 cursor-pointer"
         />
         <div className="text-5xl text-center relative mb-8">
           <div className="font-primary">Recent Projects</div>
           <div className="h-1 w-64 bg-white mx-auto text-center mt-4"></div>
         </div>
-        {isMobile ? (
-          <MarqueCard data={projects} />
-        ) : (
+        
           <div className="flex flex-col items-center justify-center">
             {currentProjects.map((project, idx) => (
               <div
@@ -298,13 +296,13 @@ export default function ProjectsSection() {
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   {/* Adjusted index to reflect page-relative numbering */}
-                  <div className="text-lg font-semibold text-tertiary">
+                  <div className="text-lg font-semibold text-tertiary text-center sm:text-left">
                     Featured project {startIndex + idx + 1}
                   </div>
-                  <div className="text-2xl font-bold">{project.title}</div>
+                  <div className="text-2xl font-bold text-center sm:text-left">{project.title}</div>
 
                   <div className="bg-secondary opacity-80 p-4 flex-1">
-                    <div className="text-justify">{project.description}</div>
+                    <div className="sm:text-justify text-sm sm:text-base">{project.description}</div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
                       {project.livePreviewUrl && (
@@ -407,7 +405,7 @@ export default function ProjectsSection() {
               </div>
             ))}
           </div>
-        )}
+
       </section>
     </>
   );
