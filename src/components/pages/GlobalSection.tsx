@@ -1,3 +1,4 @@
+import { useDeviceType } from "@/lib/useDeviceTypes";
 import { IconCloud } from "../magicui";
 
 const slugs = [
@@ -62,12 +63,12 @@ const slugs = [
   "ethers",
   "solana",
 ];
+
 export default function GlobalSection() {
+  const { isMobile, isTablet, isDesktop } = useDeviceType();
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );
-
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
     <div className="container flex flex-col justify-center items-center text-center text-white min-h-screen">
@@ -77,11 +78,9 @@ export default function GlobalSection() {
       </div>
 
       <div className="max-w-xl mx-auto mb-5 md:text-xl">
-        {isMobile ? (
-          <span>
-            A quick look at the tools & tech I use to build projects!
-          </span>
-        ) : (
+        {isMobile && <span>Check out the tools I use to build awesome projects!</span>}
+        {isTablet && <span>A closer look at the technologies I work with.</span>}
+        {isDesktop && (
           <span>
             I'm currently looking to join a{" "}
             <span className="text-tertiary">cross-functional</span> team
@@ -96,4 +95,3 @@ export default function GlobalSection() {
     </div>
   );
 }
-

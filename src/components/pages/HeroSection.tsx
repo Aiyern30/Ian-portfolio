@@ -1,23 +1,21 @@
-// HeroSection.tsx
-
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BoxReveal } from "@/components/magicui/index";
 import { Avatar } from "antd";
 import { SocialIcon } from "react-social-icons";
-import { useMediaQuery } from "react-responsive";
+import { useDeviceType } from "@/lib/useDeviceTypes";
 
 export default function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const { isMobile } = useDeviceType(); 
 
   useEffect(() => {
-    setIsMounted(true); // Only mount client-side
+    setIsMounted(true); 
   }, []);
 
   if (!isMounted) {
-    return null; // Return nothing during SSR
+    return null; 
   }
 
   return (
