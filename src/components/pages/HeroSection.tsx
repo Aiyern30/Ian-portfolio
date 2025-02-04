@@ -21,7 +21,7 @@ export default function HeroSection() {
   }
 
   return (
-    <div className="container flex flex-col justify-center items-center md:items-start min-h-screen">
+    <div className="container flex flex-col justify-center items-center md:items-start min-h-screen mb-24 sm:mb-0">
       <div className="flex flex-col md:flex-row items-center md:space-x-5 w-full">
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="relative mb-6 md:mb-0">
@@ -56,25 +56,42 @@ export default function HeroSection() {
 
       <BoxReveal boxColor={"#763CAC"} duration={0.5}>
         <div className="flex flex-col text-white font-primary space-y-4 mt-8 text-justify md:text-left">
-          <div className="text-3xl md:text-7xl text-center">
-            I'm a Full-stack Developer
-          </div>
-          <div className="text-base md:text-lg">
-            with a passion for coding and creating impactful projects.
-            Currently, I'm pursuing a degree in Computer Science at Asia Pacific
-            University, Malaysia.
-          </div>
-          <div className="pt-4 text-base md:text-lg">
-            With 5 years of software development experience that began in high
-            school, I've honed my skills in various technologies. I believe in
-            the importance of both functionality and design. I strive to create
-            solutions that are as visually appealing as they are effective.
-          </div>
-          <div className="pt-4 text-base md:text-lg">
-            I am also keen to learn about Web3 and actively participate in
-            numerous hackathons and workshops to enhance my skills and knowledge
-            in this exciting field.
-          </div>
+          {isMobile ? (
+            <>
+              <div className="text-3xl text-center">I'm a Developer</div>
+              <div className="text-base">
+                Passionate about coding and problem-solving. Love creating
+                functional and beautiful applications.
+              </div>
+              <div className="pt-2 text-base">
+                Always eager to learn new technologies, especially Web3, and
+                participate in hackathons to sharpen my skills.
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="text-3xl md:text-7xl text-center">
+                I'm a Full-stack Developer
+              </div>
+              <div className="text-base md:text-lg">
+                with a passion for coding and creating impactful projects.
+                Currently, I'm pursuing a degree in Computer Science at Asia
+                Pacific University, Malaysia.
+              </div>
+              <div className="pt-4 text-base md:text-lg">
+                With 5 years of software development experience that began in
+                high school, I've honed my skills in various technologies. I
+                believe in the importance of both functionality and design. I
+                strive to create solutions that are as visually appealing as
+                they are effective.
+              </div>
+              <div className="pt-4 text-base md:text-lg">
+                I am also keen to learn about Web3 and actively participate in
+                numerous hackathons and workshops to enhance my skills and
+                knowledge in this exciting field.
+              </div>
+            </>
+          )}
         </div>
       </BoxReveal>
 
@@ -83,8 +100,8 @@ export default function HeroSection() {
           <div className="flex flex-wrap justify-center md:justify-center mx-auto w-full md:w-72 mt-10 space-x-2">
             {/* Wrap the SocialIcon inside Avatar components */}
             <Avatar
-              shape="square"
-              size={48}
+              shape="circle"
+              size={36}
               icon={
                 <SocialIcon
                   network="linkedin"
@@ -95,8 +112,8 @@ export default function HeroSection() {
               className="cursor-pointer"
             />
             <Avatar
-              shape="square"
-              size={48}
+              shape="circle"
+              size={36}
               icon={
                 <SocialIcon
                   network="github"
@@ -107,8 +124,8 @@ export default function HeroSection() {
               className="cursor-pointer"
             />
             <Avatar
-              shape="square"
-              size={48}
+              shape="circle"
+              size={36}
               icon={
                 <SocialIcon
                   url="https://discord.gg/tAuqPG83"
@@ -119,8 +136,8 @@ export default function HeroSection() {
               className="cursor-pointer"
             />
             <Avatar
-              shape="square"
-              size={48}
+              shape="circle"
+              size={36}
               icon={
                 <SocialIcon
                   url="https://www.instagram.com/_aiyern_/"
@@ -131,8 +148,8 @@ export default function HeroSection() {
               className="cursor-pointer"
             />
             <Avatar
-              shape="square"
-              size={48}
+              shape="circle"
+              size={36}
               icon={
                 <SocialIcon
                   url="https://wa.me/+60182133211?text='Type%20your%20message%20here%20%3A'"

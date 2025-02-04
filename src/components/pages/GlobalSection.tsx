@@ -66,20 +66,34 @@ export default function GlobalSection() {
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <div className="container flex flex-col justify-center items-center text-center text-white min-h-screen">
       <div className="text-5xl text-center relative mb-8">
         <div className="font-primary">Tools & Technologies</div>
         <div className="h-1 w-44 bg-white mx-auto text-center mt-4"></div>
       </div>
+
       <div className="max-w-xl mx-auto mb-5 md:text-xl">
-        I'm currently looking to join a{" "}
-        <span className="text-tertiary">cross-functional</span> team dedicated
-        to enhancing lives through accessible design. The icons below represent
-        the tools and technologies I have learned and worked with.
+        {isMobile ? (
+          <span>
+            A quick look at the tools & tech I use to build projects!
+          </span>
+        ) : (
+          <span>
+            I'm currently looking to join a{" "}
+            <span className="text-tertiary">cross-functional</span> team
+            dedicated to enhancing lives through accessible design. The icons
+            below represent the tools and technologies I have learned and worked
+            with.
+          </span>
+        )}
       </div>
 
       <IconCloud images={images} />
     </div>
   );
 }
+
