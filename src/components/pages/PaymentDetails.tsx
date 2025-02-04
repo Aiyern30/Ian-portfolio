@@ -28,7 +28,13 @@ const paymentMethods = [
     name: "Touch 'n Go eWallet",
     logo: '/Logo/TNG.jpg', 
     link: 'https://payment.tngdigital.com.my/sc/bDLnPgpH5S'
+  },
+  {
+    name: 'Maybank QRPay',
+    logo: '/Logo/mae.png',
+    link: '/Logo/MaeQR.jpg' 
   }
+  
 ];
 
 const PaymentDetails = () => {
