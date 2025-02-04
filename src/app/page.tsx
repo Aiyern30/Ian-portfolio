@@ -45,6 +45,7 @@ const items = [
 
 import { useMediaQuery } from "react-responsive";
 import { cn } from "@/lib/utils";
+import { useDeviceType } from "@/lib/useDeviceTypes";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -82,7 +83,7 @@ export default function Home() {
     };
   }, []);
 
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const { isMobile } = useDeviceType(); 
 
   return (
     <div className="content">

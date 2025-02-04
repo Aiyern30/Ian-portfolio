@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui";
-import { useMediaQuery } from "react-responsive";
+import { useDeviceType } from "@/lib/useDeviceTypes"; // Import the hook
 import Gallery from "./Gallery";
 
 const certificates = [
@@ -66,25 +66,13 @@ const certificates = [
 ];
 
 const Certificate = () => {
-  const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 3;
+  const { isMobile } = useDeviceType(); 
 
-  // const handleNext = () => {
-  //   if (startIndex + itemsPerPage < certificates.length) {
-  //     setStartIndex(startIndex + 1);
-  //   }
-  // };
-
-  // const handlePrevious = () => {
-  //   if (startIndex > 0) {
-  //     setStartIndex(startIndex - 1);
-  //   }
-  // };
-  const isMobile = useMediaQuery({ maxWidth: 1028 });
   const galleryImages = certificates.map((cert) => ({
     title: cert.title,
     imageUrl: cert.imageUrl,
   }));
+
   return (
     <>
       {isMobile ? (
@@ -101,7 +89,7 @@ const Certificate = () => {
           >
             <CarouselContent>
               {certificates.map((cert, index) => (
-                <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/2">
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2">
                   <div className="p-4">
                     <motion.div
                       className="bg-white rounded-lg shadow-lg p-4"
@@ -141,7 +129,6 @@ const Certificate = () => {
         </div>
       ) : (
         <Gallery images={galleryImages} />
-        
       )}
     </>
   );

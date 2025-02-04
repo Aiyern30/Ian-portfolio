@@ -1,26 +1,9 @@
-import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export function useDeviceType() {
-  const [deviceType, setDeviceType] = useState({
-    isMobile: false,
-    isTablet: false,
-    isDesktop: false,
-  });
+  const isMobile = useMediaQuery({ maxWidth: 1028 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const isDesktop = useMediaQuery({ minWidth: 1025 });
 
-  useEffect(() => {
-    const updateDeviceType = () => {
-      const width = window.innerWidth;
-      setDeviceType({
-        isMobile: width < 768,
-        isTablet: width >= 768 && width < 1024,
-        isDesktop: width >= 1024,
-      });
-    };
-
-    updateDeviceType();
-    window.addEventListener("resize", updateDeviceType);
-    return () => window.removeEventListener("resize", updateDeviceType);
-  }, []);
-
-  return deviceType;
+  return { isMobile, isTablet, isDesktop };
 }

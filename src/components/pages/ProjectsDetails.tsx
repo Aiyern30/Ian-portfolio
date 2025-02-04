@@ -217,24 +217,11 @@ const projects = [
 ];
 import { Badge, Skeleton } from "@/components/ui";
 import { MarqueCard } from "./MarqueCard";
+import { useDeviceType } from "@/lib/useDeviceTypes";
 
 export default function ProjectsSection() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // You can adjust the breakpoint (768px is typical for mobile)
-    };
-
-    // Run on mount and on window resize
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup listener on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    const { isMobile } = useDeviceType(); 
+  
 
   const icon = <i className="pi pi-search"></i>;
 
@@ -295,7 +282,6 @@ export default function ProjectsSection() {
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  {/* Adjusted index to reflect page-relative numbering */}
                   <div className="text-lg font-semibold text-tertiary text-center sm:text-left">
                     Featured project {startIndex + idx + 1}
                   </div>
