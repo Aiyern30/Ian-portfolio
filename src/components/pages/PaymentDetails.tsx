@@ -39,25 +39,31 @@ const PaymentDetails = () => {
         <div className="h-1 w-48 bg-white mx-auto text-center mt-4"></div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {paymentMethods.map((method, index) => (
-          <a
-            href={method.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={index}
-          >
-            <Card key={index} className="bg-white shadow-lg rounded-lg overflow-hidden h-32 w-32 relative flex items-center justify-center">
-              <Image 
-                src={method.logo} 
-                alt={method.name} 
-                width={64}
-                height={64}
-                priority
-              />
-            </Card>
-          </a>
-        ))}
-      </div>
+  {paymentMethods.map((method, index) => (
+    <a
+      href={method.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      key={index}
+      className="group"
+    >
+      <Card
+        key={index}
+        className="bg-white shadow-lg rounded-lg overflow-hidden h-32 w-32 relative flex items-center justify-center transition-all duration-300 hover:scale-105"
+      >
+        <Image 
+          src={method.logo} 
+          alt={method.name} 
+          width={64}
+          height={64}
+          priority
+        />
+      </Card>
+    </a>
+  ))}
+</div>
+
+
     </div>
   );
 };
