@@ -220,8 +220,7 @@ import { MarqueCard } from "./MarqueCard";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 
 export default function ProjectsSection() {
-    const { isMobile } = useDeviceType(); 
-  
+  const { isMobile } = useDeviceType();
 
   const icon = <i className="pi pi-search"></i>;
 
@@ -270,128 +269,131 @@ export default function ProjectsSection() {
           <div className="font-primary">Recent Projects</div>
           <div className="h-1 w-64 bg-white mx-auto text-center mt-4"></div>
         </div>
-        
-          <div className="flex flex-col items-center justify-center">
-            {currentProjects.map((project, idx) => (
-              <div
-                key={idx}
-                className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
+
+        <div className="flex flex-col items-center justify-center">
+          {currentProjects.map((project, idx) => (
+            <div
+              key={idx}
+              className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
+            >
+              <motion.div
+                className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <div className="text-lg font-semibold text-tertiary text-center sm:text-left">
+                  Featured project {startIndex + idx + 1}
+                </div>
+                <div className="text-2xl font-bold text-center sm:text-left">
+                  {project.title}
+                </div>
+
+                <div className="bg-secondary opacity-80 p-4 flex-1">
+                  <div className="sm:text-justify text-sm sm:text-base">
+                    {project.description}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
+                    {project.livePreviewUrl && (
+                      <ConfettiButton
+                        className="hover:underline w-full"
+                        onClick={() =>
+                          window.open(
+                            project.livePreviewUrl,
+                            "_blank",
+                            "noopener noreferrer"
+                          )
+                        }
+                      >
+                        Live Preview
+                      </ConfettiButton>
+                    )}
+                    {project.githubRepo && (
+                      <ConfettiButton
+                        className="hover:underline w-full"
+                        onClick={() =>
+                          window.open(
+                            project.githubRepo,
+                            "_blank",
+                            "noopener noreferrer"
+                          )
+                        }
+                      >
+                        View Code
+                      </ConfettiButton>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="w-full md:w-1/2 flex items-center justify-center flex-1"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 <motion.div
-                  className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="w-full h-64 flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
+                  layoutId={`image${idx}`}
                 >
-                  <div className="text-lg font-semibold text-tertiary text-center sm:text-left">
-                    Featured project {startIndex + idx + 1}
-                  </div>
-                  <div className="text-2xl font-bold text-center sm:text-left">{project.title}</div>
+                  <Image
+                    src={project.imageUrl}
+                    alt={`${project.title} Dashboard`}
+                    width="400"
+                    height="300"
+                    indicatorIcon={icon}
+                    preview
+                    className="bg-gray-400"
+                  />
 
-                  <div className="bg-secondary opacity-80 p-4 flex-1">
-                    <div className="sm:text-justify text-sm sm:text-base">{project.description}</div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-3">
-                      {project.livePreviewUrl && (
-                        <ConfettiButton
-                          className="hover:underline w-full"
-                          onClick={() =>
-                            window.open(
-                              project.livePreviewUrl,
-                              "_blank",
-                              "noopener noreferrer"
-                            )
-                          }
-                        >
-                          Live Preview
-                        </ConfettiButton>
-                      )}
-                      {project.githubRepo && (
-                        <ConfettiButton
-                          className="hover:underline w-full"
-                          onClick={() =>
-                            window.open(
-                              project.githubRepo,
-                              "_blank",
-                              "noopener noreferrer"
-                            )
-                          }
-                        >
-                          View Code
-                        </ConfettiButton>
-                      )}
-                    </div>
+                  <div className="flex flex-wrap gap-2 justify-center mt-2">
+                    {project.label.map((label) => (
+                      <Badge
+                        key={label}
+                        variant="secondary"
+                        className="text-xs"
+                      >
+                        {label}
+                      </Badge>
+                    ))}
                   </div>
                 </motion.div>
+              </motion.div>
+            </div>
+          ))}
 
-                <motion.div
-                  className="w-full md:w-1/2 flex items-center justify-center flex-1"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <motion.div
-                    className="w-full h-64 flex flex-col items-center justify-center bg-transparent border-0 cursor-pointer"
-                    layoutId={`image${idx}`}
-                  >
-                    <Image
-                      src={project.imageUrl}
-                      alt={`${project.title} Dashboard`}
-                      width="400"
-                      height="300"
-                      indicatorIcon={icon}
-                      preview
-                      className="bg-gray-400"
-                    />
-
-                    <div className="flex flex-wrap gap-2 justify-center mt-2">
-                      {project.label.map((label) => (
-                        <Badge
-                          key={label}
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {label}
-                        </Badge>
-                      ))}
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-            ))}
-
-            {[...Array(skeletonsToShow)].map((_, index) => (
-              <div
-                key={`skeleton-${index}`}
-                className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
+          {[...Array(skeletonsToShow)].map((_, index) => (
+            <div
+              key={`skeleton-${index}`}
+              className="w-full md:w-3/4 flex flex-col md:flex-row items-stretch space-y-6 md:space-y-0 m-4"
+            >
+              <motion.div
+                className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <motion.div
-                  className="w-full md:w-1/2 flex flex-col space-y-3 px-4 md:px-8 flex-1"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <Skeleton className="h-6 w-40" />
-                  <Skeleton className="h-8 w-64" />
-                  <div className="bg-purple-800 opacity-60 p-4 flex-1 ">
-                    <Skeleton className="h-32 w-full" />
-                    <div className="flex md:flex-row justify-start space-x-0 md:space-x-5 space-y-2 md:space-y-0 my-3">
-                      <div className="space-x-5">
-                        <Skeleton className="h-8 w-24 inline-block" />
-                        <Skeleton className="h-8 w-24 inline-block" />
-                      </div>
+                <Skeleton className="h-6 w-40" />
+                <Skeleton className="h-8 w-64" />
+                <div className="bg-purple-800 opacity-60 p-4 flex-1 ">
+                  <Skeleton className="h-32 w-full" />
+                  <div className="flex md:flex-row justify-start space-x-0 md:space-x-5 space-y-2 md:space-y-0 my-3">
+                    <div className="space-x-5">
+                      <Skeleton className="h-8 w-24 inline-block" />
+                      <Skeleton className="h-8 w-24 inline-block" />
                     </div>
                   </div>
-                </motion.div>
-                <motion.div
-                  className="w-full md:w-1/2 flex items-center justify-center flex-1"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                >
-                  <Skeleton className="w-[400px] h-[200px]" />
-                </motion.div>
-              </div>
-            ))}
-          </div>
-
+                </div>
+              </motion.div>
+              <motion.div
+                className="w-full md:w-1/2 flex items-center justify-center flex-1"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Skeleton className="w-[400px] h-[200px]" />
+              </motion.div>
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

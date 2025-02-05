@@ -84,7 +84,7 @@ export default function Home() {
     };
   }, []);
 
-  const { isMobile } = useDeviceType(); 
+  const { isMobile } = useDeviceType();
 
   return (
     <div className="content">
@@ -118,7 +118,7 @@ export default function Home() {
         <SkillsDetails />
       </section>
       <section className=" flex items-center justify-center" id="support-me">
-    <PaymentDetails />
+        <PaymentDetails />
       </section>
       <section className=" flex items-center justify-center" id="contact-us">
         <ContactForm />

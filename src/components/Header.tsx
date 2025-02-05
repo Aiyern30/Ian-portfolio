@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             >
               <Link href="#support-me">Support Me</Link>
             </li>
-           
+
             <li
               className={`hover:text-blue-500 hover:font-semibold ${
                 activeSection === "contact-us" ? "text-blue-500" : ""
@@ -126,12 +126,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             <Link href="#about">About</Link>
           </li>
           <li
-              className={`hover:text-blue-500 hover:font-semibold ${
-                activeSection === "support-me" ? "text-blue-500" : ""
-              }`}
-            >
-              <Link href="#support-me">Support Me</Link>
-            </li>
+            className={`hover:text-blue-500 hover:font-semibold ${
+              activeSection === "support-me" ? "text-blue-500" : ""
+            }`}
+          >
+            <Link href="#support-me">Support Me</Link>
+          </li>
           <li
             className={`hover:text-blue-500 hover:font-semibold ${
               activeSection === "contact-us" ? "text-blue-500" : ""
