@@ -46,6 +46,7 @@ const items = [
 import { useMediaQuery } from "react-responsive";
 import { cn } from "@/lib/utils";
 import { useDeviceType } from "@/lib/useDeviceTypes";
+import PaymentDetails from "@/components/pages/PaymentDetails";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -115,6 +116,9 @@ export default function Home() {
       </section>
       <section className=" px-4 " id="about">
         <SkillsDetails />
+      </section>
+      <section className=" flex items-center justify-center" id="contact-us">
+    <PaymentDetails />
       </section>
       <section className=" flex items-center justify-center" id="contact-us">
         <ContactForm />
