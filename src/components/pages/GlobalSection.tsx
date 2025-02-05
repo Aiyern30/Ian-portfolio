@@ -1,5 +1,8 @@
+"use client";
+
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import { IconCloud } from "../magicui";
+import { useEffect, useState } from "react";
 
 const slugs = [
   "devpost",
@@ -66,6 +69,12 @@ const slugs = [
 
 export default function GlobalSection() {
   const { isMobile, isTablet, isDesktop } = useDeviceType();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );
@@ -78,9 +87,14 @@ export default function GlobalSection() {
       </div>
 
       <div className="max-w-xl mx-auto mb-5 md:text-xl">
-        {isMobile && <span>Check out the tools I use to build awesome projects!</span>}
-        {isTablet && <span>A closer look at the technologies I work with.</span>}
-        {isDesktop && (
+        {!isClient && <span>Loading...</span>}
+        {isClient && isMobile && (
+          <span>Check out the tools I use to build awesome projects!</span>
+        )}
+        {isClient && isTablet && (
+          <span>A closer look at the technologies I work with.</span>
+        )}
+        {isClient && isDesktop && (
           <span>
             I'm currently looking to join a{" "}
             <span className="text-tertiary">cross-functional</span> team
