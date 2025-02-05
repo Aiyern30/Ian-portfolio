@@ -12,18 +12,16 @@ const isMobile = () => {
 const handleMaybankClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
 
-  const duitNowID = "162348651282"; 
-  const amount = "10.00"; 
+  const duitNowNumber = "0182133211";
 
   if (isMobile()) {
-    // Check if MAE has a DuitNow deep link (This is an assumption)
-    window.location.href = `mae://duitnow?recipient=${duitNowID}&amount=${amount}`;
+    // Attempt to open MAE app with pre-filled DuitNow Mobile Number
+    window.location.href = `mae://duitnow?recipient=${duitNowNumber}&type=mobile`;
   } else {
-    // Open QR image for desktop users
+    // Open DuitNow QR Code for desktop users
     window.open('/Logo/MaeQR.jpg', '_blank');
   }
 };
-
 
 const paymentMethods = [
   {
