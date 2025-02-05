@@ -41,7 +41,7 @@ const items = [
         <SocialIcon network="discord" style={{ height: 48, width: 48 }} />
       </span>
     ),
-    url: "https://discord.gg/tAuqPG83",
+    url: "https://discord.gg/eEzxaxPR2d",
   },
   {
     label: "Instagram",

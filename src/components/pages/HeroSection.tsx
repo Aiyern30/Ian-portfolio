@@ -140,7 +140,7 @@ export default function HeroSection() {
                 />
               }
               onClick={() =>
-                window.open("https://discord.gg/tAuqPG83", "_blank")
+                window.open("https://discord.gg/eEzxaxPR2d", "_blank")
               }
               className="cursor-pointer"
             />

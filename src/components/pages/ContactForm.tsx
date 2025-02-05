@@ -242,7 +242,7 @@ export default function ContactForm() {
             </div>
             <div>
               <a
-                href="https://discord.gg/tAuqPG83"
+                href="https://discord.gg/eEzxaxPR2d"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
