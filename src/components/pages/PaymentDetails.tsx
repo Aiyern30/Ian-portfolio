@@ -2,6 +2,26 @@ import React from 'react';
 import Image from 'next/image';
 import { Card } from '../ui';
 
+const isMobile = () => {
+  if (typeof window !== "undefined") {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+  }
+  return false;
+};
+
+const handleMaybankClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault();
+
+  if (isMobile()) {
+    // Maybank deep link (Example: Replace with actual deep link if available)
+    window.location.href = "maybank2u://";
+  } else {
+    // Open QR image for desktop users
+    window.open('/Logo/MaeQR.jpg', '_blank');
+  }
+};
+
+
 const paymentMethods = [
   {
     name: 'PayPal',
@@ -21,9 +41,8 @@ const paymentMethods = [
   {
     name: 'Kofi',
     logo: '/Logo/kofi_logo.svg',
-    link: ' https://ko-fi.com/iangan'
+    link: 'https://ko-fi.com/iangan'
   },
- 
   {
     name: "Touch 'n Go eWallet",
     logo: '/Logo/TNG.jpg', 
@@ -32,9 +51,9 @@ const paymentMethods = [
   {
     name: 'Maybank QRPay',
     logo: '/Logo/mae.png',
-    link: '/Logo/MaeQR.jpg' 
+    link: '/Logo/MaeQR.jpg',
+    onClick: handleMaybankClick // Add click handler
   }
-  
 ];
 
 const PaymentDetails = () => {
@@ -51,6 +70,7 @@ const PaymentDetails = () => {
             target="_blank"
             rel="noopener noreferrer"
             key={index}
+            onClick={method.onClick ? method.onClick : undefined} // Use custom handler for Maybank
           >
             <Card key={index} className="bg-white shadow-lg rounded-lg overflow-hidden h-32 w-32 relative flex items-center justify-center">
               <Image 
