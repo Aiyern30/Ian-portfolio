@@ -12,9 +12,12 @@ const isMobile = () => {
 const handleMaybankClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
 
+  const duitNowID = "162348651282"; 
+  const amount = "10.00"; 
+
   if (isMobile()) {
-    // Maybank deep link (Example: Replace with actual deep link if available)
-    window.location.href = "maybank2u://";
+    // Check if MAE has a DuitNow deep link (This is an assumption)
+    window.location.href = `mae://duitnow?recipient=${duitNowID}&amount=${amount}`;
   } else {
     // Open QR image for desktop users
     window.open('/Logo/MaeQR.jpg', '_blank');
