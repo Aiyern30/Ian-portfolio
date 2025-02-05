@@ -117,7 +117,7 @@ export default function Home() {
       <section className=" px-4 " id="about">
         <SkillsDetails />
       </section>
-      <section className=" flex items-center justify-center" id="contact-us">
+      <section className=" flex items-center justify-center" id="support-me">
     <PaymentDetails />
       </section>
       <section className=" flex items-center justify-center" id="contact-us">

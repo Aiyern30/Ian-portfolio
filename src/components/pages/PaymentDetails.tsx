@@ -27,7 +27,11 @@ const paymentMethods = [
 
 const PaymentDetails = () => {
   return (
-    <div className="container flex items-center justify-center min-h-[50vh] p-4">
+    <div className="container flex flex-col items-center justify-center min-h-[70vh] p-4 text-white">
+      <div className="text-5xl text-center relative mb-8">
+        <div className="font-primary">Support Me</div>
+        <div className="h-1 w-48 bg-white mx-auto text-center mt-4"></div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {paymentMethods.map((method, index) => (
           <a
