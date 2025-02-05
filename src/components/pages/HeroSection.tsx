@@ -8,14 +8,14 @@ import { useDeviceType } from "@/lib/useDeviceTypes";
 
 export default function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
-  const { isMobile } = useDeviceType(); 
+  const { isMobile } = useDeviceType();
 
   useEffect(() => {
-    setIsMounted(true); 
+    setIsMounted(true);
   }, []);
 
   if (!isMounted) {
-    return null; 
+    return null;
   }
 
   return (
@@ -96,16 +96,21 @@ export default function HeroSection() {
       {isMobile && (
         <BoxReveal boxColor={"#763CAC"} duration={0.5}>
           <div className="flex flex-wrap justify-center md:justify-center mx-auto w-full md:w-72 mt-10 space-x-2">
-            {/* Wrap the SocialIcon inside Avatar components */}
             <Avatar
               shape="circle"
               size={36}
               icon={
                 <SocialIcon
                   network="linkedin"
-                  url="https://www.linkedin.com/in/ian-gan-346547279/"
-                  target="_blank"
+                  as="div"
+                  style={{ width: "100%", height: "100%" }}
                 />
+              }
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/ian-gan-346547279/",
+                  "_blank"
+                )
               }
               className="cursor-pointer"
             />
@@ -115,9 +120,12 @@ export default function HeroSection() {
               icon={
                 <SocialIcon
                   network="github"
-                  url="https://github.com/Aiyern30"
-                  target="_blank"
+                  as="div"
+                  style={{ width: "100%", height: "100%" }}
                 />
+              }
+              onClick={() =>
+                window.open("https://github.com/Aiyern30", "_blank")
               }
               className="cursor-pointer"
             />
@@ -126,10 +134,13 @@ export default function HeroSection() {
               size={36}
               icon={
                 <SocialIcon
-                  url="https://discord.gg/tAuqPG83"
                   network="discord"
-                  target="_blank"
+                  as="div"
+                  style={{ width: "100%", height: "100%" }}
                 />
+              }
+              onClick={() =>
+                window.open("https://discord.gg/tAuqPG83", "_blank")
               }
               className="cursor-pointer"
             />
@@ -138,10 +149,13 @@ export default function HeroSection() {
               size={36}
               icon={
                 <SocialIcon
-                  url="https://www.instagram.com/_aiyern_/"
                   network="instagram"
-                  target="_blank"
+                  as="div"
+                  style={{ width: "100%", height: "100%" }}
                 />
+              }
+              onClick={() =>
+                window.open("https://www.instagram.com/_aiyern_/", "_blank")
               }
               className="cursor-pointer"
             />
@@ -150,10 +164,16 @@ export default function HeroSection() {
               size={36}
               icon={
                 <SocialIcon
-                  url="https://wa.me/+60182133211?text='Type%20your%20message%20here%20%3A'"
                   network="whatsapp"
-                  target="_blank"
+                  as="div"
+                  style={{ width: "100%", height: "100%" }}
                 />
+              }
+              onClick={() =>
+                window.open(
+                  "https://wa.me/+60182133211?text='Type%20your%20message%20here%20%3A'",
+                  "_blank"
+                )
               }
               className="cursor-pointer"
             />

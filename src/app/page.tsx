@@ -18,32 +18,51 @@ import { SocialIcon } from "react-social-icons";
 const items = [
   {
     label: "LinkedIn",
-    icon: () => <SocialIcon network="linkedin" />,
+    icon: () => (
+      <span>
+        <SocialIcon network="linkedin" style={{ height: 48, width: 48 }} />
+      </span>
+    ),
     url: "https://www.linkedin.com/in/ian-gan-346547279/",
   },
   {
     label: "GitHub",
-    icon: () => <SocialIcon network="github" />,
+    icon: () => (
+      <span>
+        <SocialIcon network="github" style={{ height: 48, width: 48 }} />
+      </span>
+    ),
     url: "https://github.com/Aiyern30",
   },
   {
     label: "Discord",
-    icon: () => <SocialIcon network="discord" />,
+    icon: () => (
+      <span>
+        <SocialIcon network="discord" style={{ height: 48, width: 48 }} />
+      </span>
+    ),
     url: "https://discord.gg/tAuqPG83",
   },
   {
     label: "Instagram",
-    icon: () => <SocialIcon network="instagram" />,
+    icon: () => (
+      <span>
+        <SocialIcon network="instagram" style={{ height: 48, width: 48 }} />
+      </span>
+    ),
     url: "https://www.instagram.com/_aiyern_/",
   },
   {
     label: "WhatsApp",
-    icon: () => <SocialIcon network="whatsapp" />,
+    icon: () => (
+      <span>
+        <SocialIcon network="whatsapp" style={{ height: 48, width: 48 }} />
+      </span>
+    ),
     url: "https://wa.me/+60182133211?text='Type%20your%20message%20here%20%3A'",
   },
 ];
 
-import { useMediaQuery } from "react-responsive";
 import { cn } from "@/lib/utils";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import PaymentDetails from "@/components/pages/PaymentDetails";
