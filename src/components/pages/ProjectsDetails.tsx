@@ -21,6 +21,9 @@ const projects = [
       "Shadcn UI",
       "Lottie React",
       "Axios",
+      "Google Maps API",
+      "Ticketmaster API",
+      "PredictHQ API",
     ],
     description:
       "SpotWave allows you to search for and listen to Spotify songs with a preview and lyrics. You can also view the top tracks and artists in global rank and come with their all details such as bio, images, albums, and tracks.",
@@ -61,6 +64,7 @@ const projects = [
       "Google Maps API",
       "Framer Motion",
       "Strapi",
+      "Google Maps API",
     ],
     description:
       "Developed the landing page for the Sino Mobile and Heavy Equipment (SMHE) website, focusing on showcasing trucks for sale. Key features include a Media Center, About Us section, detailed truck pages with overview and specifications, and options for users to contact sales or download brochures. Integrated Google Maps to display workshop and factory locations for easy navigation.",
@@ -117,6 +121,7 @@ const projects = [
       "EmailJS",
       "Leaflet",
       "Lucide react",
+      "Google Maps API",
     ],
     description:
       "The Reka Konsult Company Profile is a comprehensive showcase of our company's vision, values, and services. This web application serves as an engaging platform to inform potential clients and partners about Reka Konsult's capabilities, including company background, services offered, and easy contact information.",
