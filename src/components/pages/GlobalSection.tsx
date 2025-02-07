@@ -21,6 +21,7 @@ const slugs = [
   "googledrive",
   "googlecalendar",
   "googleappsscript",
+  "Googlemaps",
   "mongodb",
   "amazonaws",
   "ethereum",
