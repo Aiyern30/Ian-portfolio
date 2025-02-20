@@ -66,6 +66,7 @@ const items = [
 import { cn } from "@/lib/utils";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import PaymentDetails from "@/components/pages/PaymentDetails";
+import { FloatingIcon } from "@/components/FloatingIcon";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -106,7 +107,7 @@ export default function Home() {
   const { isMobile } = useDeviceType();
 
   return (
-    <div className="content">
+    <div className="content relative">
       <Header activeSection={activeSection} />
       <div className="fixed inset-0 -z-10 pointer-events-none">
         <Meteors number={100} />
@@ -159,6 +160,9 @@ export default function Home() {
           className="fixed"
         />
       )}
+      <div className="absolute inset-0 overflow-hidden">
+        <FloatingIcon count={3} />
+      </div>
     </div>
   );
 }
