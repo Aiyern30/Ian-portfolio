@@ -139,6 +139,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           >
             <Link href="#contact-us">Contact Us</Link>
           </li>
+          <li
+            className={`hover:text-blue-500 hover:font-semibold ${
+              activeSection === "Journey" ? "text-blue-500" : ""
+            }`}
+          >
+            <Link href="/Journey">Journey</Link>
+          </li>
         </ul>
       </div>
     </div>
