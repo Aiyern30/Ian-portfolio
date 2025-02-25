@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 interface HeaderProps {
-  activeSection: string; // This can be more specific if you have predefined sections
+  activeSection?: string; // This can be more specific if you have predefined sections
 }
 
 const Header: React.FC<HeaderProps> = ({ activeSection }) => {
