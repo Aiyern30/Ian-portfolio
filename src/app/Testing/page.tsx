@@ -6,18 +6,20 @@ import { useInView } from "react-intersection-observer";
 import { Rocket, Briefcase, Code, Globe } from "lucide-react";
 
 export default function JourneyTimeline() {
-  const [ref1, inView1] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [ref2, inView2] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [ref3, inView3] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [ref4, inView4] = useInView({ threshold: 0.3, triggerOnce: true });
+  const refs = [
+    useInView({ threshold: 0.3, triggerOnce: true }),
+    useInView({ threshold: 0.3, triggerOnce: true }),
+    useInView({ threshold: 0.3, triggerOnce: true }),
+    useInView({ threshold: 0.3, triggerOnce: true }),
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white p-6 relative max-w-4xl mx-auto">
-      {/* 2019 - First Job as a Frontend Developer */}
-      <motion.div ref={ref1} className="grid grid-cols-2 gap-8 mb-24">
+      {/** 2019 - First Job as a Frontend Developer */}
+      <motion.div ref={refs[0][0]} className="grid grid-cols-2 gap-8 mb-24">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={inView1 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[0][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
@@ -35,12 +37,12 @@ export default function JourneyTimeline() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          animate={inView1 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[0][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative"
         >
           <Image
-            src="/Canva.jpg"
+            src="/SpotWave.png"
             alt="First job"
             width={400}
             height={300}
@@ -50,16 +52,16 @@ export default function JourneyTimeline() {
         </motion.div>
       </motion.div>
 
-      {/* 2021 - Becoming a Full-Stack Developer */}
-      <motion.div ref={ref2} className="grid grid-cols-2 gap-8 mb-24">
+      {/** 2021 - Becoming a Full-Stack Developer */}
+      <motion.div ref={refs[1][0]} className="grid grid-cols-2 gap-8 mb-24">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          animate={inView2 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[1][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="relative"
         >
           <Image
-            src="/Canva.jpg"
+            src="/Dos-portal.png"
             alt="Full-stack developer"
             width={400}
             height={300}
@@ -69,7 +71,7 @@ export default function JourneyTimeline() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={inView2 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[1][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="space-y-4"
         >
@@ -87,11 +89,11 @@ export default function JourneyTimeline() {
         </motion.div>
       </motion.div>
 
-      {/* 2023 - Working on Web3 and Blockchain */}
-      <motion.div ref={ref3} className="grid grid-cols-2 gap-8 mb-24">
+      {/** 2023 - Working on Web3 and Blockchain */}
+      <motion.div ref={refs[2][0]} className="grid grid-cols-2 gap-8 mb-24">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={inView3 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[2][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="space-y-4"
         >
@@ -111,12 +113,12 @@ export default function JourneyTimeline() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          animate={inView3 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[2][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative"
         >
           <Image
-            src="/Canva.jpg"
+            src="/ETHKL.png"
             alt="Web3 development"
             width={400}
             height={300}
@@ -126,11 +128,11 @@ export default function JourneyTimeline() {
         </motion.div>
       </motion.div>
 
-      {/* 2025 - Running My Own Projects */}
-      <motion.div ref={ref4} className="grid grid-cols-2 gap-8">
+      {/** 2025 - Running My Own Projects */}
+      <motion.div ref={refs[3][0]} className="grid grid-cols-2 gap-8">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          animate={inView4 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[3][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="relative"
         >
@@ -145,7 +147,7 @@ export default function JourneyTimeline() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={inView4 ? { opacity: 1, x: 0 } : {}}
+          animate={refs[3][1] ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="space-y-4"
         >
