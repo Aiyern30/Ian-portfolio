@@ -9,12 +9,11 @@ import {
   X,
   ChevronDown,
   ChevronUp,
-  Tag,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useDeviceType } from "@/lib/useDeviceTypes";
-import { Badge, Button, Skeleton, Input } from "@/components/ui";
+import { Badge, Button, Input } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 // Project data
@@ -257,7 +256,7 @@ export default function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [detailProject, setDetailProject] = useState<
@@ -292,9 +291,10 @@ export default function ProjectsSection() {
       ? project.category === selectedCategory
       : true;
 
-    const matchesTech = selectedTech
-      ? project.label.includes(selectedTech)
-      : true;
+    const matchesTech =
+      selectedTechs.length > 0
+        ? selectedTechs.every((tech) => project.label.includes(tech))
+        : true;
 
     return matchesSearch && matchesCategory && matchesTech;
   });
@@ -311,7 +311,7 @@ export default function ProjectsSection() {
   const resetFilters = () => {
     setSearchTerm("");
     setSelectedCategory(null);
-    setSelectedTech(null);
+    setSelectedTechs([]);
   };
 
   return (
@@ -319,8 +319,6 @@ export default function ProjectsSection() {
       className="py-16 md:py-24 px-4 md:px-6 text-white relative"
       id="projects"
     >
-      {/* Background with animated gradient */}
-
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-8 md:mb-12"
@@ -379,7 +377,7 @@ export default function ProjectsSection() {
                 >
                   <Filter className="w-4 h-4 mr-2" />
                   Filter
-                  {(selectedCategory || selectedTech) && (
+                  {(selectedCategory || selectedTechs.length > 0) && (
                     <span className="ml-2 w-2 h-2 rounded-full bg-[#FF9D7A]"></span>
                   )}
                 </Button>
@@ -441,33 +439,52 @@ export default function ProjectsSection() {
                       </div>
 
                       {/* Technologies */}
-                      <div>
-                        <h4 className="text-sm font-medium mb-2 text-white/70">
-                          Technologies
-                        </h4>
+                      <div className="mb-2">
+                        <div className="flex justify-between items-center mb-2">
+                          <h4 className="text-sm font-medium text-white/70">
+                            Technologies
+                          </h4>
+                          <span className="text-xs text-white/60">
+                            {selectedTechs.length}/5 selected
+                          </span>
+                        </div>
                         <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto pr-2">
                           {allTechnologies.map((tech) => (
                             <Badge
                               key={tech}
                               variant={
-                                selectedTech === tech ? "default" : "outline"
+                                selectedTechs.includes(tech)
+                                  ? "default"
+                                  : "outline"
                               }
                               className={cn(
                                 "cursor-pointer",
-                                selectedTech === tech
-                                  ? "bg-[#FF9D7A] hover:bg-[#FF9D7A]/80"
-                                  : "hover:bg-white/10"
+                                selectedTechs.includes(tech)
+                                  ? "bg-[#9D7AFF] hover:bg-[#9D7AFF]/80"
+                                  : "hover:bg-white/10",
+                                selectedTechs.length >= 5 &&
+                                  !selectedTechs.includes(tech) &&
+                                  "opacity-40 cursor-not-allowed"
                               )}
-                              onClick={() =>
-                                setSelectedTech(
-                                  selectedTech === tech ? null : tech
-                                )
-                              }
+                              onClick={() => {
+                                if (selectedTechs.includes(tech)) {
+                                  setSelectedTechs((prev) =>
+                                    prev.filter((t) => t !== tech)
+                                  );
+                                } else if (selectedTechs.length < 5) {
+                                  setSelectedTechs((prev) => [...prev, tech]);
+                                }
+                              }}
                             >
                               {tech}
                             </Badge>
                           ))}
                         </div>
+                        {selectedTechs.length >= 10 && (
+                          <p className="text-xs text-[#FF9D7A] mt-2">
+                            Maximum of 10 technologies can be selected
+                          </p>
+                        )}
                       </div>
                     </motion.div>
                   )}
@@ -488,18 +505,24 @@ export default function ProjectsSection() {
                     />
                   </Badge>
                 )}
-                {selectedTech && (
-                  <Badge
-                    variant="secondary"
-                    className="bg-[#FF9D7A]/20 text-[#FF9D7A] hover:bg-[#FF9D7A]/30"
-                  >
-                    {selectedTech}
-                    <X
-                      className="w-3 h-3 ml-1 cursor-pointer"
-                      onClick={() => setSelectedTech(null)}
-                    />
-                  </Badge>
-                )}
+                {selectedTechs.length > 0 &&
+                  selectedTechs.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="secondary"
+                      className="bg-[#4A1D9A]/30 text-[#9D7AFF] hover:bg-[#4A1D9A]/40"
+                    >
+                      {tech}
+                      <X
+                        className="w-3 h-3 ml-1 cursor-pointer"
+                        onClick={() =>
+                          setSelectedTechs((prev) =>
+                            prev.filter((t) => t !== tech)
+                          )
+                        }
+                      />
+                    </Badge>
+                  ))}
               </div>
             </div>
           </div>
