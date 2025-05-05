@@ -170,7 +170,7 @@ export default function CertificateShowcase() {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 text-white relative">
+    <div className="py-16 md:py-24 px-4 md:px-6 text-white relative min-h-screen">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-8 md:mb-12"
@@ -549,6 +549,6 @@ export default function CertificateShowcase() {
           </DialogContent>
         </Dialog>
       </div>
-    </section>
+    </div>
   );
 }
