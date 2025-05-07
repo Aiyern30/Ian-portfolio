@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { X, ChevronDown } from "lucide-react";
 
 interface HeaderProps {
   activeSection?: string;
@@ -26,17 +26,22 @@ export default function Header({ activeSection }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [currentYear, setCurrentYear] = useState("");
+  const menuRef = useRef<HTMLDivElement>(null);
 
-  // Prevent body scroll when menu is open
+  // Handle clicks outside the menu to close it
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    }
+
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.body.style.overflow = "";
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMenuOpen]);
 
@@ -59,7 +64,7 @@ export default function Header({ activeSection }: HeaderProps) {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close menu when clicking a link (especially important for anchor links)
+  // Close menu when clicking a link
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
@@ -137,115 +142,56 @@ export default function Header({ activeSection }: HeaderProps) {
           </ul>
         </motion.nav>
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="lg:hidden relative z-[60] p-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
-          onClick={toggleMenu}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <AnimatePresence mode="wait">
+        {/* Mobile Menu Button & Dropdown */}
+        <div className="relative lg:hidden" ref={menuRef}>
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <span className="text-sm font-medium text-white">Menu</span>
             {isMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X className="w-5 h-5 text-white" />
-              </motion.div>
+              <X className="w-4 h-4 text-white" />
             ) : (
+              <ChevronDown className="w-4 h-4 text-white" />
+            )}
+          </motion.button>
+
+          {/* Simple Dropdown Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
               <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
+                className="absolute right-0 mt-2 w-48 bg-[#320F85]/95 backdrop-blur-md rounded-lg shadow-xl overflow-hidden z-50"
               >
-                <Menu className="w-5 h-5 text-white" />
+                <ul className="py-1">
+                  {navItems.map((item) => (
+                    <li key={item.section}>
+                      <Link
+                        href={item.href}
+                        onClick={handleLinkClick}
+                        className={cn(
+                          "block px-4 py-2 text-sm transition-colors",
+                          activeSection === item.section
+                            ? "bg-white/10 text-[#FF9D7A]"
+                            : "text-white hover:bg-white/5"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.button>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] lg:hidden"
-              onClick={() => setIsMenuOpen(false)}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25 }}
-              className="fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] bg-gradient-to-b from-[#320F85] to-[#763CAC] z-[60] lg:hidden shadow-xl overflow-y-auto hide-scrollbar"
-            >
-              <div className="flex flex-col h-full">
-                <div className="p-6 border-b border-white/10">
-                  <div className="text-xl font-bold text-white">
-                    <span className="bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] bg-clip-text text-transparent">
-                      Ian's
-                    </span>
-                    <span className="ml-2">Portfolio</span>
-                  </div>
-                </div>
-                <nav className="flex-1 overflow-y-auto py-6 hide-scrollbar">
-                  <ul className="space-y-1 px-2">
-                    {navItems.map((item, index) => (
-                      <motion.li
-                        key={item.section}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + index * 0.05 }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={handleLinkClick}
-                          className={cn(
-                            "flex items-center justify-between px-4 py-3 rounded-lg transition-colors",
-                            activeSection === item.section
-                              ? "bg-white/10 text-[#FF9D7A]"
-                              : "text-white hover:bg-white/5"
-                          )}
-                        >
-                          <span>{item.name}</span>
-                          <ChevronRight
-                            className={cn(
-                              "w-4 h-4 transition-colors",
-                              activeSection === item.section
-                                ? "text-[#FF9D7A]"
-                                : "text-white/50"
-                            )}
-                          />
-                        </Link>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </nav>
-                <div className="p-6 border-t border-white/10">
-                  <div className="text-sm text-white/60 text-center">
-                    &copy; {currentYear} Ian Gan
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </div>
       </div>
     </header>
   );
