@@ -25,9 +25,24 @@ export default function Header({ activeSection }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [currentYear, setCurrentYear] = useState("");
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     setMounted(true);
+    setCurrentYear(new Date().getFullYear().toString());
 
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -49,7 +64,19 @@ export default function Header({ activeSection }: HeaderProps) {
     setIsMenuOpen(false);
   };
 
-  if (!mounted) return null;
+  if (!mounted) {
+    // Return a simple placeholder during SSR to avoid hydration mismatch
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50 py-5 bg-transparent">
+        <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+          <div className="text-[20px] font-bold text-white">
+            <span className="text-white">Ian's Portfolio</span>
+          </div>
+          <div className="w-10 h-10"></div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header
@@ -60,7 +87,7 @@ export default function Header({ activeSection }: HeaderProps) {
           : "bg-transparent py-5"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         <Link href="/" className="relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -115,7 +142,7 @@ export default function Header({ activeSection }: HeaderProps) {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="lg:hidden relative z-10 p-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
+          className="lg:hidden relative z-[60] p-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
           onClick={toggleMenu}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -152,7 +179,7 @@ export default function Header({ activeSection }: HeaderProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] lg:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
           )}
@@ -166,7 +193,7 @@ export default function Header({ activeSection }: HeaderProps) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25 }}
-              className="fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] bg-gradient-to-b from-[#320F85] to-[#763CAC] z-50 lg:hidden shadow-xl"
+              className="fixed top-0 right-0 bottom-0 w-[75%] max-w-[300px] bg-gradient-to-b from-[#320F85] to-[#763CAC] z-[60] lg:hidden shadow-xl overflow-y-auto hide-scrollbar"
             >
               <div className="flex flex-col h-full">
                 <div className="p-6 border-b border-white/10">
@@ -177,7 +204,7 @@ export default function Header({ activeSection }: HeaderProps) {
                     <span className="ml-2">Portfolio</span>
                   </div>
                 </div>
-                <nav className="flex-1 overflow-y-auto py-6">
+                <nav className="flex-1 overflow-y-auto py-6 hide-scrollbar">
                   <ul className="space-y-1 px-2">
                     {navItems.map((item, index) => (
                       <motion.li
@@ -212,7 +239,7 @@ export default function Header({ activeSection }: HeaderProps) {
                 </nav>
                 <div className="p-6 border-t border-white/10">
                   <div className="text-sm text-white/60 text-center">
-                    &copy; {new Date().getFullYear()} Ian Gan
+                    &copy; {currentYear} Ian Gan
                   </div>
                 </div>
               </div>
