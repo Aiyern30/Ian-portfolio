@@ -124,34 +124,30 @@ export default function Home() {
         <HeroSection />
       </section>
 
-      {isClient && (
-        <>
-          <section className="flex items-center justify-center" id="tools">
-            <GlobalSection />
-          </section>
+      <section className="flex items-center justify-center" id="tools">
+        <GlobalSection />
+      </section>
 
-          <ProjectsSection />
+      <ProjectsSection />
 
-          <section
-            className="flex flex-col items-center justify-center px-4"
-            id="certs"
-          >
-            <Certificate />
-          </section>
+      <section
+        className="flex flex-col items-center justify-center px-4"
+        id="certs"
+      >
+        <Certificate />
+      </section>
 
-          <section className="px-4" id="about">
-            <SkillsDetails />
-          </section>
+      <section className="px-4" id="about">
+        <SkillsDetails />
+      </section>
 
-          <section className="flex items-center justify-center" id="support-me">
-            <PaymentDetails />
-          </section>
+      <section className="flex items-center justify-center" id="support-me">
+        <PaymentDetails />
+      </section>
 
-          <section className="flex items-center justify-center" id="contact-us">
-            <ContactForm />
-          </section>
-        </>
-      )}
+      <section className="flex items-center justify-center" id="contact-us">
+        <ContactForm />
+      </section>
 
       <ScrollTop
         threshold={100}

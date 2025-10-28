@@ -124,33 +124,35 @@ export default function HeroSection() {
       <motion.div className="" style={{ y: backgroundY }} />
 
       {/* Animated particles/stars effect - Reduced and delayed */}
-      {isMounted && (
-        <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full opacity-70"
-              initial={{
-                x: Math.random() * 100 + "%",
-                y: Math.random() * 100 + "%",
-                scale: Math.random() * 0.5 + 0.5,
-                opacity: 0,
-              }}
-              animate={{
-                y: [null, Math.random() * 20 - 10 + "%"],
-                opacity: [0, 0.5, 0.5],
-                scale: [null, Math.random() + 0.5],
-              }}
-              transition={{
-                duration: Math.random() * 5 + 5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                delay: 1 + i * 0.2,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full opacity-70"
+            initial={{
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%",
+              scale: Math.random() * 0.5 + 0.5,
+              opacity: 0,
+            }}
+            animate={
+              isMounted
+                ? {
+                    y: [null, Math.random() * 20 - 10 + "%"],
+                    opacity: [0, 0.5, 0.5],
+                    scale: [null, Math.random() + 0.5],
+                  }
+                : { opacity: 0 }
+            }
+            transition={{
+              duration: Math.random() * 5 + 5,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              delay: 1 + i * 0.2,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container relative z-10 flex flex-col justify-center items-center min-h-screen">
         <div className="flex flex-col md:flex-row items-center md:space-x-10 w-full">
