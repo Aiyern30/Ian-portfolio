@@ -84,20 +84,21 @@ export default function HeroSection() {
     ),
     student: isMobile ? (
       <p className="text-base">
-        Pursuing Computer Science at Asia Pacific University, constantly
-        learning and growing.
+        Completed a 2-year Diploma in Software Engineering and currently
+        pursuing a Computer Science degree to deepen my technical expertise.
       </p>
     ) : (
       <>
         <p className="text-base md:text-lg mb-4">
-          Currently pursuing a degree in Computer Science at Asia Pacific
-          University, Malaysia, where I'm expanding my knowledge in algorithms,
-          data structures, and software engineering principles.
+          I have completed a 2-year Diploma in Software Engineering, where I
+          built a strong foundation in programming and software development.
+          Currently, I am in my second year of pursuing a Bachelor's Degree in
+          Computer Science, continuing to refine my knowledge in system design,
+          data analysis, and emerging technologies.
         </p>
         <p className="text-base md:text-lg">
-          I am also keen to learn about Web3 and actively participate in
-          numerous hackathons and workshops to enhance my skills and knowledge
-          in this exciting field.
+          I’m passionate about continuous learning and hands-on projects that
+          combine both practical problem-solving and innovation.
         </p>
       </>
     ),
@@ -240,7 +241,11 @@ export default function HeroSection() {
                       }
                     : {}
                 }
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
+                transition={{
+                  duration: 3,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: 1,
+                }}
               >
                 cover...
               </motion.span>
@@ -294,20 +299,18 @@ export default function HeroSection() {
         >
           <div className="flex justify-center md:justify-start mb-6">
             {tabs.map((tab) => (
-              <motion.button
+              <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  "px-4 py-2 mx-1 rounded-full text-white font-medium transition-all",
+                  "px-4 py-2 mx-1 rounded-full text-white font-medium transition-all transform hover:scale-105 active:scale-95",
                   activeTab === tab.id
                     ? "bg-[#FF9D7A] shadow-lg"
-                    : "bg-[#4A1D9A]/50 hover:bg-[#4A1D9A]"
+                    : "bg-[#4A1D9A]/50 hover:bg-[#4A1D9A]/70"
                 )}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {tab.label}
-              </motion.button>
+              </button>
             ))}
           </div>
 

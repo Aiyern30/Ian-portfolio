@@ -116,7 +116,7 @@ export default function Home() {
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
       />
-      
+
       <section
         className="flex flex-col items-center justify-center px-4 mt-36 sm:mt-24 md:mt-8"
         id="home"
@@ -131,22 +131,22 @@ export default function Home() {
           </section>
 
           <ProjectsSection />
-          
+
           <section
             className="flex flex-col items-center justify-center px-4"
             id="certs"
           >
             <Certificate />
           </section>
-          
+
           <section className="px-4" id="about">
             <SkillsDetails />
           </section>
-          
+
           <section className="flex items-center justify-center" id="support-me">
             <PaymentDetails />
           </section>
-          
+
           <section className="flex items-center justify-center" id="contact-us">
             <ContactForm />
           </section>
@@ -170,7 +170,7 @@ export default function Home() {
           className="fixed"
         />
       )}
-      
+
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <FloatingIcon count={3} />
       </div>
