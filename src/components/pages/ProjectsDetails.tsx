@@ -135,6 +135,25 @@ const projects = [
     githubRepo: "https://github.com/Aiyern30/reka-konsult",
   },
   {
+    title: "Children's Respite Home KL (Company Profile Website)",
+    label: [
+      "NextJS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React",
+      "TypeScript",
+      "Shadcn UI",
+      "Cloudflare",
+    ],
+    category: "Website",
+    description:
+      "A freelance project developed for a Malaysia-based community respite care centre for children with special needs. The website showcases the organization’s mission, services, and facilities with a warm, accessible design. It aims to help families learn more about the centre’s compassionate short-term care and community support programs.",
+    imageUrl: "/ChildrenRespiteHomeKL.png",
+    livePreviewUrl: "https://childrenrespitehomekl.com/",
+    githubRepo: "",
+  },
+
+  {
     title: "LiveSportsNow",
     label: [
       "NextAuth",
