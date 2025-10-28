@@ -113,6 +113,30 @@ const projects = [
     githubRepo: null,
   },
   {
+    title: "Gamer Token Hub (Web3 NFT Marketplace)",
+    label: [
+      "NextJS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React",
+      "TypeScript",
+      "Vercel",
+      "ethers.js",
+      "RainbowKit",
+      "React Hook Form",
+      "Zod",
+      "IPFS",
+      "Pinata",
+    ],
+    category: "Web Application",
+    description:
+      "Gamer Token Hub is a decentralized NFT marketplace built on the Sepolia test network. It allows users to create and manage NFT collections, mint NFTs with custom metadata, list and purchase NFTs, and view user profiles with their owned and minted NFTs. The platform also includes wishlist, shopping cart, and responsive UI features to provide a smooth and engaging Web3 experience.",
+    imageUrl: "/GamerTokenHub.png",
+    livePreviewUrl: "https://gamertokenhub.vercel.app/",
+    githubRepo: "https://github.com/Aiyern30/blockchain-fe",
+  },
+
+  {
     title: "Reka Konsult Company Profile",
     label: [
       "NextJS",
