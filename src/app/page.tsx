@@ -79,10 +79,6 @@ export default function Home() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-    console.log(
-      "📍 Found sections:",
-      Array.from(sections).map((s) => ({ id: s.id, exists: !!s.id }))
-    );
 
     const observerOptions = {
       root: null,
@@ -91,22 +87,11 @@ export default function Home() {
     };
 
     const observer = new IntersectionObserver((entries) => {
-      console.log("👀 Observer triggered, entries count:", entries.length);
-
       let maxRatio = 0;
       let activeEntry = null as IntersectionObserverEntry | null;
 
       entries.forEach((entry) => {
         const target = entry.target as HTMLElement;
-        console.log(`📊 Section "${target.id}":`, {
-          isIntersecting: entry.isIntersecting,
-          intersectionRatio: entry.intersectionRatio.toFixed(2),
-          boundingClientRect: {
-            top: entry.boundingClientRect.top.toFixed(0),
-            bottom: entry.boundingClientRect.bottom.toFixed(0),
-            height: entry.boundingClientRect.height.toFixed(0),
-          },
-        });
 
         if (entry.isIntersecting && entry.intersectionRatio >= maxRatio) {
           maxRatio = entry.intersectionRatio;
@@ -118,17 +103,10 @@ export default function Home() {
         const target = activeEntry.target as HTMLElement;
         const sectionId = target.id.toLowerCase();
 
-        console.log(
-          `✅ Active section updated to: "${sectionId}" (ratio: ${maxRatio.toFixed(
-            2
-          )})`
-        );
-
         if (sectionId) {
           setActiveSection(sectionId);
         }
       } else {
-        console.log("⚠️ No active entry found");
       }
     }, observerOptions);
 
@@ -142,7 +120,6 @@ export default function Home() {
     });
 
     return () => {
-      console.log("🧹 Cleaning up observer");
       sections.forEach((section) => {
         if (section.id) {
           observer.unobserve(section);
