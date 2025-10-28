@@ -75,6 +75,9 @@ const programmingSkills = [
   { id: 15, name: "LabView", level: 70, category: "Other" },
   { id: 16, name: "C++", level: 70, category: "Backend" },
   { id: 17, name: "App Script", level: 70, category: "Other" },
+  { id: 18, name: "Rust", level: 60, category: "Systems Programming" },
+  { id: 19, name: "Assembly", level: 60, category: "Systems Programming" },
+  { id: 20, name: "MATLAB", level: 60, category: "Data Science" },
 ];
 
 // Tools and Applications
