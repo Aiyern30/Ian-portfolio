@@ -19,6 +19,34 @@ import { cn } from "@/lib/utils";
 // Project data
 const projects = [
   {
+    title: "YTL Concrete Hub (AI-Powered Platform)",
+    label: [
+      "NextJS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React",
+      "Vercel",
+      "TypeScript",
+      "Shadcn UI",
+      "Supabase",
+      "Google Cloud Vision API",
+      "Gemini Flash 1.5 Pro",
+      "Stripe",
+      "Chart.js",
+      "Google Client",
+      "Google Maps API",
+      "NextAuth",
+      "Twilio",
+    ],
+    category: "Web Application",
+    description:
+      "YTL Concrete Hub is an AI-driven platform sponsored by YTL Shared Services Sdn Bhd as part of a Final Year Project. The system integrates intelligent chatbot interactions, smart product comparisons, AI-powered image processing, and predictive analytics. It also features a staff dashboard for real-time product insights, automated alerts, and business intelligence visualization to enhance operational efficiency.",
+    imageUrl: "/YTLConcreteHub.png",
+    livePreviewUrl: "https://ytlconcretehub.vercel.app/",
+    githubRepo: "",
+  },
+
+  {
     title: "Music Application with Spotify (SpotWave)",
     label: [
       "Spotify",
@@ -35,7 +63,7 @@ const projects = [
       "Ticketmaster API",
       "PredictHQ API",
     ],
-    category: "Web Application",
+    category: "Enterprise",
     description:
       "SpotWave allows you to search for and listen to Spotify songs with a preview and lyrics. You can also view the top tracks and artists in global rank and come with their all details such as bio, images, albums, and tracks.",
     imageUrl: "/SpotWave.png",
