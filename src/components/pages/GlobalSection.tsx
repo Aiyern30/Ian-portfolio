@@ -8,7 +8,7 @@ const slugs = [
   "devpost",
   "sublimetext",
   "apachenetbeanside",
-  "rstudioide",
+  "posit",
   "ethers",
   "json",
   "laravel",
@@ -21,7 +21,7 @@ const slugs = [
   "googledrive",
   "googlecalendar",
   "googleappsscript",
-  "Googlemaps",
+  "googlemaps",
   "mongodb",
   "amazonaws",
   "ethereum",
@@ -55,7 +55,6 @@ const slugs = [
   "r",
   "labview",
   "adobepremierepro",
-  "rstudio",
   "canva",
   "notion",
   "strapi",
@@ -63,9 +62,6 @@ const slugs = [
   "autodesk",
   "axios",
   "xampp",
-  "ethereum",
-  "ethers",
-  "solana",
   "matlab",
   "rust",
 ];
@@ -78,9 +74,7 @@ export default function GlobalSection() {
     setIsClient(true);
   }, []);
 
-  const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
-  );
+  const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}`);
 
   return (
     <div className="container flex flex-col justify-center items-center text-center text-white min-h-screen">
