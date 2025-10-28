@@ -79,27 +79,74 @@ export default function Home() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
+    console.log(
+      "📍 Found sections:",
+      Array.from(sections).map((s) => ({ id: s.id, exists: !!s.id }))
+    );
+
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
+      rootMargin: "-10% 0px -10% 0px",
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
     };
 
     const observer = new IntersectionObserver((entries) => {
+      console.log("👀 Observer triggered, entries count:", entries.length);
+
+      let maxRatio = 0;
+      let activeEntry = null as IntersectionObserverEntry | null;
+
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id.toLowerCase());
+        const target = entry.target as HTMLElement;
+        console.log(`📊 Section "${target.id}":`, {
+          isIntersecting: entry.isIntersecting,
+          intersectionRatio: entry.intersectionRatio.toFixed(2),
+          boundingClientRect: {
+            top: entry.boundingClientRect.top.toFixed(0),
+            bottom: entry.boundingClientRect.bottom.toFixed(0),
+            height: entry.boundingClientRect.height.toFixed(0),
+          },
+        });
+
+        if (entry.isIntersecting && entry.intersectionRatio >= maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          activeEntry = entry;
         }
       });
+
+      if (activeEntry && activeEntry.isIntersecting) {
+        const target = activeEntry.target as HTMLElement;
+        const sectionId = target.id.toLowerCase();
+
+        console.log(
+          `✅ Active section updated to: "${sectionId}" (ratio: ${maxRatio.toFixed(
+            2
+          )})`
+        );
+
+        if (sectionId) {
+          setActiveSection(sectionId);
+        }
+      } else {
+        console.log("⚠️ No active entry found");
+      }
     }, observerOptions);
 
     sections.forEach((section) => {
-      observer.observe(section);
+      if (section.id) {
+        console.log(`🔍 Observing section: ${section.id}`);
+        observer.observe(section);
+      } else {
+        console.warn("⚠️ Found section without ID:", section);
+      }
     });
 
     return () => {
+      console.log("🧹 Cleaning up observer");
       sections.forEach((section) => {
-        observer.unobserve(section);
+        if (section.id) {
+          observer.unobserve(section);
+        }
       });
     };
   }, []);
@@ -128,7 +175,9 @@ export default function Home() {
         <GlobalSection />
       </section>
 
-      <ProjectsSection />
+      <section id="projects">
+        <ProjectsSection />
+      </section>
 
       <section
         className="flex flex-col items-center justify-center px-4"

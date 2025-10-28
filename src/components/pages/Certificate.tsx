@@ -145,10 +145,7 @@ export default function CertificateShowcase() {
   };
 
   return (
-    <section
-      className="py-16 md:py-24 px-4 md:px-6 text-white relative"
-      id="certs"
-    >
+    <div className="py-16 md:py-24 px-4 md:px-6 text-white relative">
       {/* Background with animated gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#320F85]/30 via-[#4A1D9A]/20 to-[#763CAC]/10 opacity-80" />
 
@@ -380,6 +377,6 @@ export default function CertificateShowcase() {
           </DialogContent>
         </Dialog>
       </div>
-    </section>
+    </div>
   );
 }
