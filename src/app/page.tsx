@@ -116,36 +116,46 @@ export default function Home() {
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
       />
+      
       <section
-        className=" flex flex-col items-center justify-center px-4 mt-36 sm:mt-24 md:mt-8"
+        className="flex flex-col items-center justify-center px-4 mt-36 sm:mt-24 md:mt-8"
         id="home"
       >
         <HeroSection />
       </section>
 
-      <section className=" flex items-center justify-center" id="tools">
-        <GlobalSection />
-      </section>
+      {isClient && (
+        <>
+          <section className="flex items-center justify-center" id="tools">
+            <GlobalSection />
+          </section>
 
-      <ProjectsSection />
-      <section
-        className=" flex flex-col items-center justify-center px-4"
-        id="certs"
-      >
-        <Certificate />
-      </section>
-      <section className=" px-4 " id="about">
-        <SkillsDetails />
-      </section>
-      <section className=" flex items-center justify-center" id="support-me">
-        <PaymentDetails />
-      </section>
-      <section className=" flex items-center justify-center" id="contact-us">
-        <ContactForm />
-      </section>
+          <ProjectsSection />
+          
+          <section
+            className="flex flex-col items-center justify-center px-4"
+            id="certs"
+          >
+            <Certificate />
+          </section>
+          
+          <section className="px-4" id="about">
+            <SkillsDetails />
+          </section>
+          
+          <section className="flex items-center justify-center" id="support-me">
+            <PaymentDetails />
+          </section>
+          
+          <section className="flex items-center justify-center" id="contact-us">
+            <ContactForm />
+          </section>
+        </>
+      )}
+
       <ScrollTop
         threshold={100}
-        className={cn(" border-round bg-tertiary")}
+        className={cn("border-round bg-tertiary")}
         icon="pi pi-arrow-up text-base"
       />
 
@@ -160,6 +170,7 @@ export default function Home() {
           className="fixed"
         />
       )}
+      
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <FloatingIcon count={3} />
       </div>

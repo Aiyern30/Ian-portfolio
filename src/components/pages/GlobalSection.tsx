@@ -90,14 +90,13 @@ export default function GlobalSection() {
       </div>
 
       <div className="max-w-xl mx-auto mb-5 md:text-xl">
-        {!isClient && <span>Loading...</span>}
-        {isClient && isMobile && (
+        {isMobile && (
           <span>Check out the tools I use to build awesome projects!</span>
         )}
-        {isClient && isTablet && (
+        {isTablet && (
           <span>A closer look at the technologies I work with.</span>
         )}
-        {isClient && isDesktop && (
+        {isDesktop && (
           <span>
             I'm currently looking to join a{" "}
             <span className="text-tertiary">cross-functional</span> team
@@ -108,7 +107,7 @@ export default function GlobalSection() {
         )}
       </div>
 
-      <IconCloud images={images} />
+      {isClient && <IconCloud images={images} />}
     </div>
   );
 }
