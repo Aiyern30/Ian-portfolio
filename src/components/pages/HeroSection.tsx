@@ -26,15 +26,10 @@ export default function HeroSection() {
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -127,54 +122,59 @@ export default function HeroSection() {
       {/* Animated background gradient */}
       <motion.div className="" style={{ y: backgroundY }} />
 
-      {/* Animated particles/stars effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-70"
-            initial={{
-              x: Math.random() * 100 + "%",
-              y: Math.random() * 100 + "%",
-              scale: Math.random() * 0.5 + 0.5,
-            }}
-            animate={{
-              y: [null, Math.random() * 20 - 10 + "%"],
-              opacity: [0.3, 0.8, 0.3],
-              scale: [null, Math.random() + 0.5],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
-      </div>
+      {/* Animated particles/stars effect - Reduced and delayed */}
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full opacity-70"
+              initial={{
+                x: Math.random() * 100 + "%",
+                y: Math.random() * 100 + "%",
+                scale: Math.random() * 0.5 + 0.5,
+                opacity: 0,
+              }}
+              animate={{
+                y: [null, Math.random() * 20 - 10 + "%"],
+                opacity: [0, 0.5, 0.5],
+                scale: [null, Math.random() + 0.5],
+              }}
+              transition={{
+                duration: Math.random() * 5 + 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+                delay: 1 + i * 0.2,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
-      <motion.div
-        className="container relative z-10 flex flex-col justify-center items-center min-h-screen"
-        style={{ opacity }}
-      >
+      <div className="container relative z-10 flex flex-col justify-center items-center min-h-screen">
         <div className="flex flex-col md:flex-row items-center md:space-x-10 w-full">
           {/* Profile image with animated border */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="relative mb-8 md:mb-0"
           >
             <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]">
               <motion.div
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-[#763CAC] to-[#320F85]"
-                animate={{
-                  rotate: 360,
-                  background: [
-                    "linear-gradient(to right, #763CAC, #320F85)",
-                    "linear-gradient(to right, #320F85, #763CAC)",
-                    "linear-gradient(to right, #763CAC, #320F85)",
-                  ],
-                }}
+                animate={
+                  isMounted
+                    ? {
+                        rotate: 360,
+                        background: [
+                          "linear-gradient(to right, #763CAC, #320F85)",
+                          "linear-gradient(to right, #320F85, #763CAC)",
+                          "linear-gradient(to right, #763CAC, #320F85)",
+                        ],
+                      }
+                    : {}
+                }
                 transition={{
                   duration: 8,
                   repeat: Number.POSITIVE_INFINITY,
@@ -182,12 +182,15 @@ export default function HeroSection() {
                 }}
                 style={{ padding: 4 }}
               />
-              <div className="absolute inset-[4px] rounded-full overflow-hidden">
+              <div className="absolute inset-[4px] rounded-full overflow-hidden bg-black">
                 <Image
                   src="/Me.png"
                   alt="Ian Gan Jian Hao"
                   fill
+                  priority
+                  quality={90}
                   className="object-cover"
+                  sizes="(max-width: 768px) 200px, 250px"
                 />
               </div>
             </div>
@@ -196,15 +199,15 @@ export default function HeroSection() {
           {/* Text content with staggered animations */}
           <motion.div
             className="flex flex-col space-y-4 justify-center text-white font-primary text-center md:text-left max-w-xl"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <motion.div
               className="text-xl md:text-3xl mb-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
               Hello! I Am{" "}
               <span className="text-[#FF9D7A] font-semibold">
@@ -214,26 +217,30 @@ export default function HeroSection() {
 
             <motion.div
               className="text-sm md:text-base"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
             >
               A Designer who
             </motion.div>
 
             <motion.div
               className="text-2xl md:text-5xl font-bold"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
             >
               judges a book by its{" "}
               <motion.span
                 className="text-[#FF9D7A]"
-                animate={{
-                  color: ["#FF9D7A", "#FFD166", "#FF9D7A"],
-                }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                animate={
+                  isMounted
+                    ? {
+                        color: ["#FF9D7A", "#FFD166", "#FF9D7A"],
+                      }
+                    : {}
+                }
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, delay: 1 }}
               >
                 cover...
               </motion.span>
@@ -241,9 +248,9 @@ export default function HeroSection() {
 
             <motion.div
               className="text-sm md:text-base italic"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
             >
               Because if the cover doesn't impress you, what will?
             </motion.div>
@@ -254,16 +261,16 @@ export default function HeroSection() {
                 className="flex space-x-3 pt-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
               >
                 {socialLinks.map((link, index) => (
                   <motion.div
                     key={link.network}
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.9 + index * 0.1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
                   >
                     <SocialIcon
                       network={link.network}
@@ -281,9 +288,9 @@ export default function HeroSection() {
         {/* Interactive tabs section */}
         <motion.div
           className="w-full mt-12 md:mt-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.5 }}
         >
           <div className="flex justify-center md:justify-start mb-6">
             {tabs.map((tab) => (
@@ -336,9 +343,9 @@ export default function HeroSection() {
         {isMobile && (
           <motion.div
             className="flex flex-wrap justify-center space-x-2 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
           >
             {socialLinks.map((link) => (
               <SocialIcon
@@ -355,19 +362,26 @@ export default function HeroSection() {
         {/* Scroll down indicator */}
         <motion.div
           className="absolute bottom-8 cursor-pointer"
-          animate={{
-            y: [0, 10, 0],
-          }}
+          initial={{ opacity: 0 }}
+          animate={
+            isMounted
+              ? {
+                  y: [0, 10, 0],
+                  opacity: 0.8,
+                }
+              : { opacity: 0.8 }
+          }
           transition={{
             duration: 1.5,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "loop",
+            delay: 1,
           }}
           onClick={scrollToContent}
         >
           <ChevronDown className="w-8 h-8 text-white opacity-80" />
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 }
