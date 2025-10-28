@@ -30,7 +30,15 @@ const certificates = [
     organization: "Asia Pacific University of Technology",
     date: "August 2024",
     imageUrl: "/Certs/Devmatch.jpg",
-    link: "/Certs/Devmatch.pdf",
+    link: "/Certs/Devmatch.jpg",
+    category: "Hackathon",
+  },
+  {
+    title: "Devmatch 2 Hackathon Certificate",
+    organization: "Asia Pacific University of Technology",
+    date: "August 2025",
+    imageUrl: "/Certs/Devmatch2.jpg",
+    link: "/Certs/Devmatch2.jpg",
     category: "Hackathon",
   },
   {
