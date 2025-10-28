@@ -362,10 +362,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section
-      className="py-16 md:py-24 px-4 md:px-6 text-white relative"
-      id="projects"
-    >
+    <div className="py-16 md:py-24 px-4 md:px-6 text-white relative">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-8 md:mb-12"
@@ -843,6 +840,6 @@ export default function ProjectsSection() {
           )}
         </AnimatePresence>
       </div>
-    </section>
+    </div>
   );
 }
