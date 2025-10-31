@@ -382,7 +382,9 @@ export default function SkillsDetails() {
           {/* Marquee/Grid Sections */}
           <div className="space-y-12">
             {/* Mobile: Always show all, Desktop: Respect activeTab */}
-            {(isMobile || activeTab === "all" || activeTab === "programming") && (
+            {(isMobile ||
+              activeTab === "all" ||
+              activeTab === "programming") && (
               <div className="relative">
                 <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
                   Programming Languages & Frameworks
