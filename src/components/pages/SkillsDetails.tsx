@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { FcAlarmClock } from "react-icons/fc";
 import { IoDesktopOutline } from "react-icons/io5";
 import { FaLightbulb, FaRocket } from "react-icons/fa";
@@ -9,7 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/Marquee";
-import { Badge, Input, Tabs, TabsList, TabsTrigger } from "../ui";
+import { Tabs, TabsList, TabsTrigger } from "../ui";
 
 // About qualities
 const qualities = [
@@ -52,70 +52,70 @@ const qualities = [
   },
 ];
 
-// Programming languages and frameworks
+// Programming languages and frameworks - using Devicon for colorful icons
 const programmingTech = [
-  { name: "JavaScript", icon: "javascript" },
-  { name: "TypeScript", icon: "typescript" },
-  { name: "Python", icon: "python" },
-  { name: "Java", icon: "java" },
-  { name: "PHP", icon: "php" },
-  { name: "C++", icon: "cplusplus" },
-  { name: "Rust", icon: "rust" },
-  { name: "R", icon: "r" },
-  { name: "HTML5", icon: "html5" },
-  { name: "CSS3", icon: "css3" },
-  { name: "React", icon: "react" },
-  { name: "Next.js", icon: "nextdotjs" },
-  { name: "Node.js", icon: "nodedotjs" },
-  { name: "Flutter", icon: "flutter" },
-  { name: "Tailwind CSS", icon: "tailwindcss" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+  { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+  { name: "Rust", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg" },
+  { name: "R", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" },
+  { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+  { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
 ];
 
 // Databases and backend
 const backendTech = [
-  { name: "MySQL", icon: "mysql" },
-  { name: "PostgreSQL", icon: "postgresql" },
-  { name: "MongoDB", icon: "mongodb" },
-  { name: "Firebase", icon: "firebase" },
-  { name: "Supabase", icon: "supabase" },
-  { name: "Strapi", icon: "strapi" },
-  { name: "GraphQL", icon: "graphql" },
-  { name: "Apollo", icon: "apollographql" },
+  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+  { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+  { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
+  { name: "GraphQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" },
+  { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+  { name: "Prisma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg" },
 ];
 
 // Tools and platforms
 const toolsTech = [
-  { name: "Git", icon: "git" },
-  { name: "GitHub", icon: "github" },
-  { name: "VS Code", icon: "visualstudiocode" },
-  { name: "Figma", icon: "figma" },
-  { name: "Vercel", icon: "vercel" },
-  { name: "Docker", icon: "docker" },
-  { name: "Notion", icon: "notion" },
-  { name: "Canva", icon: "canva" },
-  { name: "Jira", icon: "jira" },
-  { name: "Postman", icon: "postman" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+  { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+  { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+  { name: "Nginx", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" },
+  { name: "Vercel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" },
+  { name: "Postman", icon: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
+  { name: "Notion", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" },
+  { name: "Canva", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
 ];
 
 // Web3 and blockchain
 const web3Tech = [
-  { name: "Ethereum", icon: "ethereum" },
-  { name: "Solidity", icon: "solidity" },
-  { name: "Hardhat", icon: "hardhat" },
-  { name: "Ethers.js", icon: "ethersdotjs" },
-  { name: "Web3.js", icon: "web3dotjs" },
+  { name: "Ethereum", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ethereum/ethereum-original.svg" },
+  { name: "Solidity", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/solidity/solidity-original.svg" },
+  { name: "Hardhat", icon: "https://seeklogo.com/images/H/hardhat-logo-888739EBB4-seeklogo.com.png" },
+  { name: "Web3.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/web3js/web3js-original.svg" },
+  { name: "MetaMask", icon: "https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" },
 ];
 
 const TechCard = ({ tech }: { tech: { name: string; icon: string } }) => (
   <div className="relative mx-4 w-32 shrink-0">
-    <div className="group relative flex flex-col items-center gap-3 rounded-xl border border-white/10 bg-[#320F85]/20 backdrop-blur-sm p-6 hover:border-white/30 hover:bg-[#320F85]/40 transition-all duration-300">
+    <div className="group relative flex flex-col items-center gap-3 rounded-xl border border-white/10 bg-[#320F85]/20 backdrop-blur-sm p-6 hover:border-white/30 hover:bg-[#320F85]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#9D7AFF]/20">
       <div className="relative w-16 h-16 flex items-center justify-center">
         <Image
-          src={`https://cdn.simpleicons.org/${tech.icon}`}
+          src={tech.icon}
           alt={tech.name}
           width={64}
           height={64}
-          className="object-contain filter brightness-0 invert group-hover:scale-110 transition-transform duration-300"
+          className="object-contain group-hover:scale-110 transition-transform duration-300"
           unoptimized
         />
       </div>
@@ -235,7 +235,7 @@ export default function SkillsDetails() {
                 </h3>
                 <Marquee pauseOnHover className="[--duration:40s]">
                   {programmingTech.map((tech) => (
-                    <TechCard key={tech.icon} tech={tech} />
+                    <TechCard key={tech.name} tech={tech} />
                   ))}
                 </Marquee>
               </div>
@@ -248,7 +248,7 @@ export default function SkillsDetails() {
                 </h3>
                 <Marquee reverse pauseOnHover className="[--duration:30s]">
                   {backendTech.map((tech) => (
-                    <TechCard key={tech.icon} tech={tech} />
+                    <TechCard key={tech.name} tech={tech} />
                   ))}
                 </Marquee>
               </div>
@@ -261,7 +261,7 @@ export default function SkillsDetails() {
                 </h3>
                 <Marquee pauseOnHover className="[--duration:35s]">
                   {toolsTech.map((tech) => (
-                    <TechCard key={tech.icon} tech={tech} />
+                    <TechCard key={tech.name} tech={tech} />
                   ))}
                 </Marquee>
               </div>
@@ -274,7 +274,7 @@ export default function SkillsDetails() {
                 </h3>
                 <Marquee reverse pauseOnHover className="[--duration:25s]">
                   {web3Tech.map((tech) => (
-                    <TechCard key={tech.icon} tech={tech} />
+                    <TechCard key={tech.name} tech={tech} />
                   ))}
                 </Marquee>
               </div>
