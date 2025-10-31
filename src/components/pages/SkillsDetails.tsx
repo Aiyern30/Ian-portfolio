@@ -10,6 +10,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/Marquee";
 import { Tabs, TabsList, TabsTrigger } from "../ui";
+import { useDeviceType } from "@/lib/useDeviceTypes";
 
 // About qualities
 const qualities = [
@@ -244,8 +245,41 @@ const TechCard = ({ tech }: { tech: { name: string; icon: string } }) => (
   </div>
 );
 
+const MobileTechGrid = ({
+  techs,
+}: {
+  techs: Array<{ name: string; icon: string }>;
+}) => (
+  <div className="grid grid-cols-3 gap-4">
+    {techs.map((tech, index) => (
+      <motion.div
+        key={tech.name}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3, delay: index * 0.05 }}
+        className="group relative flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-[#320F85]/20 backdrop-blur-sm p-4 hover:border-white/30 hover:bg-[#320F85]/40 transition-all duration-300"
+      >
+        <div className="relative w-12 h-12 flex items-center justify-center">
+          <Image
+            src={tech.icon}
+            alt={tech.name}
+            width={48}
+            height={48}
+            className="object-contain group-hover:scale-110 transition-transform duration-300"
+            unoptimized
+          />
+        </div>
+        <span className="text-xs font-medium text-white/90 text-center line-clamp-2">
+          {tech.name}
+        </span>
+      </motion.div>
+    ))}
+  </div>
+);
+
 export default function SkillsDetails() {
   const [activeTab, setActiveTab] = useState("all");
+  const { isMobile } = useDeviceType();
 
   return (
     <div className="relative py-16 md:py-24 px-4 md:px-6 text-white">
@@ -326,75 +360,93 @@ export default function SkillsDetails() {
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex justify-center mb-12">
-            <Tabs
-              value={activeTab}
-              onValueChange={setActiveTab}
-              className="w-full max-w-2xl"
-            >
-              <TabsList className="bg-[#320F85]/40 backdrop-blur-sm grid w-full grid-cols-2 md:grid-cols-5 gap-1">
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="programming">Languages</TabsTrigger>
-                <TabsTrigger value="backend">Backend</TabsTrigger>
-                <TabsTrigger value="tools">Tools</TabsTrigger>
-                <TabsTrigger value="web3">Web3</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
+          {/* Category Tabs - Only show on desktop */}
+          {!isMobile && (
+            <div className="flex justify-center mb-16">
+              <Tabs
+                value={activeTab}
+                onValueChange={setActiveTab}
+                className="w-full max-w-2xl"
+              >
+                <TabsList className="bg-[#320F85]/40 backdrop-blur-sm grid w-full grid-cols-5 gap-1">
+                  <TabsTrigger value="all">All</TabsTrigger>
+                  <TabsTrigger value="programming">Languages</TabsTrigger>
+                  <TabsTrigger value="backend">Backend</TabsTrigger>
+                  <TabsTrigger value="tools">Tools</TabsTrigger>
+                  <TabsTrigger value="web3">Web3</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
+          )}
 
-          {/* Marquee Sections */}
-          <div className="space-y-8">
-            {/* Show all categories when "all" is selected */}
-            {(activeTab === "all" || activeTab === "programming") && (
+          {/* Marquee/Grid Sections */}
+          <div className="space-y-12">
+            {/* Mobile: Always show all, Desktop: Respect activeTab */}
+            {(isMobile || activeTab === "all" || activeTab === "programming") && (
               <div className="relative">
-                <h3 className="text-2xl font-semibold mb-6 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
                   Programming Languages & Frameworks
                 </h3>
-                <Marquee pauseOnHover className="[--duration:30s]">
-                  {programmingTech.map((tech) => (
-                    <TechCard key={tech.name} tech={tech} />
-                  ))}
-                </Marquee>
+                {isMobile ? (
+                  <MobileTechGrid techs={programmingTech} />
+                ) : (
+                  <Marquee pauseOnHover className="[--duration:30s]">
+                    {programmingTech.map((tech) => (
+                      <TechCard key={tech.name} tech={tech} />
+                    ))}
+                  </Marquee>
+                )}
               </div>
             )}
 
-            {(activeTab === "all" || activeTab === "backend") && (
+            {(isMobile || activeTab === "all" || activeTab === "backend") && (
               <div className="relative">
-                <h3 className="text-2xl font-semibold mb-6 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
                   Databases & Backend Services
                 </h3>
-                <Marquee reverse pauseOnHover className="[--duration:25s]">
-                  {backendTech.map((tech) => (
-                    <TechCard key={tech.name} tech={tech} />
-                  ))}
-                </Marquee>
+                {isMobile ? (
+                  <MobileTechGrid techs={backendTech} />
+                ) : (
+                  <Marquee reverse pauseOnHover className="[--duration:25s]">
+                    {backendTech.map((tech) => (
+                      <TechCard key={tech.name} tech={tech} />
+                    ))}
+                  </Marquee>
+                )}
               </div>
             )}
 
-            {(activeTab === "all" || activeTab === "tools") && (
+            {(isMobile || activeTab === "all" || activeTab === "tools") && (
               <div className="relative">
-                <h3 className="text-2xl font-semibold mb-6 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
                   Development Tools & Platforms
                 </h3>
-                <Marquee pauseOnHover className="[--duration:28s]">
-                  {toolsTech.map((tech) => (
-                    <TechCard key={tech.name} tech={tech} />
-                  ))}
-                </Marquee>
+                {isMobile ? (
+                  <MobileTechGrid techs={toolsTech} />
+                ) : (
+                  <Marquee pauseOnHover className="[--duration:28s]">
+                    {toolsTech.map((tech) => (
+                      <TechCard key={tech.name} tech={tech} />
+                    ))}
+                  </Marquee>
+                )}
               </div>
             )}
 
-            {(activeTab === "all" || activeTab === "web3") && (
+            {(isMobile || activeTab === "all" || activeTab === "web3") && (
               <div className="relative">
-                <h3 className="text-2xl font-semibold mb-6 text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
                   Web3 & Blockchain
                 </h3>
-                <Marquee reverse pauseOnHover className="[--duration:20s]">
-                  {web3Tech.map((tech) => (
-                    <TechCard key={tech.name} tech={tech} />
-                  ))}
-                </Marquee>
+                {isMobile ? (
+                  <MobileTechGrid techs={web3Tech} />
+                ) : (
+                  <Marquee reverse pauseOnHover className="[--duration:20s]">
+                    {web3Tech.map((tech) => (
+                      <TechCard key={tech.name} tech={tech} />
+                    ))}
+                  </Marquee>
+                )}
               </div>
             )}
           </div>
