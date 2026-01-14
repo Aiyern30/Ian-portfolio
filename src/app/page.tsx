@@ -141,6 +141,15 @@ export default function Home() {
         style={{ scaleX: scrollYProgress }}
       />
 
+      {/* Global Grid Overlay */}
+      <div
+        className="fixed inset-0 opacity-[0.03] pointer-events-none -z-10"
+        style={{
+          backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
       <section
         className="flex flex-col items-center justify-center px-4 mt-36 sm:mt-24 md:mt-8"
         id="home"
