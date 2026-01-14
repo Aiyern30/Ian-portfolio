@@ -170,7 +170,7 @@ const projects = [
     category: "Website",
     description:
       "A professional, multilingual company profile for RY Electric Works. The platform showcases specialized electrical services including Internal Electrical Wiring, Telekom Works, and Street lighting. It features English and Chinese language support, a comprehensive project portfolio, and a service-oriented design as a strategic digital identity for the company.",
-    imageUrl: "/RYElectric.png",
+    imageUrl: "/RY-electrics.png",
     livePreviewUrl: "https://ry-electric-works.ryelectric828.workers.dev/",
     githubRepo: "",
   },
@@ -667,7 +667,13 @@ export default function ProjectsSection() {
                       <div className="w-full h-full relative group/preview">
                         <iframe
                           src={project.livePreviewUrl}
-                          className="w-full h-full border-none pointer-events-none scale-[1.01] origin-center opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                          className="absolute inset-0 border-none pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                          style={{
+                            width: "200%",
+                            height: "200%",
+                            transform: "scale(0.5)",
+                            transformOrigin: "top left",
+                          }}
                           loading="lazy"
                         />
                         {/* Live Indicator */}
