@@ -335,6 +335,18 @@ export default function ProjectsSection() {
   >(null);
   const filterRef = useRef<HTMLDivElement>(null);
 
+  // Handle scroll lock when modal is open
+  useEffect(() => {
+    if (isDetailModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isDetailModalOpen]);
+
   // Handle clicks outside the filter panel to close it
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -726,7 +738,7 @@ export default function ProjectsSection() {
       {/* Modern Detail Modal */}
       <AnimatePresence>
         {isDetailModalOpen && detailProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 pointer-events-none">
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-10 pointer-events-none">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

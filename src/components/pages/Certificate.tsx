@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import {
@@ -22,6 +22,7 @@ import {
   SelectItem,
 } from "@/components/ui";
 import { Calendar, Award, ExternalLink, X, Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // Certificate data
 const certificates = [
@@ -67,7 +68,7 @@ const certificates = [
   },
   {
     title: "Responsive Web Design",
-    organization: "freeCodeCamp",
+    organization: "FreeCodeCamp",
     date: "January 2023",
     imageUrl: "/Certs/Responsive-Web-Design.png",
     link: "https://www.freecodecamp.org/certification/Aiyern30/responsive-web-design",
@@ -140,6 +141,18 @@ export default function CertificateShowcase() {
     return matchesOrganization && matchesCategory;
   });
 
+  // Handle scroll lock when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
   // Open certificate modal
   const openCertificateModal = (cert: (typeof certificates)[0]) => {
     setSelectedCertificate(cert);
@@ -153,237 +166,315 @@ export default function CertificateShowcase() {
   };
 
   return (
-    <div className="py-16 md:py-24 px-4 md:px-6 text-white relative">
-      {/* Background with animated gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#320F85]/30 via-[#4A1D9A]/20 to-[#763CAC]/10 opacity-80" />
+    <div className="py-24 md:py-32 px-4 md:px-6 relative overflow-hidden min-h-screen">
+      {/* Background Atmosphere */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#763CAC]/20 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-[#FF9D7A]/10 rounded-full blur-[150px] -z-10" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header Section */}
         <motion.div
-          className="text-center mb-8 md:mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          className="text-center mb-16 md:mb-24"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold mb-4">My Certificates</h2>
-          <motion.div
-            className="h-1 w-32 bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] mx-auto text-center"
-            initial={{ width: 0 }}
-            animate={{ width: "8rem" }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
-          <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-            A collection of certifications I've earned throughout my learning
-            journey
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
+            <Award className="w-4 h-4 text-[#FF9D7A]" />
+            <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
+              Recognition
+            </span>
+          </div>
+
+          <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
+            Awards & <span className="text-[#FF9D7A]">Certificates</span>
+          </h2>
+
+          <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
+            Validation of my technical expertise and continuous learning journey
+            through recognized institutions.
           </p>
         </motion.div>
 
         {/* Controls and Filters */}
         <motion.div
-          className="mb-8"
+          className="mb-16 space-y-8"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            {/* Filters */}
-            <div className="flex flex-col sm:flex-row gap-3 w-full">
-              <Select
-                value={selectedCategory || ""}
-                onValueChange={(value) => setSelectedCategory(value || null)}
-              >
-                <SelectTrigger className="w-full sm:w-[180px] bg-[#320F85]/40 backdrop-blur-sm border-white/20 text-white">
-                  <SelectValue placeholder="Filter by category" />
-                </SelectTrigger>
-                <SelectContent className="bg-[#320F85]/90 backdrop-blur-md border-white/20 text-white">
-                  <SelectItem value="all">All Categories</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select
-                value={selectedOrganization || ""}
-                onValueChange={(value) =>
-                  setSelectedOrganization(value || null)
-                }
-              >
-                <SelectTrigger className="w-full sm:w-[200px] bg-[#320F85]/40 backdrop-blur-sm border-white/20 text-white">
-                  <SelectValue placeholder="Filter by organization" />
-                </SelectTrigger>
-                <SelectContent className="bg-[#320F85]/90 backdrop-blur-md border-white/20 text-white">
-                  <SelectItem value="all">All Organizations</SelectItem>
-                  {organizations.map((org) => (
-                    <SelectItem key={org} value={org}>
-                      {org}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              {(selectedCategory || selectedOrganization) && (
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={resetFilters}
-                  className="border-white/20 h-10 w-10 flex-shrink-0"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className={cn(
+                "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border backdrop-blur-md",
+                !selectedCategory
+                  ? "bg-[#FF9D7A] border-[#FF9D7A] text-white shadow-[0_4px_20px_rgba(255,157,122,0.3)]"
+                  : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
               )}
-            </div>
+            >
+              All Achievements
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={cn(
+                  "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border backdrop-blur-md",
+                  selectedCategory === category
+                    ? "bg-[#FF9D7A] border-[#FF9D7A] text-white shadow-[0_4px_20px_rgba(255,157,122,0.3)]"
+                    : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+                )}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Secondary Filter: Organization */}
+          <div className="flex flex-wrap justify-center gap-2">
+            {organizations.map((org) => (
+              <button
+                key={org}
+                onClick={() =>
+                  setSelectedOrganization(
+                    selectedOrganization === org ? null : org
+                  )
+                }
+                className={cn(
+                  "px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all duration-300 border",
+                  selectedOrganization === org
+                    ? "bg-white/15 border-white/30 text-white"
+                    : "bg-transparent border-white/5 text-gray-500 hover:border-white/20 hover:text-gray-300"
+                )}
+              >
+                {org}
+              </button>
+            ))}
           </div>
         </motion.div>
 
-        {/* No Results Message */}
-        {filteredCertificates.length === 0 && (
-          <motion.div
-            className="text-center py-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-4">
-              <Search className="w-12 h-12 text-white/30 mx-auto" />
-            </div>
-            <h3 className="text-xl font-medium mb-2">No certificates found</h3>
-            <p className="text-white/60 mb-4">Try adjusting your filters</p>
-            <Button variant="outline" onClick={resetFilters}>
-              Reset Filters
-            </Button>
-          </motion.div>
-        )}
-
         {/* Grid View */}
-        {filteredCertificates.length > 0 && (
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <AnimatePresence mode="popLayout">
             {filteredCertificates.map((cert, index) => (
               <motion.div
                 key={cert.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="h-full"
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="group"
               >
-                <Card className="overflow-hidden h-full flex flex-col bg-[#320F85]/20 backdrop-blur-sm border-white/10 hover:border-white/30 transition-all duration-300">
+                <div
+                  className="relative h-full bg-[#1a0b2e]/40 border border-white/10 rounded-[2rem] overflow-hidden backdrop-blur-md hover:border-[#FF9D7A]/30 transition-all duration-500 shadow-2xl cursor-pointer"
+                  onClick={() => openCertificateModal(cert)}
+                >
+                  {/* Image Container */}
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    {/* Static background color while image loads */}
-                    <div className="absolute inset-0 bg-[#320F85]/60" />
-
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a0b2e] via-transparent to-transparent z-10" />
                     <Image
                       src={cert.imageUrl || "/placeholder.svg"}
                       alt={cert.title}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      priority={index < 6} // Prioritize loading the first 6 images
-                      className="object-cover"
-                      unoptimized // This can help with external images that might have loading issues
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                    <div className="absolute top-3 left-3">
-                      <Badge className="bg-[#9D7AFF] hover:bg-[#9D7AFF]">
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-[2px]">
+                      <div className="p-4 bg-white text-black rounded-full scale-50 group-hover:scale-100 transition-transform duration-500">
+                        <Award className="w-6 h-6" />
+                      </div>
+                    </div>
+
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[9px] font-bold text-white tracking-widest uppercase">
                         {cert.category}
-                      </Badge>
+                      </span>
                     </div>
                   </div>
 
-                  <CardContent className="p-5 flex flex-col flex-grow">
-                    <div className="flex-grow">
-                      <h3 className="font-semibold text-lg mb-2 line-clamp-2">
-                        {cert.title}
-                      </h3>
-                      <div className="flex items-center text-sm text-white/70 mb-2">
-                        <Award className="w-4 h-4 mr-1 flex-shrink-0" />
-                        <span className="line-clamp-1">
+                  {/* Info Section */}
+                  <div className="p-6 md:p-8 space-y-4">
+                    <h3 className="text-xl md:text-2xl font-bold font-primary group-hover:text-[#FF9D7A] transition-colors line-clamp-2 leading-tight">
+                      {cert.title}
+                    </h3>
+
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center gap-2 text-gray-400 text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A]" />
+                        <span className="font-secondary line-clamp-1">
                           {cert.organization}
                         </span>
                       </div>
-                      <div className="flex items-center text-sm text-white/70">
-                        <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
+                      <div className="flex items-center gap-2 text-gray-500 text-xs">
+                        <Calendar className="w-3.5 h-3.5" />
                         <span>{cert.date}</span>
                       </div>
                     </div>
-
-                    <Button
-                      variant="default"
-                      className="w-full bg-[#FF9D7A] hover:bg-[#FF9D7A]/80 mt-4"
-                      onClick={() => openCertificateModal(cert)}
-                    >
-                      View Certificate
-                    </Button>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </motion.div>
             ))}
+          </AnimatePresence>
+        </div>
+
+        {/* No Results Message */}
+        {filteredCertificates.length === 0 && (
+          <motion.div
+            className="text-center py-32"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <Search className="w-16 h-16 text-white/10 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold font-primary mb-2">
+              No certificates matching your filters
+            </h3>
+            <p className="text-gray-500 font-secondary mb-8">
+              Try clearing your selection to see all achievements.
+            </p>
+            <button
+              onClick={resetFilters}
+              className="px-8 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
+            >
+              Reset Filters
+            </button>
           </motion.div>
         )}
 
-        {/* Certificate Detail Modal */}
-        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="bg-gradient-to-br from-[#320F85] to-[#763CAC] border-white/10 text-white max-w-4xl">
-            <DialogHeader>
-              <DialogTitle className="text-xl md:text-2xl">
-                {selectedCertificate?.title}
-              </DialogTitle>
-              <DialogDescription className="text-white/70">
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mt-2">
-                  <div className="flex items-center">
-                    <Award className="w-4 h-4 mr-1" />
-                    <span>{selectedCertificate?.organization}</span>
-                  </div>
-                  <div className="hidden md:block text-white/60">•</div>
-                  <div className="flex items-center">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span>{selectedCertificate?.date}</span>
-                  </div>
-                  <div className="hidden md:block text-white/60">•</div>
-                  <Badge className="bg-[#9D7AFF] hover:bg-[#9D7AFF]">
-                    {selectedCertificate?.category}
-                  </Badge>
-                </div>
-              </DialogDescription>
-            </DialogHeader>
+        {/* Immersive Detail Modal */}
+        <AnimatePresence>
+          {isModalOpen && selectedCertificate && (
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-10 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsModalOpen(false)}
+                className="fixed inset-0 bg-black/95 backdrop-blur-2xl pointer-events-auto"
+              />
 
-            <div className="relative aspect-video w-full overflow-hidden rounded-md bg-[#320F85]/60">
-              {selectedCertificate && (
-                <Image
-                  src={selectedCertificate.imageUrl || "/placeholder.svg"}
-                  alt={selectedCertificate.title}
-                  fill
-                  className="object-contain"
-                  unoptimized
-                  priority
-                />
-              )}
-            </div>
-
-            <DialogFooter>
-              <Button variant="outline" onClick={() => setIsModalOpen(false)}>
-                Close
-              </Button>
-              {selectedCertificate && (
-                <Button
-                  className="bg-[#FF9D7A] hover:bg-[#FF9D7A]/80"
-                  onClick={() =>
-                    window.open(selectedCertificate.link, "_blank")
-                  }
+              <motion.div
+                layoutId={`cert-${selectedCertificate.title}`}
+                className="relative w-full max-w-5xl bg-[#0a0514] rounded-[3rem] overflow-hidden border border-white/5 shadow-[0_0_100px_rgba(0,0,0,0.8)] max-h-full flex flex-col pointer-events-auto"
+                initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 30 }}
+                transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              >
+                {/* Sticky Close Button */}
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-6 right-6 z-[60] p-4 bg-white/5 hover:bg-white/10 rounded-full backdrop-blur-xl border border-white/10 transition-all group"
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Open Certificate
-                </Button>
-              )}
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+                  <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300 pointer-events-auto" />
+                </button>
+
+                {/* Scrollable Content Container */}
+                <div className="flex-1 overflow-y-auto custom-scrollbar">
+                  {/* Hero Certificate Image */}
+                  <div className="relative w-full aspect-video md:aspect-[21/9] bg-white/5">
+                    <Image
+                      src={selectedCertificate.imageUrl || "/placeholder.svg"}
+                      alt={selectedCertificate.title}
+                      fill
+                      className="object-contain p-4 md:p-12 opacity-90"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0514] via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Content Detail */}
+                  <div className="p-8 md:p-16 space-y-12">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                      <div className="space-y-6">
+                        <div className="flex flex-wrap items-center gap-4">
+                          <span className="px-5 py-2 rounded-full bg-[#FF9D7A]/10 border border-[#FF9D7A]/20 text-[#FF9D7A] text-[10px] font-bold uppercase tracking-[0.2em]">
+                            {selectedCertificate.category}
+                          </span>
+                          <div className="h-4 w-[1px] bg-white/10" />
+                          <span className="text-gray-500 text-xs font-medium uppercase tracking-widest">
+                            Verification ID Available
+                          </span>
+                        </div>
+
+                        <h2 className="text-3xl md:text-5xl font-bold font-primary leading-tight tracking-tight max-w-2xl">
+                          {selectedCertificate.title}
+                        </h2>
+
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-3 text-white/80">
+                            <Award className="w-5 h-5 text-[#FF9D7A]" />
+                            <span className="text-lg font-secondary">
+                              {selectedCertificate.organization}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3 text-white/60">
+                            <Calendar className="w-5 h-5" />
+                            <span className="font-secondary">
+                              {selectedCertificate.date}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-4">
+                        <button
+                          onClick={() =>
+                            window.open(selectedCertificate.link, "_blank")
+                          }
+                          className="flex items-center gap-3 px-8 py-4 bg-[#FF9D7A] text-white font-bold rounded-2xl hover:bg-[#FF9D7A]/90 transition-all shadow-[0_10px_30px_rgba(255,157,122,0.2)]"
+                        >
+                          Verify Credential <ExternalLink className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/5 pt-12">
+                      <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4">
+                        <h4 className="text-white font-bold uppercase tracking-widest text-sm">
+                          Description
+                        </h4>
+                        <p className="text-gray-400 font-secondary leading-relaxed">
+                          This certificate validates the successful completion
+                          of rigorous coursework and assessments in{" "}
+                          {selectedCertificate.category}. It demonstrates
+                          proficiency in industry-standard tools and
+                          methodologies as verified by{" "}
+                          {selectedCertificate.organization}.
+                        </p>
+                      </div>
+                      <div className="p-8 rounded-3xl bg-gradient-to-br from-[#FF9D7A]/5 to-transparent border border-[#FF9D7A]/10 space-y-4">
+                        <h4 className="text-[#FF9D7A] font-bold uppercase tracking-widest text-sm">
+                          Achievement Impact
+                        </h4>
+                        <ul className="space-y-3 text-gray-400 font-secondary text-sm">
+                          <li className="flex gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
+                            Deep technical understanding of core principles.
+                          </li>
+                          <li className="flex gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
+                            Hands-on experience with real-world applications.
+                          </li>
+                          <li className="flex gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
+                            Validated by globally recognized institutions.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
