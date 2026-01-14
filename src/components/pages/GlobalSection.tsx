@@ -79,8 +79,8 @@ export default function GlobalSection() {
   const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}`);
 
   return (
-    <div className="relative min-h-screen py-20 flex flex-col items-center justify-center overflow-hidden">
-      <div className="container relative z-10 max-w-6xl px-6 flex flex-col lg:flex-row items-center gap-16">
+    <div className="relative py-24 md:py-32 px-4 md:px-8 lg:px-12 flex flex-col items-center justify-center overflow-hidden min-h-screen">
+      <div className="max-w-7xl mx-auto relative z-10 w-full flex flex-col lg:flex-row items-center gap-16">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}

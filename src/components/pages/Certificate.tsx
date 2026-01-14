@@ -166,7 +166,7 @@ export default function CertificateShowcase() {
   };
 
   return (
-    <div className="py-24 md:py-32 px-4 md:px-6 relative overflow-hidden min-h-screen">
+    <div className="relative py-24 md:py-32 px-4 md:px-8 lg:px-12 overflow-hidden min-h-screen">
       {/* Background Atmosphere */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#763CAC]/20 rounded-full blur-[120px] -z-10 animate-pulse" />
       <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-[#FF9D7A]/10 rounded-full blur-[150px] -z-10" />

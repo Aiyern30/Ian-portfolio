@@ -398,7 +398,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <div className="py-20 md:py-32 px-6 text-white relative overflow-hidden">
+    <div className="relative py-24 md:py-32 px-4 md:px-8 lg:px-12 text-white overflow-hidden">
       {/* Background Decorative Element */}
       <div className="absolute top-1/4 -right-24 w-96 h-96 bg-[#763CAC]/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 -left-24 w-96 h-96 bg-[#FF9D7A]/5 blur-[120px] rounded-full pointer-events-none" />

@@ -229,7 +229,7 @@ export default function HeroSection() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[calc(100vh-8rem)] flex items-center justify-center overflow-visible bg-transparent"
+      className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent py-24 md:py-32 px-4 md:px-8 lg:px-12"
     >
       <BackgroundAtmosphere />
 
@@ -260,10 +260,10 @@ export default function HeroSection() {
       </div>
 
       <motion.div
-        className="container relative z-10 flex flex-col justify-center items-center px-6 pt-20 md:pt-0 min-h-screen font-secondary"
+        className="max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-center items-center font-secondary"
         style={{ y: contentY, opacity: contentOpacity }}
       >
-        <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12 lg:gap-20">
           {/* Left Side: Profile & Message */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 w-full lg:w-1/2">
             {/* Profile Image */}

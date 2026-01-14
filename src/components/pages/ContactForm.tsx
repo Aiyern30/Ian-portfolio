@@ -141,7 +141,7 @@ export default function ContactForm() {
 
   return (
     <div
-      className="relative py-24 md:py-32 px-4 md:px-6 overflow-hidden min-h-screen flex items-center"
+      className="relative py-24 md:py-32 px-4 md:px-8 lg:px-12 overflow-hidden min-h-screen flex items-center"
       id="contact-us"
     >
       {/* Background Atmosphere */}
