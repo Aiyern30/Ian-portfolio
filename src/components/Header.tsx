@@ -73,7 +73,7 @@ export default function Header({ activeSection }: HeaderProps) {
     // Return a simple placeholder during SSR to avoid hydration mismatch
     return (
       <header className="fixed top-0 left-0 right-0 z-50 py-5 bg-transparent">
-        <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
           <div className="text-[20px] font-bold text-white">
             <span className="text-white">Ian's Portfolio</span>
           </div>
@@ -92,7 +92,7 @@ export default function Header({ activeSection }: HeaderProps) {
           : "bg-transparent py-5"
       )}
     >
-      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
         <Link href="/" className="relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

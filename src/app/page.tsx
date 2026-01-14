@@ -141,14 +141,20 @@ export default function Home() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <section
-        className="flex flex-col items-center justify-center px-4 mt-36 sm:mt-24 md:mt-8"
-        id="home"
-      >
+      {/* Global Grid Overlay */}
+      <div
+        className="fixed inset-0 opacity-[0.03] pointer-events-none -z-10"
+        style={{
+          backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      <section id="home">
         <HeroSection />
       </section>
 
-      <section className="flex items-center justify-center" id="tools">
+      <section id="tools">
         <GlobalSection />
       </section>
 
@@ -156,22 +162,19 @@ export default function Home() {
         <ProjectsSection />
       </section>
 
-      <section
-        className="flex flex-col items-center justify-center px-4"
-        id="certs"
-      >
+      <section id="certs">
         <Certificate />
       </section>
 
-      <section className="px-4" id="about">
+      <section id="about">
         <SkillsDetails />
       </section>
 
-      <section className="flex items-center justify-center" id="support-me">
+      <section id="support-me">
         <PaymentDetails />
       </section>
 
-      <section className="flex items-center justify-center" id="contact-us">
+      <section id="contact-us">
         <ContactForm />
       </section>
 

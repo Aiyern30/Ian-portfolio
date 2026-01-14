@@ -1,17 +1,134 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import Image from "next/image";
 import {
   motion,
   useScroll,
   useTransform,
   AnimatePresence,
+  useSpring,
+  useMotionValue,
 } from "framer-motion";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import { SocialIcon } from "react-social-icons";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  Code2,
+  Palette,
+  GraduationCap,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// --- Components ---
+
+const MagneticButton = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current!.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
+  };
+
+  const reset = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const { x, y } = position;
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      animate={{ x, y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const BackgroundAtmosphere = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 100 };
+  const sx = useSpring(mouseX, springConfig);
+  const sy = useSpring(mouseY, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      mouseX.set((clientX / innerWidth - 0.5) * 50);
+      mouseY.set((clientY / innerHeight - 0.5) * 50);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const translateX = useTransform(sx, (v) => v);
+  const translateY = useTransform(sy, (v) => v);
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-20">
+      {/* Mesh Gradient / Spotlight */}
+      <motion.div
+        className="absolute -inset-[100px] opacity-30 blur-[120px]"
+        style={{
+          background:
+            "radial-gradient(circle at center, #763CAC 0%, transparent 70%)",
+          x: useTransform(sx, (v) => v * 1.5),
+          y: useTransform(sy, (v) => v * 1.5),
+        }}
+      />
+
+      {/* Deep Background Blobs */}
+      <motion.div
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-[#320F85] rounded-full mix-blend-screen filter blur-[80px] opacity-20"
+        animate={{
+          x: [0, 50, 0],
+          y: [0, 30, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        style={{ x: translateX, y: translateY }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 -right-20 w-[450px] h-[450px] bg-[#FF9D7A] rounded-full mix-blend-screen filter blur-[100px] opacity-10"
+        animate={{
+          x: [0, -40, 0],
+          y: [0, 60, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+        style={{
+          x: useTransform(sx, (v) => -v),
+          y: useTransform(sy, (v) => -v),
+        }}
+      />
+    </div>
+  );
+};
 
 export default function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,13 +136,13 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState("developer");
 
-  // Parallax effect for background
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -39,68 +156,57 @@ export default function HeroSection() {
   };
 
   const tabs = [
-    { id: "developer", label: "Developer" },
-    { id: "designer", label: "Designer" },
-    { id: "student", label: "Student" },
+    { id: "developer", label: "Developer", icon: Code2 },
+    { id: "designer", label: "Designer", icon: Palette },
+    { id: "student", label: "Student", icon: GraduationCap },
   ];
 
   const tabContent = {
-    developer: isMobile ? (
-      <p className="text-base">
-        Passionate about coding and problem-solving. Love creating functional
-        and beautiful applications.
-      </p>
-    ) : (
-      <>
-        <p className="text-base md:text-lg mb-4">
-          With 5 years of software development experience that began in high
-          school, I've honed my skills in various technologies. I believe in the
-          importance of both functionality and design.
+    developer: (
+      <div className="space-y-4">
+        <p className="text-base md:text-lg leading-relaxed text-gray-200">
+          With <span className="text-[#FF9D7A] font-medium">5 years</span> of
+          software development experience that began in high school, I've honed
+          my skills in various technologies. I believe in the importance of both
+          functionality and design.
         </p>
-        <p className="text-base md:text-lg">
+        <p className="text-base md:text-lg text-gray-300">
           I strive to create solutions that are as visually appealing as they
           are effective, focusing on user experience and performance.
         </p>
-      </>
+      </div>
     ),
-    designer: isMobile ? (
-      <p className="text-base">
-        Crafting visually stunning interfaces that enhance user experience and
-        engagement.
-      </p>
-    ) : (
-      <>
-        <p className="text-base md:text-lg mb-4">
-          I approach design with a keen eye for detail and a focus on
-          user-centered experiences. My design philosophy centers around
-          creating intuitive interfaces that guide users naturally through
-          digital experiences.
+    designer: (
+      <div className="space-y-4">
+        <p className="text-base md:text-lg leading-relaxed text-gray-200">
+          I approach design with a keen eye for detail and a focus on{" "}
+          <span className="text-[#FF9D7A] font-medium">
+            user-centered experiences
+          </span>
+          . My design philosophy centers around creating intuitive interfaces
+          that guide users naturally.
         </p>
-        <p className="text-base md:text-lg">
+        <p className="text-base md:text-lg text-gray-300">
           I believe that great design should be invisible, allowing users to
           accomplish their goals without friction or confusion.
         </p>
-      </>
+      </div>
     ),
-    student: isMobile ? (
-      <p className="text-base">
-        Completed a 2-year Diploma in Software Engineering and currently
-        pursuing a Computer Science degree to deepen my technical expertise.
-      </p>
-    ) : (
-      <>
-        <p className="text-base md:text-lg mb-4">
-          I have completed a 2-year Diploma in Software Engineering, where I
-          built a strong foundation in programming and software development.
-          Currently, I am in my second year of pursuing a Bachelor's Degree in
-          Computer Science, continuing to refine my knowledge in system design,
-          data analysis, and emerging technologies.
+    student: (
+      <div className="space-y-4">
+        <p className="text-base md:text-lg leading-relaxed text-gray-200">
+          Completed a 2-year Diploma in Software Engineering and currently
+          pursuing a{" "}
+          <span className="text-[#FF9D7A] font-medium">
+            Computer Science degree
+          </span>{" "}
+          to deepen my technical expertise.
         </p>
-        <p className="text-base md:text-lg">
-          I’m passionate about continuous learning and hands-on projects that
+        <p className="text-base md:text-lg text-gray-300">
+          I'm passionate about continuous learning and hands-on projects that
           combine both practical problem-solving and innovation.
         </p>
-      </>
+      </div>
     ),
   };
 
@@ -118,275 +224,287 @@ export default function HeroSection() {
     },
   ];
 
-  return (
-    <div ref={containerRef} className="relative min-h-screen overflow-hidden">
-      {/* Animated background gradient */}
-      <motion.div className="" style={{ y: backgroundY }} />
+  if (!isMounted) return <div className="min-h-screen bg-transparent" />;
 
-      {/* Animated particles/stars effect - Reduced and delayed */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 8 }).map((_, i) => (
+  return (
+    <div
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-visible bg-transparent py-24 md:py-32 px-4 md:px-8 lg:px-12"
+    >
+      <BackgroundAtmosphere />
+
+      {/* Floating Sparkles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full opacity-70"
+            className="absolute w-1 h-1 bg-white rounded-full"
             initial={{
               x: Math.random() * 100 + "%",
               y: Math.random() * 100 + "%",
-              scale: Math.random() * 0.5 + 0.5,
               opacity: 0,
             }}
-            animate={
-              isMounted
-                ? {
-                    y: [null, Math.random() * 20 - 10 + "%"],
-                    opacity: [0, 0.5, 0.5],
-                    scale: [null, Math.random() + 0.5],
-                  }
-                : { opacity: 0 }
-            }
+            animate={{
+              y: [null, "-20%"],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1.5, 0],
+            }}
             transition={{
               duration: Math.random() * 5 + 5,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-              delay: 1 + i * 0.2,
+              repeat: Infinity,
+              delay: Math.random() * 10,
+              ease: "linear",
             }}
           />
         ))}
       </div>
 
-      <div className="container relative z-10 flex flex-col justify-center items-center min-h-screen">
-        <div className="flex flex-col md:flex-row items-center md:space-x-10 w-full">
-          {/* Profile image with animated border */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative mb-8 md:mb-0"
-          >
-            <div className="relative w-[200px] h-[200px] md:w-[250px] md:h-[250px]">
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-[#763CAC] to-[#320F85]"
-                animate={
-                  isMounted
-                    ? {
-                        rotate: 360,
-                        background: [
-                          "linear-gradient(to right, #763CAC, #320F85)",
-                          "linear-gradient(to right, #320F85, #763CAC)",
-                          "linear-gradient(to right, #763CAC, #320F85)",
-                        ],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 8,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "linear",
-                }}
-                style={{ padding: 4 }}
-              />
-              <div className="absolute inset-[4px] rounded-full overflow-hidden bg-black">
-                <Image
-                  src="/Me.png"
-                  alt="Ian Gan Jian Hao"
-                  fill
-                  priority
-                  quality={90}
-                  className="object-cover"
-                  sizes="(max-width: 768px) 200px, 250px"
+      <motion.div
+        className="max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-center items-center font-secondary"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
+        <div className="flex flex-col lg:flex-row items-center justify-between w-full gap-12 lg:gap-20">
+          {/* Left Side: Profile & Message */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 w-full lg:w-1/2">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, type: "spring" }}
+              className="relative"
+            >
+              <div className="relative w-[180px] h-[180px] md:w-[220px] md:h-[220px]">
+                {/* Animated Rings */}
+                <motion.div
+                  className="absolute -inset-4 border-2 border-[#763CAC]/30 rounded-full"
+                  animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 />
+                <motion.div
+                  className="absolute -inset-8 border border-[#FF9D7A]/20 rounded-full"
+                  animate={{ rotate: -360, scale: [1, 1.1, 1] }}
+                  transition={{
+                    duration: 25,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+
+                {/* Main Border */}
+                <motion.div
+                  className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-[#763CAC] via-[#320F85] to-[#FF9D7A]"
+                  animate={{
+                    borderRadius: ["2.5rem", "4rem", "2.5rem"],
+                    rotate: [0, 90, 180, 270, 360],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  style={{ padding: 3 }}
+                />
+
+                <div className="absolute inset-[3px] rounded-[2.5rem] overflow-hidden bg-black group transition-all duration-500">
+                  <Image
+                    src="/Me.png"
+                    alt="Ian Gan Jian Hao"
+                    fill
+                    priority
+                    quality={100}
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 180px, 220px"
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-[#320F85]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Text Hierarchy */}
+            <div className="space-y-4">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="inline-block px-4 py-1.5 rounded-full bg-[#763CAC]/20 text-[#FF9D7A] text-sm font-medium border border-[#763CAC]/30 backdrop-blur-md"
+              >
+                Available for New Projects
+              </motion.span>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <h2 className="text-xl md:text-2xl text-gray-400 font-light mb-1">
+                  Hello, I'm
+                </h2>
+                <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white font-primary">
+                  Ian Gan{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9D7A] to-[#FFD166]">
+                    Jian Hao
+                  </span>
+                </h1>
+              </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="text-lg md:text-xl text-gray-300 max-w-lg leading-relaxed"
+              >
+                Crafting{" "}
+                <span className="text-white font-medium">
+                  exceptional digital experiences
+                </span>{" "}
+                where design meets flawless implementation.
+              </motion.p>
+
+              {/* Socials */}
+              <motion.div
+                className="flex space-x-4 justify-center lg:justify-start pt-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                {socialLinks.map((link) => (
+                  <MagneticButton key={link.network}>
+                    <SocialIcon
+                      network={link.network}
+                      style={{ width: 42, height: 42 }}
+                      url={link.url}
+                      target="_blank"
+                      fgColor="#fff"
+                      bgColor="transparent"
+                      className="hover:scale-110 transition-transform border border-white/10 rounded-full bg-white/5 hover:bg-white/10"
+                    />
+                  </MagneticButton>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right Side: Interactive Content Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="w-full lg:w-1/2 max-w-xl"
+          >
+            <div className="relative group">
+              {/* Card Glow */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
+
+              <div className="relative bg-[#1a0b2e]/60 border border-white/10 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-2xl">
+                {/* Tabs Header */}
+                <div className="flex p-1 bg-white/5 rounded-xl mb-8 space-x-1">
+                  {tabs.map((tab) => {
+                    const Icon = tab.icon;
+                    return (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={cn(
+                          "relative flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-medium transition-all duration-300",
+                          activeTab === tab.id
+                            ? "text-white"
+                            : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                        )}
+                      >
+                        {activeTab === tab.id && (
+                          <motion.div
+                            layoutId="activeTab"
+                            className="absolute inset-0 bg-gradient-to-r from-[#763CAC] to-[#320F85] rounded-lg shadow-lg"
+                            transition={{
+                              type: "spring",
+                              bounce: 0.2,
+                              duration: 0.6,
+                            }}
+                          />
+                        )}
+                        <Icon
+                          className={cn(
+                            "w-4 h-4 relative z-10",
+                            activeTab === tab.id
+                              ? "text-[#FF9D7A]"
+                              : "text-gray-500"
+                          )}
+                        />
+                        <span className="relative z-10 hidden sm:inline">
+                          {tab.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Tab Content */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="min-h-[220px]"
+                  >
+                    <div className="flex items-center gap-2 mb-4">
+                      <Sparkles className="w-5 h-5 text-[#FF9D7A]" />
+                      <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                        {activeTab === "developer"
+                          ? "Full-stack Developer"
+                          : activeTab === "designer"
+                          ? "UI/UX Designer"
+                          : "Computer Science Student"}
+                      </h3>
+                    </div>
+                    {tabContent[activeTab as keyof typeof tabContent]}
+
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="mt-8 group flex items-center gap-2 text-sm font-semibold text-[#FF9D7A]"
+                    >
+                      Learn more about my journey
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="text-lg"
+                      >
+                        →
+                      </motion.span>
+                    </motion.button>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
-
-          {/* Text content with staggered animations */}
-          <motion.div
-            className="flex flex-col space-y-4 justify-center text-white font-primary text-center md:text-left max-w-xl"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
-            <motion.div
-              className="text-xl md:text-3xl mb-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-            >
-              Hello! I Am{" "}
-              <span className="text-[#FF9D7A] font-semibold">
-                Ian Gan Jian Hao
-              </span>
-            </motion.div>
-
-            <motion.div
-              className="text-sm md:text-base"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            >
-              A Designer who
-            </motion.div>
-
-            <motion.div
-              className="text-2xl md:text-5xl font-bold"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              judges a book by its{" "}
-              <motion.span
-                className="text-[#FF9D7A]"
-                animate={
-                  isMounted
-                    ? {
-                        color: ["#FF9D7A", "#FFD166", "#FF9D7A"],
-                      }
-                    : {}
-                }
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  delay: 1,
-                }}
-              >
-                cover...
-              </motion.span>
-            </motion.div>
-
-            <motion.div
-              className="text-sm md:text-base italic"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-            >
-              Because if the cover doesn't impress you, what will?
-            </motion.div>
-
-            {/* Social media icons for desktop */}
-            {!isMobile && (
-              <motion.div
-                className="flex space-x-3 pt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-              >
-                {socialLinks.map((link, index) => (
-                  <motion.div
-                    key={link.network}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
-                  >
-                    <SocialIcon
-                      network={link.network}
-                      style={{ width: 36, height: 36 }}
-                      onClick={() => window.open(link.url, "_blank")}
-                      className="cursor-pointer hover:opacity-80 transition-opacity"
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </motion.div>
         </div>
 
-        {/* Interactive tabs section */}
+        {/* Scroll Indicator */}
         <motion.div
-          className="w-full mt-12 md:mt-16 max-w-3xl mx-auto"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
-        >
-          <div className="flex justify-center md:justify-start mb-6">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={cn(
-                  "px-4 py-2 mx-1 rounded-full text-white font-medium transition-all transform hover:scale-105 active:scale-95",
-                  activeTab === tab.id
-                    ? "bg-[#FF9D7A] shadow-lg"
-                    : "bg-[#4A1D9A]/50 hover:bg-[#4A1D9A]/70"
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          <motion.div
-            className="bg-[#320F85]/40 backdrop-blur-sm p-6 rounded-xl shadow-xl text-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#FF9D7A]">
-                  I'm a{" "}
-                  {activeTab === "developer"
-                    ? "Full-stack Developer"
-                    : activeTab === "designer"
-                    ? "UI/UX Designer"
-                    : "Computer Science Student"}
-                </h3>
-                {tabContent[activeTab as keyof typeof tabContent]}
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </motion.div>
-
-        {/* Social media icons for mobile */}
-        {isMobile && (
-          <motion.div
-            className="flex flex-wrap justify-center space-x-2 mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-          >
-            {socialLinks.map((link) => (
-              <SocialIcon
-                key={link.network}
-                network={link.network}
-                style={{ width: 36, height: 36 }}
-                onClick={() => window.open(link.url, "_blank")}
-                className="cursor-pointer"
-              />
-            ))}
-          </motion.div>
-        )}
-
-        {/* Scroll down indicator */}
-        <motion.div
-          className="absolute bottom-8 cursor-pointer"
-          initial={{ opacity: 0 }}
-          animate={
-            isMounted
-              ? {
-                  y: [0, 10, 0],
-                  opacity: 0.8,
-                }
-              : { opacity: 0.8 }
-          }
-          transition={{
-            duration: 1.5,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "loop",
-            delay: 1,
-          }}
+          animate={{ opacity: 0.6 }}
+          transition={{ delay: 1.5 }}
           onClick={scrollToContent}
         >
-          <ChevronDown className="w-8 h-8 text-white opacity-80" />
+          <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-400">
+            Scroll
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-6 h-6 text-white" />
+          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 }
