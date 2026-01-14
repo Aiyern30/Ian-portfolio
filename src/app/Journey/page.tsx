@@ -19,6 +19,7 @@ import {
   ArrowDown,
   Sparkles,
   Star,
+  GraduationCap,
 } from "lucide-react";
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
@@ -26,50 +27,70 @@ import { Meteors } from "@/components/magicui/index";
 
 const journeyData = [
   {
-    year: "2019 - 2023",
-    title: "My Educational Journey",
+    year: "Secondary School (Form 4 - 5)",
+    title: "The Spark of Interest",
     description:
-      "My interest in computer science ignited in secondary school, leading to a Diploma in Software Engineering at APU. I built foundations in HTML, CSS, JavaScript, and Java, creating systems ranging from car sales to staff management.",
-    icon: School,
-    color: "#763CAC",
+      "My coding journey began in Form 4. Over the course of two years, I challenged myself to build a Car Rental System using PHP, marking my first successful venture into full-stack development and database logic.",
+    icon: Code,
+    color: "#60A5FA",
     image: null,
     side: "left",
   },
   {
-    year: "2023",
-    title: "Quant Trading Internship",
+    year: "Diploma in Software Engineering (APU)",
+    title: "Laying the Foundations",
     description:
-      "Stepped into the world of fintech, building auto-trading systems with Next.js & TypeScript. This marked my transition into modern JavaScript frameworks and real-time data handling.",
-    icon: Globe,
-    color: "#FFD166",
-    image: "/SpotWave.png",
+      "During my diploma, I mastered multiple languages through complex projects: a Hotel Booking Prototype in Python, a multi-role Furniture Management System in Java, and a remote Online Workforce Monitoring System in PHP.",
+    icon: School,
+    color: "#763CAC",
+    image: null,
     side: "right",
   },
   {
-    year: "2023 - 2024",
-    title: "Building Projects",
+    year: "First Major Win",
+    title: "Google Cloud Hackathon",
     description:
-      "Phase of intense creation. Developed high-impact applications including SpotWave (Music), LiveSportsNow, and corporate profiles, mastering full-stack architecture and UX design.",
-    icon: Rocket,
-    color: "#FF9D7A",
-    image: "/Reka-Konsult.png",
+      "Developed 'PythonGPT' during the Google Cloud Vertex AI Hackathon. I built a chatbot-driven platform using Flask designed to facilitate interactive Python learning, which spiked my interest in AI and Agentic development.",
+    icon: Sparkles,
+    color: "#FFD166",
+    image: "/PythonAI.jpg",
     side: "left",
   },
   {
-    year: "2024",
-    title: "Hackathons & Web3",
+    year: "The Transition",
+    title: "Mastering the Modern Stack",
     description:
-      "Dived deep into decentralized tech. From ETHKL to Google Cloud hackathons, I explored Ethereum, Solana, and built smart-contract integrated platforms like SassyDispute.",
-    icon: Users,
+      "Pivoted to React, Next.js, and TypeScript. I started freelancing and built projects like SplitTrack (Expense Management), and Web3 applications like SassyDispute (ETHKL) and VoteChain (Devmatch).",
+    icon: Rocket,
+    color: "#FF9D7A",
+    image: "/Split-Track.png",
+    side: "right",
+  },
+  {
+    year: "Professional Internship #1",
+    title: "Fintech at Balaena Quant",
+    description:
+      "Interned as a Front-End Developer for 4 months. I integrated TradingView API for real-time candlestick charts and optimized wallet security interfaces for a high-performance quantitative trading platform.",
+    icon: Briefcase,
     color: "#320F85",
+    image: "/SpotWave.png",
+    side: "left",
+  },
+  {
+    year: "Degree in Computer Science",
+    title: "Academic & Tech Deepening",
+    description:
+      "Currently deepening my expertise while learning specialized languages like Rust, R, Matlab, and Flutter. I've also intensified my participation in Web3 hackathons globally.",
+    icon: GraduationCap,
+    color: "#10B981",
     image: "/ETHKL.png",
     side: "right",
   },
   {
-    year: "2024 - Present",
-    title: "YTL Cement IT Department",
+    year: "Professional Internship #2",
+    title: "Enterprise Solutions at YTL",
     description:
-      "Currently developing enterprise solutions, including LHDN e-invoice platforms and digital portals (SMHE), utilizing Strapi, Next.js, and complex backend integrations.",
+      "Interning at YTL Shared Services. I've developed the SMHE corporate landing page and an internal LHDN-integrated e-invoice system, while also building business intelligence reports via Power BI and SQL Server.",
     icon: Briefcase,
     color: "#EF4444",
     image: "/SMHE.png",
