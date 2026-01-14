@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -12,21 +13,29 @@ interface HeaderProps {
 
 const navItems = [
   { name: "Home", href: "/", section: "home" },
-  { name: "Tools", href: "#tools", section: "tools" },
-  { name: "Projects", href: "#projects", section: "projects" },
-  { name: "Certificates", href: "#certs", section: "certs" },
-  { name: "About", href: "#about", section: "about" },
-  { name: "Support Me", href: "#support-me", section: "support-me" },
-  { name: "Contact", href: "#contact-us", section: "contact-us" },
+  { name: "Tools", href: "/#tools", section: "tools" },
+  { name: "Projects", href: "/#projects", section: "projects" },
+  { name: "Certificates", href: "/#certs", section: "certs" },
+  { name: "About", href: "/#about", section: "about" },
+  { name: "Support Me", href: "/#support-me", section: "support-me" },
+  { name: "Contact", href: "/#contact-us", section: "contact-us" },
   { name: "Journey", href: "/Journey", section: "Journey" },
 ];
 
-export default function Header({ activeSection }: HeaderProps) {
+export default function Header({
+  activeSection: activeSectionProp,
+}: HeaderProps) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [currentYear, setCurrentYear] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Determine which section is active:
+  // 1. If we're on /Journey, that's active.
+  // 2. Otherwise use the prop passed from observer.
+  const activeSection = pathname === "/Journey" ? "Journey" : activeSectionProp;
 
   // Handle clicks outside the menu to close it
   useEffect(() => {
