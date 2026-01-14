@@ -118,6 +118,63 @@ const projects = [
     githubRepo: null,
   },
   {
+    title: "ScorePanda (Niu Niu & Number Solver)",
+    label: [
+      "NextJS",
+      "React",
+      "Framer Motion",
+      "Vercel",
+      "TypeScript",
+      "Shadcn UI",
+    ],
+    category: "Web Application",
+    description:
+      "ScorePanda is a specialized gaming utility platform featuring a Niu Niu hand verifier and a Number Solver. The Niu Niu tool is designed to help players accurately identify their best possible scores in the traditional Chinese card game, mitigating the risk of human error in complex, high-probability scenarios. It features a responsive design and smooth animations for a premium user experience.",
+    imageUrl: "/ScorePanda.png",
+    livePreviewUrl: "https://score-panda.vercel.app/",
+    githubRepo: "https://github.com/Aiyern30/ScorePanda",
+  },
+  {
+    title: "Nutrition Tracker (Eat Smart AI)",
+    label: [
+      "Gemini 1.5 Pro",
+      "Baidu Ernie 5.0",
+      "NextJS",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Framer Motion",
+      "Lucide React",
+      "Recharts",
+      "Supabase",
+      "OpenAI",
+    ],
+    category: "Web Application",
+    description:
+      "Eat Smart AI is a sophisticated nutrition management platform. It leverages AI Image Recognition to detect food and macros from meal photos, natural language processing for text-based meal logging, and integration with Baidu Ernie for personalized 7-day meal planning. The system includes a smart dashboard, detailed historic reports via Recharts, and weight/water tracking, all synced to a Supabase backend.",
+    imageUrl: "/EatSmartAI.png",
+    livePreviewUrl: "https://eat-smart-ai.vercel.app",
+    githubRepo: "https://github.com/Aiyern30/nutrition-tracker",
+  },
+  {
+    title: "RY Electric Works (Company Profile)",
+    label: [
+      "NextJS",
+      "Cloudflare Workers",
+      "React",
+      "Tailwind CSS",
+      "Multi-language",
+      "Lucide React",
+    ],
+    category: "Website",
+    description:
+      "A professional, multilingual company profile for RY Electric Works. The platform showcases specialized electrical services including Internal Electrical Wiring, Telekom Works, and Street lighting. It features English and Chinese language support, a comprehensive project portfolio, and a service-oriented design as a strategic digital identity for the company.",
+    imageUrl: "/RYElectric.png",
+    livePreviewUrl: "https://ry-electric-works.ryelectric828.workers.dev/",
+    githubRepo: "",
+  },
+  {
     title: "Gamer Token Hub (Web3 NFT Marketplace)",
     label: [
       "NextJS",
