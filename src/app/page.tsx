@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ScrollTop } from "primereact/scrolltop";
 
 import { Meteors } from "@/components/magicui/index";
@@ -72,6 +72,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   const [activeSection, setActiveSection] = useState("home");
   const [isClient, setIsClient] = useState(false);
+  const intersectionStates = useRef<Record<string, boolean>>({});
 
   useEffect(() => {
     setIsClient(true);
@@ -79,52 +80,71 @@ export default function Home() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
+    const sectionOrder = [
+      "home",
+      "tools",
+      "projects",
+      "certs",
+      "about",
+      "support-me",
+      "contact-us",
+    ];
 
     const observerOptions = {
       root: null,
-      rootMargin: "-10% 0px -10% 0px",
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+      rootMargin: "-25% 0px -70% 0px", // 5% strip 25% from top
+      threshold: 0,
+    };
+
+    const handleUpdate = () => {
+      // Find the last section in order that is currently intersecting
+      let latestActive = "home";
+      for (const id of sectionOrder) {
+        if (intersectionStates.current[id]) {
+          latestActive = id;
+        }
+      }
+
+      // Check for bottom of page to force contact active
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100;
+
+      if (isAtBottom) {
+        setActiveSection("contact-us");
+      } else {
+        setActiveSection(latestActive);
+      }
     };
 
     const observer = new IntersectionObserver((entries) => {
-      let maxRatio = 0;
-      let activeEntry = null as IntersectionObserverEntry | null;
-
       entries.forEach((entry) => {
-        const target = entry.target as HTMLElement;
-
-        if (entry.isIntersecting && entry.intersectionRatio >= maxRatio) {
-          maxRatio = entry.intersectionRatio;
-          activeEntry = entry;
-        }
+        intersectionStates.current[entry.target.id.toLowerCase()] =
+          entry.isIntersecting;
       });
-
-      if (activeEntry && activeEntry.isIntersecting) {
-        const target = activeEntry.target as HTMLElement;
-        const sectionId = target.id.toLowerCase();
-
-        if (sectionId) {
-          setActiveSection(sectionId);
-        }
-      } else {
-      }
+      handleUpdate();
     }, observerOptions);
 
     sections.forEach((section) => {
       if (section.id) {
-        console.log(`🔍 Observing section: ${section.id}`);
         observer.observe(section);
-      } else {
-        console.warn("⚠️ Found section without ID:", section);
       }
     });
 
+    // Manual check for initial state and bottom flickering
+    const onScroll = () => {
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100;
+      if (isAtBottom) {
+        setActiveSection("contact-us");
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
     return () => {
-      sections.forEach((section) => {
-        if (section.id) {
-          observer.unobserve(section);
-        }
-      });
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
