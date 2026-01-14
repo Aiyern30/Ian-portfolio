@@ -597,19 +597,40 @@ export default function ProjectsSection() {
                   {/* Image Section */}
                   <div
                     className={cn(
-                      "relative overflow-hidden",
+                      "relative overflow-hidden bg-black/20",
                       isFeatured
                         ? "lg:w-1/2 aspect-[16/10] lg:aspect-auto"
                         : "aspect-[16/10]"
                     )}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a0b2e] via-transparent to-transparent z-10" />
-                    <Image
-                      src={project.imageUrl || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+
+                    {project.livePreviewUrl &&
+                    project.livePreviewUrl.includes("vercel.app") ? (
+                      <div className="w-full h-full relative group/preview">
+                        <iframe
+                          src={project.livePreviewUrl}
+                          className="w-full h-full border-none pointer-events-none scale-[1.01] origin-center opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                          loading="lazy"
+                        />
+                        {/* Live Indicator */}
+                        <div className="absolute top-6 right-6 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                          <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                            Live Preview
+                          </span>
+                        </div>
+                        {/* Shadow over top of iframe to match theme */}
+                        <div className="absolute inset-0 z-[1] shadow-[inset_0_0_100px_rgba(0,0,0,0.4)] pointer-events-none" />
+                      </div>
+                    ) : (
+                      <Image
+                        src={project.imageUrl || "/placeholder.svg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    )}
 
                     {/* Hover Buttons Overlay */}
                     <div className="absolute inset-0 z-20 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/40 backdrop-blur-sm">
