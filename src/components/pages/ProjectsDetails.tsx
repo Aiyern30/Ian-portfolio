@@ -800,36 +800,37 @@ export default function ProjectsSection() {
               </button>
 
               <div className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar flex flex-col">
-                {/* Tab Switcher */}
-                {detailProject.livePreviewUrl && (
-                  <div className="flex items-center justify-center p-4 border-b border-white/5 bg-black/20 backdrop-blur-md">
-                    <div className="flex p-1 bg-white/5 rounded-2xl overflow-hidden border border-white/10">
-                      <button
-                        onClick={() => setModalTab("details")}
-                        className={cn(
-                          "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2",
-                          modalTab === "details"
-                            ? "bg-[#FF9D7A] text-white shadow-lg"
-                            : "text-gray-400 hover:text-white"
-                        )}
-                      >
-                        Case Study
-                      </button>
-                      <button
-                        onClick={() => setModalTab("preview")}
-                        className={cn(
-                          "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2",
-                          modalTab === "preview"
-                            ? "bg-[#FF9D7A] text-white shadow-lg"
-                            : "text-gray-400 hover:text-white"
-                        )}
-                      >
-                        Live Preview{" "}
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                      </button>
+                {/* Tab Switcher - Only show for Vercel projects */}
+                {detailProject.livePreviewUrl &&
+                  detailProject.livePreviewUrl.includes("vercel.app") && (
+                    <div className="flex items-center justify-center p-4 border-b border-white/5 bg-black/20 backdrop-blur-md">
+                      <div className="flex p-1 bg-white/5 rounded-2xl overflow-hidden border border-white/10">
+                        <button
+                          onClick={() => setModalTab("details")}
+                          className={cn(
+                            "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2",
+                            modalTab === "details"
+                              ? "bg-[#FF9D7A] text-white shadow-lg"
+                              : "text-gray-400 hover:text-white"
+                          )}
+                        >
+                          Case Study
+                        </button>
+                        <button
+                          onClick={() => setModalTab("preview")}
+                          className={cn(
+                            "px-6 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2",
+                            modalTab === "preview"
+                              ? "bg-[#FF9D7A] text-white shadow-lg"
+                              : "text-gray-400 hover:text-white"
+                          )}
+                        >
+                          Live Preview{" "}
+                          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
                 {modalTab === "details" ? (
                   <>
