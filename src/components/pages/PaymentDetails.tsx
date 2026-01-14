@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -118,6 +118,18 @@ export default function SupportMe() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
   const { toast } = useToast();
+
+  // Prevent background scrolling when dialog is open
+  useEffect(() => {
+    if (isDialogOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isDialogOpen]);
 
   const handleCopy = (text: string, name: string) => {
     navigator.clipboard.writeText(text);
