@@ -117,89 +117,121 @@ export default function Header({
         </Link>
 
         {/* Desktop Navigation */}
-        <motion.nav
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="hidden lg:block"
-        >
-          <ul className="flex space-x-8">
-            {navItems.map((item) => (
-              <motion.li key={item.section} whileHover={{ y: -2 }}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "relative px-2 py-1 text-[16px] font-medium transition-colors",
-                    activeSection === item.section
-                      ? "text-[#FF9D7A]"
-                      : "text-white hover:text-[#FFD166]"
-                  )}
-                >
-                  {item.name}
-                  {activeSection === item.section && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FF9D7A]"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </Link>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.nav>
+        <div className="hidden xl:flex items-center gap-6">
+          <motion.nav
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <ul className="flex space-x-6">
+              {navItems.map((item) => (
+                <motion.li key={item.section} whileHover={{ y: -2 }}>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "relative px-2 py-1 text-[15px] font-medium transition-colors whitespace-nowrap",
+                      activeSection === item.section
+                        ? "text-[#FF9D7A]"
+                        : "text-white hover:text-[#FFD166]"
+                    )}
+                  >
+                    {item.name}
+                    {activeSection === item.section && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FF9D7A]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.nav>
 
-        {/* Mobile Menu Button & Dropdown */}
-        <div className="relative lg:hidden" ref={menuRef}>
-          <motion.button
+          <motion.a
+            href="/portfolio/Ian Gan Jian Hao.pdf"
+            download="Ian Gan Jian Hao CV.pdf"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-sm hover:shadow-[0_0_20px_rgba(255,157,122,0.4)] transition-all active:scale-95 whitespace-nowrap"
           >
-            <span className="text-sm font-medium text-white">Menu</span>
-            {isMenuOpen ? (
-              <X className="w-4 h-4 text-white" />
-            ) : (
-              <ChevronDown className="w-4 h-4 text-white" />
-            )}
-          </motion.button>
+            Download CV
+          </motion.a>
+        </div>
 
-          {/* Simple Dropdown Menu */}
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-2 w-48 bg-[#320F85]/95 backdrop-blur-md rounded-lg shadow-xl overflow-hidden z-50"
-              >
-                <ul className="py-1">
-                  {navItems.map((item) => (
-                    <li key={item.section}>
-                      <Link
-                        href={item.href}
+        {/* Mobile Menu Button & Dropdown */}
+        <div className="flex xl:hidden items-center gap-4">
+          <motion.a
+            href="/portfolio/Ian Gan Jian Hao.pdf"
+            download="Ian Gan Jian Hao CV.pdf"
+            className="hidden sm:block px-4 py-2 rounded-full bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-xs"
+          >
+            CV
+          </motion.a>
+
+          <div className="relative" ref={menuRef}>
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
+              onClick={toggleMenu}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              <span className="text-sm font-medium text-white">Menu</span>
+              {isMenuOpen ? (
+                <X className="w-4 h-4 text-white" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-white" />
+              )}
+            </motion.button>
+
+            {/* Simple Dropdown Menu */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute right-0 mt-2 w-56 bg-[#320F85]/95 backdrop-blur-md rounded-lg shadow-xl overflow-hidden z-50 border border-white/10"
+                >
+                  <ul className="py-1">
+                    {navItems.map((item) => (
+                      <li key={item.section}>
+                        <Link
+                          href={item.href}
+                          onClick={handleLinkClick}
+                          className={cn(
+                            "block px-4 py-3 text-sm font-medium transition-colors",
+                            activeSection === item.section
+                              ? "bg-white/10 text-[#FF9D7A]"
+                              : "text-white hover:bg-white/5"
+                          )}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="border-t border-white/10 p-2">
+                      <a
+                        href="/portfolio/Ian Gan Jian Hao.pdf"
+                        download="Ian Gan Jian Hao CV.pdf"
+                        className="flex items-center justify-center w-full py-2 rounded-lg bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-sm"
                         onClick={handleLinkClick}
-                        className={cn(
-                          "block px-4 py-2 text-sm transition-colors",
-                          activeSection === item.section
-                            ? "bg-white/10 text-[#FF9D7A]"
-                            : "text-white hover:bg-white/5"
-                        )}
                       >
-                        {item.name}
-                      </Link>
+                        Download CV
+                      </a>
                     </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </header>
