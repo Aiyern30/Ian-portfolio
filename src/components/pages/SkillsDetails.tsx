@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/Marquee";
 import { Tabs, TabsList, TabsTrigger } from "../ui";
 import { useDeviceType } from "@/lib/useDeviceTypes";
+import { User, Sparkles } from "lucide-react";
 
 // About qualities
 const qualities = [
@@ -282,174 +283,205 @@ export default function SkillsDetails() {
   const { isMobile } = useDeviceType();
 
   return (
-    <div className="relative py-16 md:py-24 px-4 md:px-6 text-white">
+    <div className="relative py-24 md:py-32 px-4 md:px-6 overflow-hidden">
+      {/* Background Atmosphere */}
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#763CAC]/15 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute bottom-1/4 -left-20 w-[500px] h-[500px] bg-[#FF9D7A]/10 rounded-full blur-[150px] -z-10" />
+
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* About Section */}
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="text-center mb-20 md:mb-32"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">About Me</h2>
-            <motion.div
-              className="h-1 w-16 bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] mx-auto"
-              initial={{ width: 0 }}
-              animate={{ width: "4rem" }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-              I'm a passionate developer focused on creating fast, responsive,
-              and intuitive web experiences
-            </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
+            <User className="w-4 h-4 text-[#FF9D7A]" />
+            <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
+              The Developer
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {qualities.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ y: -5 }}
-                className={cn(
-                  "group relative rounded-xl overflow-hidden shadow-lg transition-all duration-300",
-                  "bg-gradient-to-br",
-                  item.color,
-                  "hover:shadow-xl"
-                )}
-              >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div
-                    className={cn(
-                      "absolute inset-0 bg-gradient-to-br transition-all duration-300",
-                      item.hoverColor
-                    )}
-                  />
-                </div>
+          <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
+            Crafting Digital <span className="text-[#FF9D7A]">Excellence</span>
+          </h2>
 
-                <div className="relative p-6 flex flex-col items-center text-center z-10">
-                  <div className={cn("p-4 rounded-full mb-4", item.iconBg)}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-white/80">{item.details}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
+            A developer passionate about creating fast, responsive, and
+            intuitive web experiences that leave a lasting impression.
+          </p>
         </motion.div>
 
-        {/* Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">My Tech Stack</h2>
+        {/* Qualities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-32">
+          {qualities.map((item, index) => (
             <motion.div
-              className="h-1 w-16 bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] mx-auto"
-              initial={{ width: 0 }}
-              animate={{ width: "4rem" }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-              Technologies and tools I use to build amazing projects
-            </p>
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group relative"
+            >
+              <div className="relative h-full p-8 md:p-10 bg-[#1a0b2e]/40 border border-white/10 rounded-[2.5rem] backdrop-blur-md overflow-hidden hover:border-[#FF9D7A]/30 transition-all duration-500 shadow-2xl">
+                {/* Gradient Background on Hover */}
+                <div
+                  className={cn(
+                    "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500",
+                    item.color
+                  )}
+                />
+
+                <div
+                  className={cn(
+                    "w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6",
+                    item.iconBg
+                  )}
+                >
+                  {item.icon}
+                </div>
+
+                <h3 className="text-2xl font-bold font-primary mb-4 group-hover:text-[#FF9D7A] transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-400 font-secondary leading-relaxed group-hover:text-gray-300 transition-colors">
+                  {item.details}
+                </p>
+
+                {/* Decorative Element */}
+                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-[#FF9D7A]/20 transition-all duration-500" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Tech Stack Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="relative"
+        >
+          {/* Section Sub-header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <Sparkles className="w-4 h-4 text-[#FF9D7A]" />
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">
+                Tech Ecosystem
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-primary mb-12">
+              My <span className="text-[#FF9D7A]">Stack</span> Architecture
+            </h2>
+
+            {/* Premium Tabs */}
+            {!isMobile && (
+              <div className="flex justify-center mb-12">
+                <div className="inline-flex p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem]">
+                  {["all", "programming", "backend", "tools", "web3"].map(
+                    (tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={cn(
+                          "px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300",
+                          activeTab === tab
+                            ? "bg-[#FF9D7A] text-white shadow-[0_4px_20px_rgba(255,157,122,0.3)]"
+                            : "text-gray-500 hover:text-white"
+                        )}
+                      >
+                        {tab === "programming" ? "Languages" : tab}
+                      </button>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Category Tabs - Only show on desktop */}
-          {!isMobile && (
-            <div className="flex justify-center mb-16">
-              <Tabs
-                value={activeTab}
-                onValueChange={setActiveTab}
-                className="w-full max-w-2xl"
-              >
-                <TabsList className="bg-[#320F85]/40 backdrop-blur-sm grid w-full grid-cols-5 gap-1">
-                  <TabsTrigger value="all">All</TabsTrigger>
-                  <TabsTrigger value="programming">Languages</TabsTrigger>
-                  <TabsTrigger value="backend">Backend</TabsTrigger>
-                  <TabsTrigger value="tools">Tools</TabsTrigger>
-                  <TabsTrigger value="web3">Web3</TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </div>
-          )}
-
-          {/* Marquee/Grid Sections */}
+          {/* Marquee Grids */}
           <div className="space-y-12">
-            {/* Mobile: Always show all, Desktop: Respect activeTab */}
             {(isMobile ||
               activeTab === "all" ||
               activeTab === "programming") && (
-              <div className="relative">
-                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
-                  Programming Languages & Frameworks
-                </h3>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
+                  Languages & Frameworks
+                </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={programmingTech} />
                 ) : (
-                  <Marquee pauseOnHover className="[--duration:30s]">
+                  <Marquee pauseOnHover className="[--duration:40s] py-4">
                     {programmingTech.map((tech) => (
                       <TechCard key={tech.name} tech={tech} />
                     ))}
                   </Marquee>
                 )}
-              </div>
+              </motion.div>
             )}
 
             {(isMobile || activeTab === "all" || activeTab === "backend") && (
-              <div className="relative">
-                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
-                  Databases & Backend Services
-                </h3>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
+                  Databases & Infrastructure
+                </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={backendTech} />
                 ) : (
-                  <Marquee reverse pauseOnHover className="[--duration:25s]">
+                  <Marquee
+                    reverse
+                    pauseOnHover
+                    className="[--duration:35s] py-4"
+                  >
                     {backendTech.map((tech) => (
                       <TechCard key={tech.name} tech={tech} />
                     ))}
                   </Marquee>
                 )}
-              </div>
+              </motion.div>
             )}
 
             {(isMobile || activeTab === "all" || activeTab === "tools") && (
-              <div className="relative">
-                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
-                  Development Tools & Platforms
-                </h3>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
+                  Development Power-Tools
+                </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={toolsTech} />
                 ) : (
-                  <Marquee pauseOnHover className="[--duration:28s]">
+                  <Marquee pauseOnHover className="[--duration:45s] py-4">
                     {toolsTech.map((tech) => (
                       <TechCard key={tech.name} tech={tech} />
                     ))}
                   </Marquee>
                 )}
-              </div>
+              </motion.div>
             )}
 
             {(isMobile || activeTab === "all" || activeTab === "web3") && (
-              <div className="relative">
-                <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
-                  Web3 & Blockchain
-                </h3>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
+                  Web3 & Digital Assets
+                </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={web3Tech} />
                 ) : (
-                  <Marquee reverse pauseOnHover className="[--duration:20s]">
+                  <Marquee
+                    reverse
+                    pauseOnHover
+                    className="[--duration:30s] py-4"
+                  >
                     {web3Tech.map((tech) => (
                       <TechCard key={tech.name} tech={tech} />
                     ))}
                   </Marquee>
                 )}
-              </div>
+              </motion.div>
             )}
           </div>
         </motion.div>
