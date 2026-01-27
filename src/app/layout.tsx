@@ -3,7 +3,7 @@ import "./globals.css";
 import "./custom.css";
 import { PrimeReactProvider } from "primereact/api";
 import { Toaster } from "@/components/ui";
-
+import { Analytics } from "@vercel/analytics/next";
 // import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -57,7 +57,7 @@ export default function RootLayout({
         <body className={inter.className}>
           {/* <CustomCursor /> */}
           <Toaster />
-
+          <Analytics />
           {children}
         </body>
       </html>
