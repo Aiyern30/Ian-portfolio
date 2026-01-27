@@ -24,7 +24,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
     <motion.div
       className={`bg-gradient-to-br from-gray-900 to-gray-950 border-2 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 ${
         selected
-          ? "border-[#FF9D7A] shadow-[#FF9D7A]/20"
+          ? "border-[#763CAC] shadow-[#763CAC]/20"
           : "border-gray-800 hover:border-gray-700"
       }`}
       initial={{ opacity: 0, scale: 0.8 }}
@@ -36,7 +36,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       <Handle
         type="target"
         position={Position.Top}
-        className="w-3 h-3 !bg-[#FF9D7A] border-2 border-gray-900"
+        className="w-3 h-3 !bg-[#763CAC] border-2 border-gray-900"
       />
 
       {/* Project Image */}
@@ -59,7 +59,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       {/* Project Content */}
       <div className="p-5 space-y-3">
         {/* Category Badge */}
-        <Badge className="bg-[#FF9D7A]/10 text-[#FF9D7A] border-[#FF9D7A]/30">
+        <Badge className="bg-[#763CAC]/10 text-[#763CAC] border-[#763CAC]/30">
           {data.category}
         </Badge>
 
@@ -93,7 +93,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
               href={data.livePreviewUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-[#FF9D7A] hover:bg-[#ff8a5f] text-white rounded-lg transition-colors duration-200 text-sm font-medium"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-[#763CAC] hover:bg-[#9D50BB] text-white rounded-lg transition-colors duration-200 text-sm font-medium"
               onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink className="w-4 h-4" />
@@ -117,7 +117,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       <Handle
         type="source"
         position={Position.Bottom}
-        className="w-3 h-3 !bg-[#FFD166] border-2 border-gray-900"
+        className="w-3 h-3 !bg-[#B794F4] border-2 border-gray-900"
       />
     </motion.div>
   );
