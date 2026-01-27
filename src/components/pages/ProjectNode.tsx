@@ -31,7 +31,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
-      style={{ width: 350, minHeight: 420 }}
+      style={{ width: 450, minHeight: 550 }}
     >
       <Handle
         type="target"
@@ -40,7 +40,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       />
 
       {/* Project Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-gray-950">
+      <div className="relative h-64 w-full overflow-hidden bg-gray-950">
         <Image
           src={data.imageUrl}
           alt={data.title}
@@ -74,8 +74,8 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
         </p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1.5 max-h-16 overflow-hidden">
-          {data.label.slice(0, 4).map((tech, idx) => (
+        <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
+          {data.label.map((tech, idx) => (
             <Badge
               key={idx}
               variant="outline"
@@ -84,14 +84,6 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
               {tech}
             </Badge>
           ))}
-          {data.label.length > 4 && (
-            <Badge
-              variant="outline"
-              className="text-xs border-gray-700 text-gray-400 bg-gray-900/50"
-            >
-              +{data.label.length - 4}
-            </Badge>
-          )}
         </div>
 
         {/* Action Buttons */}
