@@ -15,6 +15,7 @@ const navItems = [
   { name: "Home", href: "/", section: "home" },
   { name: "Tools", href: "/#tools", section: "tools" },
   { name: "Projects", href: "/#projects", section: "projects" },
+  { name: "Archive", href: "/Projects", section: "Projects" },
   { name: "Certificates", href: "/#certs", section: "certs" },
   { name: "About", href: "/#about", section: "about" },
   { name: "Support Me", href: "/#support-me", section: "support-me" },
@@ -33,9 +34,14 @@ export default function Header({
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Determine which section is active:
-  // 1. If we're on /Journey, that's active.
+  // 1. If we're on /Journey or /Projects, that's active.
   // 2. Otherwise use the prop passed from observer.
-  const activeSection = pathname === "/Journey" ? "Journey" : activeSectionProp;
+  const activeSection =
+    pathname === "/Journey"
+      ? "Journey"
+      : pathname === "/Projects"
+      ? "Projects"
+      : activeSectionProp;
 
   // Handle clicks outside the menu to close it
   useEffect(() => {

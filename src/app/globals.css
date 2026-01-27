@@ -8,6 +8,46 @@
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
 
+/* React Flow Custom Styles */
+.react-flow__node {
+  cursor: grab;
+}
+
+.react-flow__node.selected {
+  box-shadow: 0 0 0 2px #FF9D7A;
+}
+
+.react-flow__edge-path {
+  stroke: #FF9D7A;
+  stroke-width: 2;
+}
+
+.react-flow__controls {
+  background: rgb(17 24 39 / 0.95);
+  border: 1px solid rgb(55 65 81);
+  border-radius: 0.5rem;
+}
+
+.react-flow__controls-button {
+  background: rgb(31 41 55);
+  border-bottom: 1px solid rgb(55 65 81);
+  color: white;
+}
+
+.react-flow__controls-button:hover {
+  background: rgb(55 65 81);
+}
+
+.react-flow__minimap {
+  background: rgb(17 24 39 / 0.95);
+  border: 1px solid rgb(55 65 81);
+  border-radius: 0.5rem;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
