@@ -40,8 +40,8 @@ export default function Header({
     pathname === "/Journey"
       ? "Journey"
       : pathname === "/Projects"
-      ? "Projects"
-      : activeSectionProp;
+        ? "Projects"
+        : activeSectionProp;
 
   // Handle clicks outside the menu to close it
   useEffect(() => {
@@ -104,7 +104,7 @@ export default function Header({
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-[#320F85]/90 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-5"
+          : "bg-transparent py-5",
       )}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
@@ -138,7 +138,7 @@ export default function Header({
                       "relative px-2 py-1 text-[15px] font-medium transition-colors whitespace-nowrap",
                       activeSection === item.section
                         ? "text-[#FF9D7A]"
-                        : "text-white hover:text-[#FFD166]"
+                        : "text-white hover:text-[#FFD166]",
                     )}
                   >
                     {item.name}
@@ -216,7 +216,7 @@ export default function Header({
                             "block px-4 py-3 text-sm font-medium transition-colors",
                             activeSection === item.section
                               ? "bg-white/10 text-[#FF9D7A]"
-                              : "text-white hover:bg-white/5"
+                              : "text-white hover:bg-white/5",
                           )}
                         >
                           {item.name}

@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 import { Search, X, Filter, Grid3x3, Workflow } from "lucide-react";
 import { Input, Badge, Button } from "@/components/ui";
 
-// Project data
+// Project data - Showing 2 example projects
 const projects = [
   {
     id: "1",
@@ -75,359 +75,25 @@ const projects = [
     githubRepo: "https://github.com/Aiyern30/SpotWave",
     year: "2024",
   },
-  {
-    id: "3",
-    title: "YTL Cement IT Department",
-    label: [
-      "Power BI",
-      "Microsoft Report Builder",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "NextJS",
-      "PrimeReact",
-      "SCSS",
-      "apollo client",
-      "graphql",
-      "pino",
-      "pupeeter",
-    ],
-    category: "Enterprise",
-    description:
-      "Recently, I joined the YTL Cement IT department, focusing on developing an e-invoice system. The system manages driver e-invoices and supports role-based access for submitting documents to LHDN.",
-    imageUrl: "/Dos-portal.png",
-    livePreviewUrl: "https://dos.uat4ytlcement.com/",
-    githubRepo: null,
-    year: "2024",
-  },
-  {
-    id: "4",
-    title: "Sino Mobile and Heavy Equipment (SMHE)",
-    label: [
-      "NextJS",
-      "Tailwind CSS",
-      "React",
-      "TypeScript",
-      "Google Maps API",
-      "Framer Motion",
-      "Strapi",
-    ],
-    category: "Website",
-    description:
-      "Developed the landing page for the Sino Mobile and Heavy Equipment (SMHE) website, focusing on showcasing trucks for sale. Key features include a Media Center, About Us section, and detailed truck pages.",
-    imageUrl: "/SMHE.png",
-    livePreviewUrl: "https://smhe.my",
-    githubRepo: null,
-    year: "2024",
-  },
-  {
-    id: "5",
-    title: "ScorePanda (Niu Niu & Number Solver)",
-    label: [
-      "NextJS",
-      "React",
-      "Framer Motion",
-      "Vercel",
-      "TypeScript",
-      "Shadcn UI",
-    ],
-    category: "Web Application",
-    description:
-      "ScorePanda is a specialized gaming utility platform featuring a Niu Niu hand verifier and a Number Solver. The Niu Niu tool is designed to help players accurately identify their best possible scores.",
-    imageUrl: "/ScorePanda.png",
-    livePreviewUrl: "https://score-panda.vercel.app/",
-    githubRepo: "https://github.com/Aiyern30/ScorePanda",
-    year: "2024",
-  },
-  {
-    id: "6",
-    title: "Nutrition Tracker (Eat Smart AI)",
-    label: [
-      "Gemini 1.5 Pro",
-      "Baidu Ernie 5.0",
-      "NextJS",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Shadcn UI",
-      "Framer Motion",
-      "Lucide React",
-      "Recharts",
-      "Supabase",
-      "OpenAI",
-    ],
-    category: "Web Application",
-    description:
-      "Eat Smart AI is a sophisticated nutrition management platform. It leverages AI Image Recognition to detect food and macros from meal photos, natural language processing for text-based meal logging.",
-    imageUrl: "/EatSmartAI.png",
-    livePreviewUrl: "https://eat-smart-ai.vercel.app",
-    githubRepo: "https://github.com/Aiyern30/nutrition-tracker",
-    year: "2024",
-  },
-  {
-    id: "7",
-    title: "RY Electric Works (Company Profile)",
-    label: [
-      "NextJS",
-      "Cloudflare Workers",
-      "React",
-      "Tailwind CSS",
-      "Multi-language",
-      "Lucide React",
-    ],
-    category: "Website",
-    description:
-      "A professional, multilingual company profile for RY Electric Works. The platform showcases specialized electrical services including Internal Electrical Wiring, Telekom Works, and Street lighting.",
-    imageUrl: "/RY-electrics.png",
-    livePreviewUrl: "https://ry-electric-works.ryelectric828.workers.dev/",
-    githubRepo: "",
-    year: "2023",
-  },
-  {
-    id: "8",
-    title: "Gamer Token Hub (Web3 NFT Marketplace)",
-    label: [
-      "NextJS",
-      "Tailwind CSS",
-      "Framer Motion",
-      "React",
-      "TypeScript",
-      "Vercel",
-      "ethers.js",
-      "RainbowKit",
-      "React Hook Form",
-      "Zod",
-      "IPFS",
-      "Pinata",
-    ],
-    category: "Web Application",
-    description:
-      "Gamer Token Hub is a decentralized NFT marketplace built on the Sepolia test network. It allows users to create and manage NFT collections, mint NFTs with custom metadata, list and purchase NFTs.",
-    imageUrl: "/GamerTokenHub.png",
-    livePreviewUrl: "https://gamertokenhub.vercel.app/",
-    githubRepo: "https://github.com/Aiyern30/blockchain-fe",
-    year: "2023",
-  },
-  {
-    id: "9",
-    title: "Reka Konsult Company Profile",
-    label: [
-      "NextJS",
-      "Tailwind CSS",
-      "React",
-      "Vercel",
-      "TypeScript",
-      "Shadcn UI",
-      "Heroicons",
-      "EmailJS",
-      "Leaflet",
-      "Lucide react",
-      "Google Maps API",
-    ],
-    category: "Website",
-    description:
-      "The Reka Konsult Company Profile is a comprehensive showcase of our company's vision, values, and services. This web application serves as an engaging platform to inform potential clients.",
-    imageUrl: "/Reka-Konsult.png",
-    livePreviewUrl: "https://reka-konsult.vercel.app/",
-    githubRepo: "https://github.com/Aiyern30/reka-konsult",
-    year: "2023",
-  },
-  {
-    id: "10",
-    title: "Children's Respite Home KL",
-    label: [
-      "NextJS",
-      "Tailwind CSS",
-      "Framer Motion",
-      "React",
-      "TypeScript",
-      "Shadcn UI",
-      "Cloudflare",
-    ],
-    category: "Website",
-    description:
-      "A freelance project developed for a Malaysia-based community respite care centre for children with special needs. The website showcases the organization's mission, services, and facilities.",
-    imageUrl: "/ChildrenRespiteHomeKL.png",
-    livePreviewUrl: "https://childrenrespitehomekl.com/",
-    githubRepo: "",
-    year: "2024",
-  },
-  {
-    id: "11",
-    title: "LiveSportsNow",
-    label: [
-      "NextAuth",
-      "NextJS",
-      "Tailwind CSS",
-      "React",
-      "Vercel",
-      "TypeScript",
-      "Shadcn UI",
-      "Lucide react",
-      "Football API",
-    ],
-    category: "Web Application",
-    description:
-      "LiveSportsNow is a comprehensive sports platform that allows users to view real-time scores, standings, team details, and stats across multiple sports, including NBA, NFL, Soccer, and more.",
-    imageUrl: "/LiveSportsNow.png",
-    livePreviewUrl: "https://livesportsnow.vercel.app/NBA",
-    githubRepo: "https://github.com/Aiyern30/LiveSportsNow.git",
-    year: "2024",
-  },
-  {
-    id: "12",
-    title: "Expenses Tracker (SplitTrack)",
-    label: [
-      "Firebase",
-      "NextAuth",
-      "NextJS",
-      "Tailwind CSS",
-      "React",
-      "Vercel",
-      "TypeScript",
-      "Shadcn UI",
-      "Lucide react",
-    ],
-    category: "Web Application",
-    description:
-      "The Expenses Tracker is a robust application designed to help users efficiently manage their finances. Track your expenses daily, monthly, and yearly, and gain detailed insights into your spending habits.",
-    imageUrl: "/Split-Track.png",
-    livePreviewUrl: "https://split-track.vercel.app/",
-    githubRepo: "https://github.com/Aiyern30/SplitTrack",
-    year: "2023",
-  },
-  {
-    id: "13",
-    title: "Ethereum KL 2024 Hackathon (SassyDispute)",
-    label: [
-      "Solidity",
-      "Hardhat",
-      "OpenZeppelin",
-      "ERC 20",
-      "NextJS",
-      "React",
-      "Framer motion",
-      "Tailwind CSS",
-      "TypeScript",
-      "Shadcn UI",
-      "emailjs",
-      "Lucide-react",
-      "react-cofetti",
-      "Pinata API",
-      "Alchemy Node API",
-    ],
-    category: "Hackathon",
-    description:
-      "SassyDispute is a platform that allows Web2/Web3 e-commerce websites to share and bridge their dispute cases via IPFS, facilitating decentralized conversations and resolutions.",
-    imageUrl: "/ETHKL.png",
-    livePreviewUrl: "https://sassy-dispute.vercel.app/",
-    githubRepo: "https://github.com/FramedStone/SassyDispute",
-    year: "2024",
-  },
-  {
-    id: "14",
-    title: "Canva Hackathon (Poll Generator)",
-    label: [
-      "React",
-      "NextJS",
-      "Canva App SDK",
-      "quickChart API",
-      "qrcode API",
-      "Poll API",
-      "Amazon AWS",
-      "Vercel",
-      "Tailwind Css",
-      "TypeScript",
-      "Magic UI",
-      "Shadcn UI",
-      "Material UI",
-    ],
-    category: "Hackathon",
-    description:
-      "Poll Generator is a Canva-integrated platform that simplifies poll and survey creation while providing real-time data visualization. Users can design visually appealing surveys.",
-    imageUrl: "/Canva.jpg",
-    livePreviewUrl: "https://devpost.com/software/canva-dx620n",
-    githubRepo: "https://github.com/Aiyern30/Canva-Hackathon",
-    year: "2024",
-  },
-  {
-    id: "15",
-    title: "Google Cloud Vertex AI Agent Builder Hackathon",
-    label: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Python",
-      "Flask",
-      "EC2",
-      "Google Cloud SDK",
-      "Google Cloud IAM Service Account",
-      "Vertex AI API",
-      "Gemini-1.0-Pro-Version-001 Model",
-      "bootstrap",
-      "Tailwind CSS",
-    ],
-    category: "Hackathon",
-    description:
-      "PythonGPT is a dynamic website designed to teach beginners how to code in Python. It offers Python documentation, Python code implementation examples, Python exercises, AI Chatbot Assistance.",
-    imageUrl: "/PythonAI.jpg",
-    livePreviewUrl: "https://devpost.com/software/pythongpt",
-    githubRepo: "https://github.com/AcruxN/vertex_PythonGPT/",
-    year: "2024",
-  },
-  {
-    id: "16",
-    title: "Devmatch Hackathon (VoteChain)",
-    label: [
-      "Solidity",
-      "React",
-      "Metamask",
-      "NextJS",
-      "Hardhat",
-      "EmailJS",
-      "Tailwind Css",
-      "TypeScript",
-      "Shadcn UI",
-    ],
-    category: "Hackathon",
-    description:
-      "Decentralized voting technology reduces costs by eliminating the need for physical polling places and allows remote voting, boosting democratic participation.",
-    imageUrl: "/Devmatch.png",
-    livePreviewUrl:
-      "https://devfolio.co/projects/decentralized-voting-system-peyouth-aa44",
-    githubRepo:
-      "https://github.com/Aiyern30/Voting-System-DevMatch-Hackathon-",
-    year: "2023",
-  },
 ];
 
 // Extract unique categories
 const allCategories = Array.from(
-  new Set(projects.map((project) => project.category))
+  new Set(projects.map((project) => project.category)),
 );
 
-// Calculate initial node positions in a scattered grid
+// Calculate initial node positions - optimized for 2 projects
 const calculateNodePositions = (projectsData: typeof projects) => {
-  const columns = 4;
   const nodeWidth = 380;
-  const nodeHeight = 500;
-  const horizontalSpacing = 100;
-  const verticalSpacing = 150;
+  const horizontalSpacing = 200;
 
   return projectsData.map((project, index) => {
-    const row = Math.floor(index / columns);
-    const col = index % columns;
-    
-    // Add some randomness for organic feel
-    const randomX = (Math.random() - 0.5) * 50;
-    const randomY = (Math.random() - 0.5) * 50;
-
     return {
       id: project.id,
       type: "projectNode",
       position: {
-        x: col * (nodeWidth + horizontalSpacing) + randomX,
-        y: row * (nodeHeight + verticalSpacing) + randomY,
+        x: index * (nodeWidth + horizontalSpacing) + 100,
+        y: 100,
       },
       data: {
         ...project,
@@ -439,7 +105,7 @@ const calculateNodePositions = (projectsData: typeof projects) => {
 // Generate edges connecting similar projects
 const generateEdges = (projectsData: typeof projects): Edge[] => {
   const edges: Edge[] = [];
-  
+
   projectsData.forEach((project, i) => {
     // Connect to next project if same category
     const nextIndex = i + 1;
@@ -456,7 +122,7 @@ const generateEdges = (projectsData: typeof projects): Edge[] => {
       }
     }
   });
-  
+
   return edges;
 };
 
@@ -472,7 +138,7 @@ export default function ProjectsPage() {
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.label.some((tech) =>
-          tech.toLowerCase().includes(searchTerm.toLowerCase())
+          tech.toLowerCase().includes(searchTerm.toLowerCase()),
         );
 
       const matchesCategory = selectedCategory
@@ -485,12 +151,12 @@ export default function ProjectsPage() {
 
   const initialNodes = useMemo(
     () => calculateNodePositions(filteredProjects),
-    [filteredProjects]
+    [filteredProjects],
   );
 
   const initialEdges = useMemo(
     () => generateEdges(filteredProjects),
-    [filteredProjects]
+    [filteredProjects],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -498,7 +164,7 @@ export default function ProjectsPage() {
 
   const onConnect = useCallback(
     (params: Connection) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
+    [setEdges],
   );
 
   const nodeTypes = useMemo(() => ({ projectNode: ProjectNode }), []);
