@@ -31,7 +31,7 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
-      style={{ width: 450, minHeight: 550 }}
+      style={{ width: 450, minHeight: "auto" }}
     >
       <Handle
         type="target"
@@ -69,12 +69,12 @@ function ProjectNode({ data, selected }: NodeProps<ProjectNodeData>) {
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-400 line-clamp-3 leading-relaxed">
+        <p className="text-sm text-gray-400 leading-relaxed">
           {data.description}
         </p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
+        <div className="flex flex-wrap gap-1.5">
           {data.label.map((tech, idx) => (
             <Badge
               key={idx}

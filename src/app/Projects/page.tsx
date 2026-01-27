@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import ReactFlow, {
   Background,
   Controls,
@@ -15,7 +15,17 @@ import type { Node, Edge, Connection } from "reactflow";
 import "reactflow/dist/style.css";
 import ProjectNode from "@/components/pages/ProjectNode";
 import { motion } from "framer-motion";
-import { Search, X, Filter, Grid3x3, Workflow } from "lucide-react";
+import {
+  Search,
+  X,
+  Filter,
+  RotateCcw,
+  Lock,
+  Unlock,
+  ZoomIn,
+  ZoomOut,
+  Maximize2,
+} from "lucide-react";
 import { Input, Badge, Button } from "@/components/ui";
 import { projects as projectsData } from "@/data/projects";
 
@@ -34,9 +44,9 @@ const allCategories = Array.from(
 // Calculate initial node positions - optimized for all projects
 const calculateNodePositions = (projectsData: typeof projects) => {
   const nodeWidth = 450;
-  const nodeHeight = 550;
+  const nodeHeight = 700; // Increased to accommodate full descriptions and all badges
   const horizontalSpacing = 250;
-  const verticalSpacing = 150;
+  const verticalSpacing = 250; // Increased vertical spacing
   const nodesPerRow = 3;
 
   return projectsData.map((project, index) => {
@@ -57,34 +67,19 @@ const calculateNodePositions = (projectsData: typeof projects) => {
   });
 };
 
-// Generate edges connecting similar projects
+// Generate edges - disabled to keep the view clean
+// You can manually connect nodes if needed
 const generateEdges = (projectsData: typeof projects): Edge[] => {
-  const edges: Edge[] = [];
-
-  projectsData.forEach((project, i) => {
-    // Connect to next project if same category
-    const nextIndex = i + 1;
-    if (nextIndex < projectsData.length) {
-      const nextProject = projectsData[nextIndex];
-      if (project.category === nextProject.category) {
-        edges.push({
-          id: `e${project.id}-${nextProject.id}`,
-          source: project.id,
-          target: nextProject.id,
-          animated: true,
-          style: { stroke: "#FF9D7A40", strokeWidth: 2 },
-        });
-      }
-    }
-  });
-
-  return edges;
+  return []; // No automatic edges
 };
 
 export default function ProjectsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"flow" | "grid">("flow");
+  const [zoom, setZoom] = useState(0.6);
+  const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
+  const [isLocked, setIsLocked] = useState(false);
 
   // Filter projects
   const filteredProjects = useMemo(() => {
@@ -130,6 +125,45 @@ export default function ProjectsPage() {
     setEdges(generateEdges(filteredProjects));
   }, [filteredProjects, setNodes, setEdges]);
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === "f" || e.key === "F") {
+        // Fit view to all nodes
+        reactFlowInstance?.fitView({ padding: 0.2, duration: 800 });
+      }
+      if (e.key === "l" || e.key === "L") {
+        // Toggle lock/unlock nodes
+        setIsLocked((prev) => !prev);
+      }
+      if (e.key === "Escape") {
+        // Clear search and filters
+        setSearchTerm("");
+        setSelectedCategory(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [reactFlowInstance]);
+
+  const handleResetView = () => {
+    reactFlowInstance?.fitView({ padding: 0.2, duration: 800 });
+    setSearchTerm("");
+    setSelectedCategory(null);
+  };
+
+  const handleZoomIn = () => {
+    reactFlowInstance?.zoomIn({ duration: 300 });
+  };
+
+  const handleZoomOut = () => {
+    reactFlowInstance?.zoomOut({ duration: 300 });
+  };
+
+  const handleFitView = () => {
+    reactFlowInstance?.fitView({ padding: 0.2, duration: 800 });
+  };
+
   return (
     <div className="h-screen w-full bg-gradient-to-br from-gray-950 via-gray-900 to-black">
       <ReactFlow
@@ -139,6 +173,9 @@ export default function ProjectsPage() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         nodeTypes={nodeTypes}
+        nodesDraggable={!isLocked}
+        onInit={setReactFlowInstance}
+        onMove={(_, viewport) => setZoom(viewport.zoom)}
         fitView
         minZoom={0.1}
         maxZoom={1.5}
@@ -150,11 +187,13 @@ export default function ProjectsPage() {
           size={1}
           color="#374151"
         />
-        <Controls className="!bg-gray-900 !border-gray-700" />
+        {/* Removed default Controls - using custom panel instead */}
         <MiniMap
-          className="!bg-gray-900 !border-gray-700"
+          className="!bg-gray-900 !border-gray-700 !rounded-lg"
           nodeColor="#FF9D7A"
           maskColor="rgba(0, 0, 0, 0.6)"
+          zoomable
+          pannable
         />
 
         {/* Header Panel */}
@@ -233,6 +272,122 @@ export default function ProjectsPage() {
             </div>
           </motion.div>
         </Panel>
+
+        {/* Zoom Indicator & Controls */}
+        <Panel position="bottom-left" className="m-4 space-y-2">
+          {/* Zoom Controls */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-gray-900/90 backdrop-blur rounded-lg border border-gray-800 overflow-hidden"
+          >
+            <button
+              onClick={handleZoomIn}
+              className="w-full px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white transition-all border-b border-gray-800 flex items-center justify-center"
+              title="Zoom In"
+            >
+              <ZoomIn className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleZoomOut}
+              className="w-full px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white transition-all border-b border-gray-800 flex items-center justify-center"
+              title="Zoom Out"
+            >
+              <ZoomOut className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleFitView}
+              className="w-full px-3 py-2 text-gray-300 hover:bg-gray-800 hover:text-white transition-all border-b border-gray-800 flex items-center justify-center"
+              title="Fit View (F)"
+            >
+              <Maximize2 className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setIsLocked(!isLocked)}
+              className={`w-full px-3 py-2 transition-all flex items-center justify-center ${
+                isLocked
+                  ? "bg-[#FF9D7A] text-white hover:bg-[#ff8a5f]"
+                  : "text-gray-300 hover:bg-gray-800 hover:text-white"
+              }`}
+              title={isLocked ? "Unlock Nodes (L)" : "Lock Nodes (L)"}
+            >
+              {isLocked ? (
+                <Lock className="w-4 h-4" />
+              ) : (
+                <Unlock className="w-4 h-4" />
+              )}
+            </button>
+          </motion.div>
+
+          {/* Zoom Indicator */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.05 }}
+            className="bg-gray-900/90 backdrop-blur px-3 py-2 rounded-lg border border-gray-800 text-sm text-gray-300 text-center"
+          >
+            {(zoom * 100).toFixed(0)}%
+          </motion.div>
+
+          {/* Reset Button */}
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.1 }}
+            onClick={handleResetView}
+            className="w-full flex items-center justify-center gap-2 bg-gray-900/90 backdrop-blur px-3 py-2 rounded-lg border border-gray-800 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-all"
+            title="Reset view and clear filters (F)"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </motion.button>
+
+          {/* Keyboard Shortcuts */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.15 }}
+            className="bg-gray-900/90 backdrop-blur px-3 py-2 rounded-lg border border-gray-800 text-xs text-gray-400 space-y-1"
+          >
+            <div className="font-semibold text-gray-300 mb-1">Shortcuts:</div>
+            <div>
+              <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">F</kbd> Fit
+              view
+            </div>
+            <div>
+              <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">L</kbd>{" "}
+              {isLocked ? "Unlock" : "Lock"}
+            </div>
+            <div>
+              <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">ESC</kbd> Clear
+            </div>
+          </motion.div>
+        </Panel>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <Panel position="top-center" className="mt-32">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-gray-900/95 backdrop-blur-lg border border-gray-800 rounded-xl p-8 shadow-2xl text-center max-w-md"
+            >
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold text-white mb-2">
+                No Projects Found
+              </h3>
+              <p className="text-gray-400 mb-4">
+                No projects match your current filters. Try adjusting your
+                search or category selection.
+              </p>
+              <button
+                onClick={handleResetView}
+                className="px-4 py-2 bg-[#FF9D7A] hover:bg-[#ff8a5f] text-white rounded-lg transition-colors font-medium"
+              >
+                Clear All Filters
+              </button>
+            </motion.div>
+          </Panel>
+        )}
 
         {/* React Flow Attribution */}
         <Panel position="bottom-right" className="m-4">
