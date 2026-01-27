@@ -14,6 +14,8 @@ import {
   Laptop,
   Globe,
   Loader2,
+  Workflow,
+  Sparkles,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -21,6 +23,7 @@ import { useDeviceType } from "@/lib/useDeviceTypes";
 import { Badge, Button, Input } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
+import Link from "next/link";
 
 // Extract all unique technologies and categories
 const allTechnologies = Array.from(
@@ -152,6 +155,23 @@ export default function ProjectsSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
+            {/* Explore Interactive Flow Button */}
+            <Link href="/Projects">
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative px-6 py-3 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-xl font-bold overflow-hidden transition-all hover:shadow-[0_0_30px_#763CAC66] flex items-center gap-2"
+              >
+                <Workflow className="w-5 h-5" />
+                <span className="relative z-10">Explore Interactive Flow</span>
+                <Sparkles className="w-4 h-4 animate-pulse" />
+                <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              </motion.button>
+            </Link>
+
             {/* Search Box */}
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-xl blur opacity-0 group-focus-within:opacity-20 transition duration-500" />
@@ -474,6 +494,36 @@ export default function ProjectsSection() {
               Showing {displayedProjects.length} of {filteredProjects.length}{" "}
               projects
             </p>
+
+            {/* Interactive Flow CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-8 p-8 bg-gradient-to-br from-[#763CAC]/10 to-[#FF9D7A]/10 border border-[#FF9D7A]/20 rounded-2xl max-w-2xl text-center"
+            >
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Workflow className="w-6 h-6 text-[#FF9D7A]" />
+                <h3 className="text-2xl font-bold text-white">
+                  Interactive Project Explorer
+                </h3>
+              </div>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Explore all {projects.length} projects in an interactive flow
+                diagram! Drag, zoom, and navigate through my portfolio with an
+                immersive visual experience.
+              </p>
+              <Link href="/Projects">
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-full font-bold overflow-hidden transition-all hover:shadow-[0_0_40px_#763CAC88] flex items-center gap-3 mx-auto">
+                  <Sparkles className="w-5 h-5 animate-pulse" />
+                  <span className="relative z-10">
+                    Launch Interactive Explorer
+                  </span>
+                  <ExternalLink className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+                </button>
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </div>
