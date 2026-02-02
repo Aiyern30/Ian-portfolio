@@ -95,6 +95,29 @@ export const projects = [
     githubRepo: null,
   },
   {
+    title: "Eat What? (Smart Food Finder App)",
+    label: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "React",
+      "Google Maps API",
+      "NextAuth",
+      "Zod",
+      "React Hook Form",
+      "Recharts",
+      "Vercel",
+    ],
+    category: "Web Application",
+    description:
+      "Eat What? is a modern, interactive food discovery web application designed to help users decide what to eat effortlessly. Built with Next.js and Google Maps, the app allows users to explore nearby restaurants on an interactive map, apply smart filters such as cuisine, price range, and open status, and save favorite places using Google authentication. A fun gamified 'Spin the Wheel' feature adds randomness to decision-making, making food choices simple, fast, and enjoyable across all devices.",
+    imageUrl: "/eat-what.png",
+    livePreviewUrl: "https://eatwhatlah.vercel.app/",
+    githubRepo: "",
+  },
+
+  {
     title: "ScorePanda (Niu Niu & Number Solver)",
     label: [
       "NextJS",
