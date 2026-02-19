@@ -73,7 +73,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification code
+    google: "az6hautV36bdjAB3V9ts7xg7D0doNNnHog54QpjKsTQ",
     // yandex: "your-yandex-verification-code",
     // bing: "your-bing-verification-code",
   },
@@ -88,6 +88,12 @@ export default function RootLayout({
     <PrimeReactProvider>
       <html lang="en">
         <head>
+          {/* Google Site Verification */}
+          <meta
+            name="google-site-verification"
+            content="az6hautV36bdjAB3V9ts7xg7D0doNNnHog54QpjKsTQ"
+          />
+
           {/* Favicon */}
           <link
             rel="icon"
