@@ -73,7 +73,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "az6hautV36bdjAB3V9ts7xg7D0doNNnHog54QpjKsTQ",
+    google: "_FFjqiZ81ovs7By86j2PL8yGgjMNzm3F19Y7GnOQjVA",
     // yandex: "your-yandex-verification-code",
     // bing: "your-bing-verification-code",
   },
@@ -91,7 +91,7 @@ export default function RootLayout({
           {/* Google Site Verification */}
           <meta
             name="google-site-verification"
-            content="az6hautV36bdjAB3V9ts7xg7D0doNNnHog54QpjKsTQ"
+            content="_FFjqiZ81ovs7By86j2PL8yGgjMNzm3F19Y7GnOQjVA"
           />
 
           {/* Favicon */}
