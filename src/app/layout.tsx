@@ -9,8 +9,74 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ian's Portfolio",
-  description: "Created by Ian",
+  title:
+    "Ian Gan - Full Stack Developer Portfolio | Web Development & Software Engineering",
+  description:
+    "Explore Ian Gan's portfolio showcasing full-stack web development projects, software engineering skills, and professional journey. Specializing in React, Next.js, TypeScript, and modern web technologies.",
+  keywords: [
+    "Ian Gan",
+    "Full Stack Developer",
+    "Web Developer",
+    "Software Engineer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "JavaScript",
+    "Portfolio",
+    "Web Development",
+    "Frontend Developer",
+    "Backend Developer",
+    "UI/UX",
+    "Responsive Design",
+    "Software Engineering",
+  ],
+  authors: [{ name: "Ian Gan" }],
+  creator: "Ian Gan",
+  publisher: "Ian Gan",
+  metadataBase: new URL("https://your-domain.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ian-gan.vercel.app",
+    title: "Ian Gan - Full Stack Developer Portfolio",
+    description:
+      "Explore Ian Gan's portfolio showcasing full-stack web development projects, software engineering skills, and professional journey.",
+    siteName: "Ian Gan Portfolio",
+    images: [
+      {
+        url: "/Logo/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Ian Gan Portfolio Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Ian Gan - Full Stack Developer Portfolio",
+    description:
+      "Explore my portfolio showcasing full-stack web development projects and software engineering skills.",
+    images: ["/Logo/android-chrome-512x512.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification code
+    // yandex: "your-yandex-verification-code",
+    // bing: "your-bing-verification-code",
+  },
 };
 
 export default function RootLayout({
@@ -52,6 +118,39 @@ export default function RootLayout({
             href="/Logo/android-chrome-512x512.png"
             sizes="512x512"
             type="image/png"
+          />
+
+          {/* JSON-LD Structured Data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Ian Gan",
+                url: "https://ian-gan.vercel.app",
+                image: "/Logo/android-chrome-512x512.png",
+                jobTitle: "Full Stack Developer",
+                description:
+                  "Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies",
+                sameAs: [
+                  "https://www.linkedin.com/in/ian-gan-346547279/",
+                  "https://github.com/Aiyern30",
+                  "https://discord.gg/eEzxaxPR2d",
+                ],
+                knowsAbout: [
+                  "Web Development",
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "JavaScript",
+                  "Full Stack Development",
+                  "Frontend Development",
+                  "Backend Development",
+                  "UI/UX Design",
+                ],
+              }),
+            }}
           />
         </head>
         <body className={inter.className}>

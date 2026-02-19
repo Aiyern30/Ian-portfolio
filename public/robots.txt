@@ -1,0 +1,16 @@
+# robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ian-gan.vercel.app/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow specific paths if needed (examples):
+# Disallow: /api/
+# Disallow: /_next/
+# Disallow: /admin/
