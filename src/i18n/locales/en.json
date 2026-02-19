@@ -1,0 +1,169 @@
+{
+  "hero": {
+    "greeting": "Hello, I'm",
+    "firstName": "Ian Gan",
+    "lastName": "Jian Hao",
+    "tagline": "Crafting exceptional digital experiences where design meets flawless implementation.",
+    "availableForProjects": "Available for New Projects",
+    "learnMore": "Learn more about my journey",
+    "scroll": "Scroll",
+    "tabs": {
+      "developer": "Developer",
+      "designer": "Designer",
+      "student": "Student"
+    },
+    "developerTitle": "Full-stack Developer",
+    "designerTitle": "UI/UX Designer",
+    "studentTitle": "Computer Science Student",
+    "developerDescription": "I specialize in creating modern, responsive web applications using cutting-edge technologies. From concept to deployment, I bring ideas to life with clean, maintainable code.",
+    "designerDescription": "I believe great design is invisible. My focus is on creating intuitive, delightful user experiences that feel natural and effortless to navigate.",
+    "studentDescription": "Currently pursuing my Computer Science degree to deepen my technical expertise. I'm passionate about continuous learning and hands-on projects that combine both practical problem-solving and innovation."
+  },
+  "header": {
+    "home": "Home",
+    "tools": "Tools",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "about": "About",
+    "supportMe": "Support Me",
+    "contactUs": "Contact Us"
+  },
+  "skills": {
+    "title": "About Me",
+    "subtitle": "What I Bring to the Table",
+    "qualities": {
+      "fast": {
+        "title": "Fast",
+        "details": "Fast load times and lag-free interaction, my highest priority."
+      },
+      "responsive": {
+        "title": "Responsive",
+        "details": "My layouts will work on any device, big or small."
+      },
+      "intuitive": {
+        "title": "Intuitive",
+        "details": "Strong preference for easy-to-use, intuitive UX/UI."
+      },
+      "dynamic": {
+        "title": "Dynamic",
+        "details": "Websites don't have to be static; I love making pages come to life."
+      }
+    },
+    "tabs": {
+      "programming": "Programming",
+      "backend": "Backend",
+      "tools": "Tools"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Explore My Work",
+    "category": {
+      "all": "All Projects",
+      "webDev": "Website",
+      "mobileApp": "Mobile App",
+      "uiux": "UI/UX Design",
+      "featured": "Featured Project"
+    },
+    "viewLive": "Live Preview",
+    "viewGithub": "Github Repo",
+    "showMore": "Show More",
+    "showFewer": "Show Fewer",
+    "builtWith": "Built with"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Professional Achievements",
+    "category": {
+      "all": "All Certificates",
+      "webDevelopment": "Web Development",
+      "dataScience": "Data Science",
+      "cloudComputing": "Cloud Computing",
+      "programming": "Programming"
+    },
+    "viewCertificate": "View Certificate",
+    "issuedBy": "Issued by"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's Work Together",
+    "description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "contactNumber": "Contact Number (Optional)",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastNamePlaceholder": "Enter your last name",
+      "emailPlaceholder": "your.email@example.com",
+      "contactNumberPlaceholder": "+60 12-345 6789",
+      "messagePlaceholder": "Tell me about your project or idea...",
+      "validation": {
+        "firstNameMin": "First name must be at least 2 characters.",
+        "lastNameMin": "Last name must be at least 2 characters.",
+        "emailInvalid": "Please enter a valid email address.",
+        "messageMin": "Message must be at least 10 characters."
+      },
+      "success": {
+        "title": "Message sent!",
+        "description": "We'll get back to you as soon as possible."
+      },
+      "error": {
+        "title": "Failed to send message.",
+        "description": "Please try again later."
+      }
+    },
+    "socialLinks": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "discord": "Discord",
+      "whatsapp": "WhatsApp",
+      "source": "Source Code"
+    },
+    "connectWithMe": "Connect with me on social media"
+  },
+  "payment": {
+    "title": "Support My Work",
+    "subtitle": "Buy Me a Coffee",
+    "description": "If you enjoy my work and would like to support me, you can buy me a coffee! Your support helps me create more amazing projects.",
+    "recommended": "Recommended",
+    "securePayment": "Secure Payment",
+    "selectAmount": "Select Amount",
+    "customAmount": "Custom Amount",
+    "proceedToPayment": "Proceed to Payment",
+    "thankYou": "Thank you for your support!",
+    "methods": {
+      "duitnow": "DuitNow",
+      "tng": "Touch 'n Go",
+      "paypal": "PayPal",
+      "stripe": "Credit Card"
+    }
+  },
+  "globalSection": {
+    "title": "Technologies I Use",
+    "subtitle": "My Tech Stack",
+    "description": "I work with modern technologies and tools to build scalable, performant applications."
+  },
+  "notFound": {
+    "oops": "Oops!",
+    "title": "PAGE NOT FOUND",
+    "description": "Sorry, the page you're looking for doesn't exist. If you think something is broken, report a problem.",
+    "goHome": "GO HOME",
+    "contactUs": "CONTACT US"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "close": "Close",
+    "viewMore": "View More",
+    "viewLess": "View Less",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "readMore": "Read More"
+  }
+}

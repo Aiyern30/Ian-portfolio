@@ -1,0 +1,169 @@
+{
+  "hero": {
+    "greeting": "你好，我是",
+    "firstName": "颜",
+    "lastName": "建豪",
+    "tagline": "打造卓越的数字体验，设计与完美实现的结合。",
+    "availableForProjects": "接受新项目咨询",
+    "learnMore": "了解更多关于我的旅程",
+    "scroll": "滚动",
+    "tabs": {
+      "developer": "开发者",
+      "designer": "设计师",
+      "student": "学生"
+    },
+    "developerTitle": "全栈开发者",
+    "designerTitle": "UI/UX 设计师",
+    "studentTitle": "计算机科学学生",
+    "developerDescription": "我专注于使用前沿技术创建现代化、响应式的网络应用程序。从概念到部署，我用简洁、可维护的代码将想法变为现实。",
+    "designerDescription": "我相信优秀的设计是隐形的。我的重点是创建直观、令人愉悦的用户体验，使导航感觉自然而轻松。",
+    "studentDescription": "目前正在攻读计算机科学学位，以深化我的技术专长。我热衷于持续学习和结合实际问题解决与创新的实践项目。"
+  },
+  "header": {
+    "home": "首页",
+    "tools": "工具",
+    "projects": "项目",
+    "certificates": "证书",
+    "about": "关于",
+    "supportMe": "支持我",
+    "contactUs": "联系我"
+  },
+  "skills": {
+    "title": "关于我",
+    "subtitle": "我能为您提供什么",
+    "qualities": {
+      "fast": {
+        "title": "快速",
+        "details": "快速加载和零延迟交互，是我的最高优先级。"
+      },
+      "responsive": {
+        "title": "响应式",
+        "details": "我的布局可在任何设备上运行，无论大小。"
+      },
+      "intuitive": {
+        "title": "直观",
+        "details": "强烈偏好易于使用、直观的用户体验/用户界面。"
+      },
+      "dynamic": {
+        "title": "动态",
+        "details": "网站不必是静态的；我喜欢让页面生动起来。"
+      }
+    },
+    "tabs": {
+      "programming": "编程",
+      "backend": "后端",
+      "tools": "工具"
+    }
+  },
+  "projects": {
+    "title": "精选项目",
+    "subtitle": "探索我的作品",
+    "category": {
+      "all": "所有项目",
+      "webDev": "网站",
+      "mobileApp": "移动应用",
+      "uiux": "UI/UX 设计",
+      "featured": "精选项目"
+    },
+    "viewLive": "实时预览",
+    "viewGithub": "Github 仓库",
+    "showMore": "显示更多",
+    "showFewer": "显示更少",
+    "builtWith": "构建工具"
+  },
+  "certificates": {
+    "title": "证书",
+    "subtitle": "专业成就",
+    "category": {
+      "all": "所有证书",
+      "webDevelopment": "网页开发",
+      "dataScience": "数据科学",
+      "cloudComputing": "云计算",
+      "programming": "编程"
+    },
+    "viewCertificate": "查看证书",
+    "issuedBy": "颁发机构"
+  },
+  "contact": {
+    "title": "联系我",
+    "subtitle": "让我们一起合作",
+    "description": "我随时欢迎讨论新项目、创意想法或成为您愿景的一部分的机会。请随时联系我！",
+    "form": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "电子邮件地址",
+      "contactNumber": "联系电话（可选）",
+      "message": "您的信息",
+      "submit": "发送消息",
+      "submitting": "发送中...",
+      "firstNamePlaceholder": "输入您的名字",
+      "lastNamePlaceholder": "输入您的姓氏",
+      "emailPlaceholder": "your.email@example.com",
+      "contactNumberPlaceholder": "+60 12-345 6789",
+      "messagePlaceholder": "告诉我关于您的项目或想法...",
+      "validation": {
+        "firstNameMin": "名字必须至少2个字符。",
+        "lastNameMin": "姓氏必须至少2个字符。",
+        "emailInvalid": "请输入有效的电子邮件地址。",
+        "messageMin": "消息必须至少10个字符。"
+      },
+      "success": {
+        "title": "消息已发送！",
+        "description": "我们会尽快回复您。"
+      },
+      "error": {
+        "title": "发送消息失败。",
+        "description": "请稍后再试。"
+      }
+    },
+    "socialLinks": {
+      "github": "GitHub",
+      "linkedin": "领英",
+      "instagram": "Instagram",
+      "discord": "Discord",
+      "whatsapp": "WhatsApp",
+      "source": "源代码"
+    },
+    "connectWithMe": "在社交媒体上与我联系"
+  },
+  "payment": {
+    "title": "支持我的工作",
+    "subtitle": "请我喝杯咖啡",
+    "description": "如果您喜欢我的工作并想支持我，可以请我喝杯咖啡！您的支持帮助我创建更多精彩的项目。",
+    "recommended": "推荐",
+    "securePayment": "安全支付",
+    "selectAmount": "选择金额",
+    "customAmount": "自定义金额",
+    "proceedToPayment": "继续支付",
+    "thankYou": "感谢您的支持！",
+    "methods": {
+      "duitnow": "DuitNow",
+      "tng": "Touch 'n Go",
+      "paypal": "PayPal",
+      "stripe": "信用卡"
+    }
+  },
+  "globalSection": {
+    "title": "我使用的技术",
+    "subtitle": "我的技术栈",
+    "description": "我使用现代技术和工具构建可扩展、高性能的应用程序。"
+  },
+  "notFound": {
+    "oops": "哎呀！",
+    "title": "页面未找到",
+    "description": "抱歉，您要查找的页面不存在。如果您认为出了问题，请报告问题。",
+    "goHome": "返回首页",
+    "contactUs": "联系我们"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "close": "关闭",
+    "viewMore": "查看更多",
+    "viewLess": "查看更少",
+    "learnMore": "了解更多",
+    "getStarted": "开始",
+    "readMore": "阅读更多"
+  }
+}

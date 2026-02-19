@@ -1,0 +1,169 @@
+{
+  "hero": {
+    "greeting": "Hello, saya",
+    "firstName": "Ian Gan",
+    "lastName": "Jian Hao",
+    "tagline": "Mencipta pengalaman digital yang luar biasa di mana reka bentuk bertemu dengan pelaksanaan yang sempurna.",
+    "availableForProjects": "Tersedia untuk Projek Baru",
+    "learnMore": "Ketahui lebih lanjut tentang perjalanan saya",
+    "scroll": "Skrol",
+    "tabs": {
+      "developer": "Pembangun",
+      "designer": "Pereka",
+      "student": "Pelajar"
+    },
+    "developerTitle": "Pembangun Full-stack",
+    "designerTitle": "Pereka UI/UX",
+    "studentTitle": "Pelajar Sains Komputer",
+    "developerDescription": "Saya pakar dalam mencipta aplikasi web moden dan responsif menggunakan teknologi terkini. Dari konsep hingga pelancaran, saya menghidupkan idea dengan kod yang bersih dan boleh diselenggara.",
+    "designerDescription": "Saya percaya reka bentuk yang hebat adalah tidak kelihatan. Fokus saya adalah mencipta pengalaman pengguna yang intuitif dan menyenangkan yang terasa semula jadi dan mudah untuk dinavigasi.",
+    "studentDescription": "Kini sedang mengikuti ijazah Sains Komputer saya untuk mendalami kepakaran teknikal saya. Saya bersemangat tentang pembelajaran berterusan dan projek praktikal yang menggabungkan penyelesaian masalah praktikal dan inovasi."
+  },
+  "header": {
+    "home": "Utama",
+    "tools": "Alatan",
+    "projects": "Projek",
+    "certificates": "Sijil",
+    "about": "Tentang",
+    "supportMe": "Sokong Saya",
+    "contactUs": "Hubungi Kami"
+  },
+  "skills": {
+    "title": "Tentang Saya",
+    "subtitle": "Apa Yang Saya Tawarkan",
+    "qualities": {
+      "fast": {
+        "title": "Pantas",
+        "details": "Masa pemuatan pantas dan interaksi tanpa lag, keutamaan tertinggi saya."
+      },
+      "responsive": {
+        "title": "Responsif",
+        "details": "Susun atur saya akan berfungsi pada mana-mana peranti, besar atau kecil."
+      },
+      "intuitive": {
+        "title": "Intuitif",
+        "details": "Keutamaan kuat untuk UX/UI yang mudah digunakan dan intuitif."
+      },
+      "dynamic": {
+        "title": "Dinamik",
+        "details": "Laman web tidak perlu statik; saya suka menghidupkan halaman."
+      }
+    },
+    "tabs": {
+      "programming": "Pengaturcaraan",
+      "backend": "Backend",
+      "tools": "Alatan"
+    }
+  },
+  "projects": {
+    "title": "Projek Pilihan",
+    "subtitle": "Terokai Kerja Saya",
+    "category": {
+      "all": "Semua Projek",
+      "webDev": "Laman Web",
+      "mobileApp": "Aplikasi Mudah Alih",
+      "uiux": "Reka Bentuk UI/UX",
+      "featured": "Projek Pilihan"
+    },
+    "viewLive": "Pratonton Langsung",
+    "viewGithub": "Repositori Github",
+    "showMore": "Tunjuk Lebih Banyak",
+    "showFewer": "Tunjuk Kurang",
+    "builtWith": "Dibina dengan"
+  },
+  "certificates": {
+    "title": "Sijil",
+    "subtitle": "Pencapaian Profesional",
+    "category": {
+      "all": "Semua Sijil",
+      "webDevelopment": "Pembangunan Web",
+      "dataScience": "Sains Data",
+      "cloudComputing": "Pengkomputeran Awan",
+      "programming": "Pengaturcaraan"
+    },
+    "viewCertificate": "Lihat Sijil",
+    "issuedBy": "Dikeluarkan oleh"
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "subtitle": "Mari Bekerjasama",
+    "description": "Saya sentiasa terbuka untuk membincangkan projek baru, idea kreatif, atau peluang untuk menjadi sebahagian daripada visi anda. Jangan teragak-agak untuk menghubungi!",
+    "form": {
+      "firstName": "Nama Pertama",
+      "lastName": "Nama Keluarga",
+      "email": "Alamat E-mel",
+      "contactNumber": "Nombor Telefon (Pilihan)",
+      "message": "Mesej Anda",
+      "submit": "Hantar Mesej",
+      "submitting": "Menghantar...",
+      "firstNamePlaceholder": "Masukkan nama pertama anda",
+      "lastNamePlaceholder": "Masukkan nama keluarga anda",
+      "emailPlaceholder": "your.email@example.com",
+      "contactNumberPlaceholder": "+60 12-345 6789",
+      "messagePlaceholder": "Beritahu saya tentang projek atau idea anda...",
+      "validation": {
+        "firstNameMin": "Nama pertama mestilah sekurang-kurangnya 2 aksara.",
+        "lastNameMin": "Nama keluarga mestilah sekurang-kurangnya 2 aksara.",
+        "emailInvalid": "Sila masukkan alamat e-mel yang sah.",
+        "messageMin": "Mesej mestilah sekurang-kurangnya 10 aksara."
+      },
+      "success": {
+        "title": "Mesej dihantar!",
+        "description": "Kami akan menghubungi anda secepat mungkin."
+      },
+      "error": {
+        "title": "Gagal menghantar mesej.",
+        "description": "Sila cuba lagi kemudian."
+      }
+    },
+    "socialLinks": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "discord": "Discord",
+      "whatsapp": "WhatsApp",
+      "source": "Kod Sumber"
+    },
+    "connectWithMe": "Berhubung dengan saya di media sosial"
+  },
+  "payment": {
+    "title": "Sokong Kerja Saya",
+    "subtitle": "Belikan Saya Kopi",
+    "description": "Jika anda menikmati kerja saya dan ingin menyokong saya, anda boleh membelikan saya kopi! Sokongan anda membantu saya mencipta lebih banyak projek yang menakjubkan.",
+    "recommended": "Disyorkan",
+    "securePayment": "Pembayaran Selamat",
+    "selectAmount": "Pilih Jumlah",
+    "customAmount": "Jumlah Tersuai",
+    "proceedToPayment": "Teruskan ke Pembayaran",
+    "thankYou": "Terima kasih atas sokongan anda!",
+    "methods": {
+      "duitnow": "DuitNow",
+      "tng": "Touch 'n Go",
+      "paypal": "PayPal",
+      "stripe": "Kad Kredit"
+    }
+  },
+  "globalSection": {
+    "title": "Teknologi Yang Saya Gunakan",
+    "subtitle": "Timbunan Teknologi Saya",
+    "description": "Saya bekerja dengan teknologi dan alatan moden untuk membina aplikasi yang berskala dan berprestasi tinggi."
+  },
+  "notFound": {
+    "oops": "Oops!",
+    "title": "HALAMAN TIDAK DIJUMPAI",
+    "description": "Maaf, halaman yang anda cari tidak wujud. Jika anda fikir ada yang rosak, laporkan masalah.",
+    "goHome": "KE HALAMAN UTAMA",
+    "contactUs": "HUBUNGI KAMI"
+  },
+  "common": {
+    "loading": "Memuatkan...",
+    "error": "Ralat berlaku",
+    "retry": "Cuba Lagi",
+    "close": "Tutup",
+    "viewMore": "Lihat Lagi",
+    "viewLess": "Lihat Kurang",
+    "learnMore": "Ketahui Lebih Lanjut",
+    "getStarted": "Mula",
+    "readMore": "Baca Lagi"
+  }
+}
