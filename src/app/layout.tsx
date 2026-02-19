@@ -33,7 +33,7 @@ export const metadata = {
   authors: [{ name: "Ian Gan" }],
   creator: "Ian Gan",
   publisher: "Ian Gan",
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://ian-gan.vercel.app"),
   alternates: {
     canonical: "/",
   },
