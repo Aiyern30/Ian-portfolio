@@ -154,7 +154,17 @@
   "globalSection": {
     "title": "我使用的技术",
     "subtitle": "我的技术栈",
-    "description": "我使用现代技术和工具构建可扩展、高性能的应用程序。"
+    "description": "我使用现代技术和工具构建可扩展、高性能的应用程序。",
+    "label": "全球技术栈",
+    "headingPart1": "工具 &",
+    "headingHighlight": "技术",
+    "taglineStart": "我利用多种尖端工具的生态系统将数字愿景变为现实。从",
+    "taglineHighlight1": "全栈开发",
+    "taglineMiddle": "到",
+    "taglineHighlight2": "云基础设施",
+    "taglineEnd": "，这就是我的武器库。",
+    "badge1": "精通20+项技术",
+    "badge2": "可扩展架构"
   },
   "notFound": {
     "oops": "哎呀！",

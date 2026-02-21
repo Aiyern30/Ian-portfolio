@@ -1,6 +1,7 @@
 "use client";
 
 import { useDeviceType } from "@/lib/useDeviceTypes";
+import { useTranslations } from "next-intl";
 import { IconCloud } from "../magicui";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -69,6 +70,7 @@ const slugs = [
 ];
 
 export default function GlobalSection() {
+  const t = useTranslations("globalSection");
   const { isMobile, isTablet, isDesktop } = useDeviceType();
   const [isClient, setIsClient] = useState(false);
 
@@ -97,27 +99,26 @@ export default function GlobalSection() {
               className="flex items-center justify-center lg:justify-start gap-2 text-[#FF9D7A] font-medium tracking-wider uppercase text-sm"
             >
               <Globe className="w-4 h-4" />
-              Global Tech Stack
+              {t("label")}
             </motion.div>
 
             <h2 className="text-4xl md:text-6xl font-bold font-primary leading-tight">
-              Tools &{" "}
+              {t("headingPart1")}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9D7A] to-[#FFD166]">
-                Technologies
+                {t("headingHighlight")}
               </span>
             </h2>
 
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl font-secondary leading-relaxed">
-              I leverage a diverse ecosystem of cutting-edge tools to bring
-              digital visions to life. From{" "}
+              {t("taglineStart")}{" "}
               <span className="text-white font-medium">
-                Full-stack Development
+                {t("taglineHighlight1")}
               </span>{" "}
-              to{" "}
+              {t("taglineMiddle")}{" "}
               <span className="text-white font-medium">
-                Cloud Infrastructure
+                {t("taglineHighlight2")}
               </span>
-              , here's what's in my arsenal.
+              {t("taglineEnd")}
             </p>
           </div>
 
@@ -131,13 +132,13 @@ export default function GlobalSection() {
             <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex items-center gap-3 group hover:bg-white/10 transition-colors">
               <div className="w-2 h-2 rounded-full bg-[#FF9D7A] shadow-[0_0_10px_#FF9D7A]" />
               <span className="text-sm font-medium">
-                Fluent in 20+ technologies
+                {t("badge1")}
               </span>
             </div>
             <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex items-center gap-3 group hover:bg-white/10 transition-colors">
               <Sparkles className="w-4 h-4 text-[#FFD166]" />
               <span className="text-sm font-medium">
-                Scalable Architectures
+                {t("badge2")}
               </span>
             </div>
           </motion.div>

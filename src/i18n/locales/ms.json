@@ -154,7 +154,17 @@
   "globalSection": {
     "title": "Teknologi Yang Saya Gunakan",
     "subtitle": "Timbunan Teknologi Saya",
-    "description": "Saya bekerja dengan teknologi dan alatan moden untuk membina aplikasi yang berskala dan berprestasi tinggi."
+    "description": "Saya bekerja dengan teknologi dan alatan moden untuk membina aplikasi yang berskala dan berprestasi tinggi.",
+    "label": "Timbunan Teknologi Global",
+    "headingPart1": "Alatan &",
+    "headingHighlight": "Teknologi",
+    "taglineStart": "Saya memanfaatkan ekosistem alatan canggih yang pelbagai untuk membawa visi digital ke kehidupan. Dari",
+    "taglineHighlight1": "Pembangunan Full-stack",
+    "taglineMiddle": "kepada",
+    "taglineHighlight2": "Infrastruktur Awan",
+    "taglineEnd": ", inilah yang ada dalam arsenal saya.",
+    "badge1": "Lancar dalam 20+ teknologi",
+    "badge2": "Seni Bina Berskala"
   },
   "notFound": {
     "oops": "Oops!",

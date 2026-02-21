@@ -154,7 +154,17 @@
   "globalSection": {
     "title": "Technologies I Use",
     "subtitle": "My Tech Stack",
-    "description": "I work with modern technologies and tools to build scalable, performant applications."
+    "description": "I work with modern technologies and tools to build scalable, performant applications.",
+    "label": "Global Tech Stack",
+    "headingPart1": "Tools &",
+    "headingHighlight": "Technologies",
+    "taglineStart": "I leverage a diverse ecosystem of cutting-edge tools to bring digital visions to life. From",
+    "taglineHighlight1": "Full-stack Development",
+    "taglineMiddle": "to",
+    "taglineHighlight2": "Cloud Infrastructure",
+    "taglineEnd": ", here's what's in my arsenal.",
+    "badge1": "Fluent in 20+ technologies",
+    "badge2": "Scalable Architectures"
   },
   "notFound": {
     "oops": "Oops!",
