@@ -1,7 +1,8 @@
-// Centralized project data
+// Centralized project data (technical/static info only)
+// Translatable content (title, category, description) comes from i18n JSON files
 export const projects = [
   {
-    title: "YTL Concrete Hub (AI-Powered Platform)",
+    id: "project0",
     label: [
       "NextJS",
       "Tailwind CSS",
@@ -20,16 +21,13 @@ export const projects = [
       "NextAuth",
       "Twilio",
     ],
-    category: "Web Application",
-    description:
-      "YTL Concrete Hub is an AI-driven platform sponsored by YTL Shared Services Sdn Bhd as part of a Final Year Project. The system integrates intelligent chatbot interactions, smart product comparisons, AI-powered image processing, and predictive analytics. It also features a staff dashboard for real-time product insights, automated alerts, and business intelligence visualization to enhance operational efficiency.",
     imageUrl: "/YTLConcreteHub.png",
     livePreviewUrl: "https://ytlconcretehub.vercel.app/",
     githubRepo: "",
   },
 
   {
-    title: "Music Application with Spotify (SpotWave)",
+    id: "project1",
     label: [
       "Spotify",
       "NextJS",
@@ -45,15 +43,12 @@ export const projects = [
       "Ticketmaster API",
       "PredictHQ API",
     ],
-    category: "Enterprise",
-    description:
-      "SpotWave allows you to search for and listen to Spotify songs with a preview and lyrics. You can also view the top tracks and artists in global rank and come with their all details such as bio, images, albums, and tracks.",
     imageUrl: "/SpotWave.png",
     livePreviewUrl: "https://spot-wave.vercel.app/",
     githubRepo: "https://github.com/Aiyern30/SpotWave",
   },
   {
-    title: "YTL Cement IT Department",
+    id: "project2",
     label: [
       "Power BI",
       "Microsoft Report Builder",
@@ -68,15 +63,12 @@ export const projects = [
       "pino",
       "pupeeter",
     ],
-    category: "Enterprise",
-    description:
-      "Recently, I joined the YTL Cement IT department, focusing on developing an e-invoice system. The system manages driver e-invoices and supports role-based access for submitting documents to LHDN. I worked on key features such as income and expenses tracking, statement of accounts, and invoice reporting using Microsoft Power BI and Report Builder.",
     imageUrl: "/Dos-portal.png",
     livePreviewUrl: "https://dos.uat4ytlcement.com/",
     githubRepo: null,
   },
   {
-    title: "Sino Mobile and Heavy Equipment (SMHE)",
+    id: "project3",
     label: [
       "NextJS",
       "Tailwind CSS",
@@ -87,15 +79,12 @@ export const projects = [
       "Strapi",
       "Google Maps API",
     ],
-    category: "Website",
-    description:
-      "Developed the landing page for the Sino Mobile and Heavy Equipment (SMHE) website, focusing on showcasing trucks for sale. Key features include a Media Center, About Us section, detailed truck pages with overview and specifications, and options for users to contact sales or download brochures. Integrated Google Maps to display workshop and factory locations for easy navigation.",
     imageUrl: "/SMHE.png",
     livePreviewUrl: "https://smhe.my",
     githubRepo: null,
   },
   {
-    title: "Eat What? (Smart Food Finder App)",
+    id: "project4",
     label: [
       "Next.js",
       "TypeScript",
@@ -109,16 +98,13 @@ export const projects = [
       "Recharts",
       "Vercel",
     ],
-    category: "Web Application",
-    description:
-      "Eat What? is a modern, interactive food discovery web application designed to help users decide what to eat effortlessly. Built with Next.js and Google Maps, the app allows users to explore nearby restaurants on an interactive map, apply smart filters such as cuisine, price range, and open status, and save favorite places using Google authentication. A fun gamified 'Spin the Wheel' feature adds randomness to decision-making, making food choices simple, fast, and enjoyable across all devices.",
     imageUrl: "/eat-what.png",
     livePreviewUrl: "https://eatwhatlah.vercel.app/",
     githubRepo: "",
   },
 
   {
-    title: "ScorePanda (Niu Niu & Number Solver)",
+    id: "project5",
     label: [
       "NextJS",
       "React",
@@ -127,15 +113,12 @@ export const projects = [
       "TypeScript",
       "Shadcn UI",
     ],
-    category: "Web Application",
-    description:
-      "ScorePanda is a specialized gaming utility platform featuring a Niu Niu hand verifier and a Number Solver. The Niu Niu tool is designed to help players accurately identify their best possible scores in the traditional Chinese card game, mitigating the risk of human error in complex, high-probability scenarios. It features a responsive design and smooth animations for a premium user experience.",
     imageUrl: "/ScorePanda.png",
     livePreviewUrl: "https://score-panda.vercel.app/",
     githubRepo: "https://github.com/Aiyern30/ScorePanda",
   },
   {
-    title: "Nutrition Tracker (Eat Smart AI)",
+    id: "project6",
     label: [
       "Gemini 1.5 Pro",
       "Baidu Ernie 5.0",
@@ -150,15 +133,12 @@ export const projects = [
       "Supabase",
       "OpenAI",
     ],
-    category: "Web Application",
-    description:
-      "Eat Smart AI is a sophisticated nutrition management platform. It leverages AI Image Recognition to detect food and macros from meal photos, natural language processing for text-based meal logging, and integration with Baidu Ernie for personalized 7-day meal planning. The system includes a smart dashboard, detailed historic reports via Recharts, and weight/water tracking, all synced to a Supabase backend.",
     imageUrl: "/EatSmartAI.png",
     livePreviewUrl: "https://eat-smart-ai.vercel.app",
     githubRepo: "https://github.com/Aiyern30/nutrition-tracker",
   },
   {
-    title: "RY Electric Works (Company Profile)",
+    id: "project7",
     label: [
       "NextJS",
       "Cloudflare Workers",
@@ -167,15 +147,12 @@ export const projects = [
       "Multi-language",
       "Lucide React",
     ],
-    category: "Website",
-    description:
-      "A professional, multilingual company profile for RY Electric Works. The platform showcases specialized electrical services including Internal Electrical Wiring, Telekom Works, and Street lighting. It features English and Chinese language support, a comprehensive project portfolio, and a service-oriented design as a strategic digital identity for the company.",
     imageUrl: "/RY-electrics.png",
     livePreviewUrl: "https://ry-electric-works.ryelectric828.workers.dev/",
     githubRepo: "",
   },
   {
-    title: "Gamer Token Hub (Web3 NFT Marketplace)",
+    id: "project8",
     label: [
       "NextJS",
       "Tailwind CSS",
@@ -190,16 +167,13 @@ export const projects = [
       "IPFS",
       "Pinata",
     ],
-    category: "Web Application",
-    description:
-      "Gamer Token Hub is a decentralized NFT marketplace built on the Sepolia test network. It allows users to create and manage NFT collections, mint NFTs with custom metadata, list and purchase NFTs, and view user profiles with their owned and minted NFTs. The platform also includes wishlist, shopping cart, and responsive UI features to provide a smooth and engaging Web3 experience.",
     imageUrl: "/GamerTokenHub.png",
     livePreviewUrl: "https://gamertokenhub.vercel.app/",
     githubRepo: "https://github.com/Aiyern30/blockchain-fe",
   },
 
   {
-    title: "Reka Konsult Company Profile",
+    id: "project9",
     label: [
       "NextJS",
       "Tailwind CSS",
@@ -213,15 +187,12 @@ export const projects = [
       "Lucide react",
       "Google Maps API",
     ],
-    category: "Website",
-    description:
-      "The Reka Konsult Company Profile is a comprehensive showcase of our company's vision, values, and services. This web application serves as an engaging platform to inform potential clients and partners about Reka Konsult's capabilities, including company background, services offered, and easy contact information.",
     imageUrl: "/Reka-Konsult.png",
     livePreviewUrl: "https://reka-konsult.vercel.app/",
     githubRepo: "https://github.com/Aiyern30/reka-konsult",
   },
   {
-    title: "Children's Respite Home KL (Company Profile Website)",
+    id: "project10",
     label: [
       "NextJS",
       "Tailwind CSS",
@@ -231,16 +202,13 @@ export const projects = [
       "Shadcn UI",
       "Cloudflare",
     ],
-    category: "Website",
-    description:
-      "A freelance project developed for a Malaysia-based community respite care centre for children with special needs. The website showcases the organization's mission, services, and facilities with a warm, accessible design. It aims to help families learn more about the centre's compassionate short-term care and community support programs.",
     imageUrl: "/ChildrenRespiteHomeKL.png",
     livePreviewUrl: "https://childrenrespitehomekl.com/",
     githubRepo: "",
   },
 
   {
-    title: "LiveSportsNow",
+    id: "project11",
     label: [
       "NextAuth",
       "NextJS",
@@ -252,15 +220,12 @@ export const projects = [
       "Lucide react",
       "Football API",
     ],
-    category: "Web Application",
-    description:
-      "LiveSportsNow is a comprehensive sports platform that allows users to view real-time scores, standings, team details, and stats across multiple sports, including NBA, NFL, Soccer, and more. Designed to offer an experience similar to ESPN, the app provides up-to-date sports coverage, helping fans stay informed with the latest game results, league rankings, and team performances.",
     imageUrl: "/LiveSportsNow.png",
     livePreviewUrl: "https://livesportsnow.vercel.app/NBA",
     githubRepo: "https://github.com/Aiyern30/LiveSportsNow.git",
   },
   {
-    title: "Expenses Tracker (SplitTrack)",
+    id: "project12",
     label: [
       "Firebase",
       "NextAuth",
@@ -272,15 +237,12 @@ export const projects = [
       "Shadcn UI",
       "Lucide react",
     ],
-    category: "Web Application",
-    description:
-      "The Expenses Tracker is a robust application designed to help users efficiently manage their finances. Track your expenses daily, monthly, and yearly, and gain detailed insights into your spending habits. Key features include expense tracking, managing friend expenses, and effective group expense management during trips.",
     imageUrl: "/Split-Track.png",
     livePreviewUrl: "https://split-track.vercel.app/",
     githubRepo: "https://github.com/Aiyern30/SplitTrack",
   },
   {
-    title: "Ethereum KL 2024 Hackathon (SassyDispute)",
+    id: "project13",
     label: [
       "Solidity",
       "Hardhat",
@@ -298,15 +260,12 @@ export const projects = [
       "Pinata API",
       "Alchemy Node API",
     ],
-    category: "Hackathon",
-    description:
-      "SassyDispute is a platform that allows Web2/Web3 e-commerce websites to share and bridge their dispute cases via IPFS, facilitating decentralized conversations and resolutions. User can comment on dispute cases, search and filter dispute cases and dispute providers can use our ready-bridge smart contract to bridge their Web3 E-commerce platform into SassyDispute",
     imageUrl: "/ETHKL.png",
     livePreviewUrl: "https://sassy-dispute.vercel.app/",
     githubRepo: "https://github.com/FramedStone/SassyDispute",
   },
   {
-    title: "Canva Hackathon (Poll Generator)",
+    id: "project14",
     label: [
       "React",
       "NextJS",
@@ -322,15 +281,12 @@ export const projects = [
       "Shadcn UI",
       "Material UI",
     ],
-    category: "Hackathon",
-    description:
-      "Poll Generator is a Canva-integrated platform that simplifies poll and survey creation while providing real-time data visualization. Users can design visually appealing surveys, distribute them via QR codes or a dedicated website, and instantly see response trends. Multiple polls can be included in a single survey for comprehensive data collection.",
     imageUrl: "/Canva.jpg",
     livePreviewUrl: "https://devpost.com/software/canva-dx620n",
     githubRepo: "https://github.com/Aiyern30/Canva-Hackathon",
   },
   {
-    title: "Google Cloud Vertex AI Agent Builder Hackathon (PythonGPT)",
+    id: "project15",
     label: [
       "HTML",
       "CSS",
@@ -345,15 +301,12 @@ export const projects = [
       "bootstrap",
       "Tailwind CSS",
     ],
-    category: "Hackathon",
-    description:
-      "PythonGPT is a dynamic website designed to teach beginners how to code in Python. It offers Python documentation, Python code implementation examples, Python exercises, AI Chatbot Assistance",
     imageUrl: "/PythonAI.jpg",
     livePreviewUrl: "https://devpost.com/software/pythongpt",
     githubRepo: "https://github.com/AcruxN/vertex_PythonGPT/",
   },
   {
-    title: "Devmatch Hackathon (VoteChain)",
+    id: "project16",
     label: [
       "Solidity",
       "React",
@@ -365,9 +318,6 @@ export const projects = [
       "TypeScript",
       "Shadcn UI",
     ],
-    category: "Hackathon",
-    description:
-      "Decentralized voting technology reduces costs by eliminating the need for physical polling places and allows remote voting, boosting democratic participation. It can also be used in organizations, enabling employees to vote on decisions and generate reputation reports based on accuracy and activity. These reports can inform hiring decisions for roles requiring strong decision-making skills, such as HR and recruiting audits.",
     imageUrl: "/Devmatch.png",
     livePreviewUrl:
       "https://devfolio.co/projects/decentralized-voting-system-peyouth-aa44",

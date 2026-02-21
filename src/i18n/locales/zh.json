@@ -100,7 +100,94 @@
     "projectsLabel": "项目",
     "interactiveTitle": "交互式项目浏览器",
     "interactiveDescription": "在交互式流程图中探索所有项目！拖动、缩放并浏览我的投资组合，获得沉浸式的视觉体验。",
-    "exploreNow": "立即探索"
+    "exploreNow": "立即探索",
+    "projectsData": {
+      "project0": {
+        "title": "YTL 混凝土中心（AI 驱动平台）",
+        "category": "Web应用程序",
+        "description": "YTL 混凝土中心是由 YTL 共享服务私人有限公司赞助的 AI 驱动平台，作为最后一年项目的一部分。该系统集成了智能聊天机器人交互、智能产品比较、AI 驱动的图像处理和预测分析。它还具有员工仪表板，用于实时产品见解、自动化警报和业务智能可视化，以提高运营效率。"
+      },
+      "project1": {
+        "title": "Spotify音乐应用程序（SpotWave）",
+        "category": "企业",
+        "description": "SpotWave 允许您搜索和收听 Spotify 歌曲，并附带预览和歌词。您还可以查看全球排名中的热门曲目和艺术家，并获得他们的所有详细信息，如生物、图像、专辑和曲目。"
+      },
+      "project2": {
+        "title": "YTL 水泥 IT 部门",
+        "category": "企业",
+        "description": "最近，我加入了 YTL 水泥 IT 部门，专注于开发电子发票系统。该系统管理驾驶员电子发票并支持基于角色的访问，用于向 LHDN 提交文件。我从事关键功能，如收入和支出跟踪、账户对账单以及使用 Microsoft Power BI 和 Report Builder 进行发票报告。"
+      },
+      "project3": {
+        "title": "中硕移动和重型设备（SMHE）",
+        "category": "网站",
+        "description": "为中硕移动和重型设备（SMHE）网站开发了登陆页面，重点展示待售卡车。主要功能包括媒体中心、关于我们部分、带有概述和规格的详细卡车页面，以及用户联系销售或下载手册的选项。集成了 Google 地图以显示车间和工厂位置，方便导航。"
+      },
+      "project4": {
+        "title": "吃什么？（智能食物查找器应用）",
+        "category": "Web应用程序",
+        "description": "Eat What? 是一个现代、交互式食物发现 Web 应用程序，旨在帮助用户轻松决定吃什么。使用 Next.js 和 Google Maps 构建，该应用程序允许用户在交互式地图上探索附近的餐厅，应用智能过滤器（如美食、价格范围和营业状态），以及使用 Google 身份验证保存喜欢的地方。有趣的\"转轮\"功能为决策增加了随机性，使食物选择在所有设备上简单、快速且令人愉快。"
+      },
+      "project5": {
+        "title": "ScorePanda（牛牛和数字求解器）",
+        "category": "Web应用程序",
+        "description": "ScorePanda 是一个专业的游戏实用工具平台，具有牛牛手识别器和数字求解器。牛牛工具旨在帮助玩家准确识别他们在传统中国纸牌游戏中可能的最佳分数，减轻复杂高概率场景中的人为错误风险。它具有响应式设计和流畅的动画，提供高级用户体验。"
+      },
+      "project6": {
+        "title": "营养追踪器（Eat Smart AI）",
+        "category": "Web应用程序",
+        "description": "Eat Smart AI 是一个复杂的营养管理平台。它利用 AI 图像识别从膳食照片中检测食物和宏量营养素，用于基于文本的膳食记录的自然语言处理，以及与百度文心集成的个性化 7 天膳食计划。该系统包括智能仪表板、通过 Recharts 的详细历史报告以及体重/水跟踪，所有内容都与 Supabase 后端同步。"
+      },
+      "project7": {
+        "title": "RY 电气工程（公司简介）",
+        "category": "网站",
+        "description": "RY 电气工程的专业多语言公司简介。该平台展示了专业电气服务，包括内部电气接线、电信工程和街道照明。它提供英文和中文语言支持、全面的项目组合以及面向服务的设计，作为公司的战略数字身份。"
+      },
+      "project8": {
+        "title": "游戏代币中心（Web3 NFT 市场）",
+        "category": "Web应用程序",
+        "description": "Gamer Token Hub 是建立在 Sepolia 测试网络上的去中心化 NFT 市场。它允许用户创建和管理 NFT 集合、使用自定义元数据铸造 NFT、列出和购买 NFT，以及查看包含他们拥有和铸造的 NFT 的用户档案。该平台还包括愿望清单、购物车和响应式 UI 功能，提供顺畅和引人入胜的 Web3 体验。"
+      },
+      "project9": {
+        "title": "Reka Konsult 公司简介",
+        "category": "网站",
+        "description": "Reka Konsult 公司简介是对我们公司愿景、价值观和服务的全面展示。此 Web 应用程序用作一个引人入胜的平台，向潜在客户和合作伙伴介绍 Reka Konsult 的能力，包括公司背景、提供的服务和简便的联系信息。"
+      },
+      "project10": {
+        "title": "儿童短期照顾之家 KL（公司简介网站）",
+        "category": "网站",
+        "description": "为马来西亚社区短期照顾中心为有特殊需求的儿童开发的自由职业项目。该网站以温暖、易于访问的设计展示了组织的使命、服务和设施。它旨在帮助家庭了解该中心富有同情心的短期照顾和社区支持计划。"
+      },
+      "project11": {
+        "title": "现在直播体育",
+        "category": "Web应用程序",
+        "description": "LiveSportsNow 是一个综合体育平台，允许用户查看实时比分、排名、球队详情和统计数据，涵盖 NBA、NFL、足球等多项运动。该应用程序旨在提供类似于 ESPN 的体验，提供最新的体育报道，帮助球迷了解最新的比赛结果、联赛排名和球队表现。"
+      },
+      "project12": {
+        "title": "费用追踪器（SplitTrack）",
+        "category": "Web应用程序",
+        "description": "费用追踪器是一个强大的应用程序，旨在帮助用户有效地管理财务。按天、月、年追踪支出，深入了解您的消费习惯。主要功能包括支出追踪、管理朋友支出和旅行期间的有效集团支出管理。"
+      },
+      "project13": {
+        "title": "以太坊 KL 2024 黑客松（SassyDispute）",
+        "category": "黑客松",
+        "description": "SassyDispute 是一个平台，允许 Web2/Web3 电子商务网站通过 IPFS 共享和桥接他们的争议案例，促进去中心化的对话和解决。用户可以对争议案例进行评论、搜索和过滤争议案例，争议提供者可以使用我们的现成智能合约将他们的 Web3 电子商务平台桥接到 SassyDispute"
+      },
+      "project14": {
+        "title": "Canva 黑客松（投票生成器）",
+        "category": "黑客松",
+        "description": "投票生成器是一个 Canva 集成平台，简化了投票和调查创建，同时提供实时数据可视化。用户可以设计具有视觉吸引力的调查、通过二维码或专用网站分发，并立即查看响应趋势。多个投票可以包含在单个调查中，用于全面的数据收集。"
+      },
+      "project15": {
+        "title": "Google Cloud Vertex AI Agent Builder 黑客松（PythonGPT）",
+        "category": "黑客松",
+        "description": "PythonGPT 是一个动态网站，旨在教初学者如何用 Python 编码。它提供 Python 文档、Python 代码实现示例、Python 练习、AI 聊天机器人帮助"
+      },
+      "project16": {
+        "title": "Devmatch 黑客松（VoteChain）",
+        "category": "黑客松",
+        "description": "去中心化投票技术通过消除对物理投票地点的需求并允许远程投票来降低成本，促进民主参与。它还可以在组织中使用，使员工能够对决策进行投票并基于准确性和活动生成声誉报告。这些报告可以为需要强大决策能力的职位（如人力资源和招聘审计）的招聘决策提供信息。"
+      }
+    }
   },
   "certificates": {
     "title": "证书",

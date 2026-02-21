@@ -100,7 +100,94 @@
     "projectsLabel": "projek",
     "interactiveTitle": "Penjelajah Projek Interaktif",
     "interactiveDescription": "Terokai semua projek dalam gambar aliran interaktif! Seret, zoom, dan navigasi melalui portfolio saya dengan pengalaman visual yang mendalam.",
-    "exploreNow": "Terokai Sekarang"
+    "exploreNow": "Jelajahi Sekarang",
+    "projectsData": {
+      "project0": {
+        "title": "YTL Concrete Hub (Platform Bertenaga AI)",
+        "category": "Aplikasi Web",
+        "description": "YTL Concrete Hub adalah platform bertenaga AI yang ditaja oleh YTL Shared Services Sdn Bhd sebagai sebahagian daripada Projek Tahun Akhir. Sistem ini mengintegrasikan interaksi chatbot pintar, perbandingan produk cerdas, pemrosesan imej bertenaga AI, dan analitik ramalan. Ia juga dilengkapi dengan papan pemuka kakitangan untuk wawasan produk masa nyata, amaran otomatis, dan visualisasi perisikan perniagaan untuk meningkatkan kecekapan operasional."
+      },
+      "project1": {
+        "title": "Aplikasi Muzik dengan Spotify (SpotWave)",
+        "category": "Enterprise",
+        "description": "SpotWave membenarkan anda mencari dan mendengarkan lagu Spotify dengan pratonton dan lirik. Anda juga boleh melihat lagu dan artis teratas dalam kedudukan global dan mempunyai semua butiran mereka seperti bio, imej, album, dan lagu."
+      },
+      "project2": {
+        "title": "Jabatan IT YTL Cement",
+        "category": "Enterprise",
+        "description": "Baru-baru ini, saya menyertai jabatan IT YTL Cement, memberi tumpuan kepada pengembangan sistem e-invois. Sistem ini menguruskan e-invois pemandu dan menyokong akses berasaskan peranan untuk mengemukakan dokumen kepada LHDN. Saya bekerja pada ciri-ciri utama seperti penjejakan pendapatan dan perbelanjaan, penyata akaun, dan pelaporan invois menggunakan Microsoft Power BI dan Report Builder."
+      },
+      "project3": {
+        "title": "Sino Mobile and Heavy Equipment (SMHE)",
+        "category": "Laman Web",
+        "description": "Mengembangkan halaman pendaratan untuk laman web Sino Mobile and Heavy Equipment (SMHE), memberi tumpuan kepada menampilkan trak untuk dijual. Ciri-ciri utama termasuk Pusat Media, bahagian Tentang Kami, halaman trak terperinci dengan gambaran keseluruhan dan spesifikasi, dan opsyen untuk pengguna menghubungi jualan atau memuat turun brosur. Mengintegrasikan Google Maps untuk memaparkan lokasi bengkel dan pabrik untuk navigasi yang mudah."
+      },
+      "project4": {
+        "title": "Apa yang Hendak Dimakan? (Aplikasi Pencari Makanan Pintar)",
+        "category": "Aplikasi Web",
+        "description": "Eat What? adalah aplikasi penemuan makanan yang moden dan interaktif yang dirancang untuk membantu pengguna memutuskan apa yang hendak dimakan dengan mudah. Dibina dengan Next.js dan Google Maps, aplikasi ini membenarkan pengguna meneroka restoran berdekatan pada peta interaktif, menggunakan penapis pintar seperti jenis masakan, julat harga, dan status buka, serta menyimpan tempat kegemaran menggunakan pengesahan Google. Ciri 'Putar Roda' yang menyeronokkan menambah kerawakan pada membuat keputusan, menjadikan pilihan makanan mudah, cepat, dan menyenangkan di semua peranti."
+      },
+      "project5": {
+        "title": "ScorePanda (Pemverifikasi Niu Niu & Pemecah Nombor)",
+        "category": "Aplikasi Web",
+        "description": "ScorePanda adalah platform utiliti permainan khusus yang menampilkan pemverifikasi tangan Niu Niu dan Pemecah Nombor. Alat Niu Niu dirancang untuk membantu pemain mengenal pasti skor terbaik mereka yang mungkin dalam permainan kad tradisional Cina, mengurangkan risiko ralat manusia dalam senario kebarangkalian kompleks dan tinggi. Ia menampilkan reka bentuk responsif dan animasi lancar untuk pengalaman pengguna premium."
+      },
+      "project6": {
+        "title": "Penjejak Nutrisi (Eat Smart AI)",
+        "category": "Aplikasi Web",
+        "description": "Eat Smart AI adalah platform pengurusan pemakanan yang canggih. Ia memanfaatkan Pengecaman Imej AI untuk mengesan makanan dan makro dari foto hidangan, pemprosesan bahasa semula jadi untuk pengelogan hidangan berasaskan teks, dan integrasi dengan Baidu Ernie untuk perancangan hidangan 7 hari yang dipersonalisasi. Sistem ini termasuk papan pemuka pintar, laporan sejarah terperinci melalui Recharts, dan penjejakan berat badan/air, semuanya disegerakkan dengan backend Supabase."
+      },
+      "project7": {
+        "title": "RY Electric Works (Profil Syarikat)",
+        "category": "Laman Web",
+        "description": "Profil syarikat berbilang bahasa yang profesional untuk RY Electric Works. Platform ini mempamerkan layanan elektrikal khusus termasuk Pendawaian Elektrikal Dalaman, Kerja Telekom, dan pencahayaan jalan. Ia memaparkan sokongan bahasa Inggeris dan Cina, portfolio projek yang komprehensif, dan reka bentuk berorientasikan perkhidmatan sebagai identiti digital strategik untuk syarikat."
+      },
+      "project8": {
+        "title": "Gamer Token Hub (Pasaran NFT Web3)",
+        "category": "Aplikasi Web",
+        "description": "Gamer Token Hub adalah pasaran NFT terdesentralisasi yang dibina di atas rangkaian ujian Sepolia. Ia membenarkan pengguna membuat dan menguruskan koleksi NFT, mencetak NFT dengan metadata tersuai, menyenaraikan dan membeli NFT, serta melihat profil pengguna dengan NFT yang mereka miliki dan cetak. Platform ini juga termasuk senarai keinginan, troli beli-belah, dan ciri UI responsif untuk memberikan pengalaman Web3 yang lancar dan menarik."
+      },
+      "project9": {
+        "title": "Profil Syarikat Reka Konsult",
+        "category": "Laman Web",
+        "description": "Profil Syarikat Reka Konsult adalah paparan komprehensif tentang visi, nilai, dan perkhidmatan syarikat kami. Aplikasi web ini berfungsi sebagai platform yang menarik untuk memaklumkan pelanggan dan mitra berpotensi tentang keupayaan Reka Konsult, termasuk latar belakang syarikat, perkhidmatan yang ditawarkan, dan maklumat hubungan yang mudah."
+      },
+      "project10": {
+        "title": "Children's Respite Home KL (Laman Web Profil Syarikat)",
+        "category": "Laman Web",
+        "description": "Projek bebas yang dibangunkan untuk pusat penjagaan istirahat komuniti Malaysia untuk kanak-kanak yang mempunyai keperluan khas. Laman web ini mempamerkan misi, layanan, dan kemudahan organisasi dengan reka bentuk yang hangat dan mudah diakses. Ia bertujuan untuk membantu keluarga mengetahui lebih lanjut tentang program penjagaan jangka pendek yang penuh belas kasihan dan sokongan komuniti pusat."
+      },
+      "project11": {
+        "title": "LiveSportsNow",
+        "category": "Aplikasi Web",
+        "description": "LiveSportsNow adalah platform sukan komprehensif yang membenarkan pengguna melihat skor masa nyata, kedudukan, butiran pasukan, dan statistik merentas pelbagai sukan, termasuk NBA, NFL, Bola Sepak, dan banyak lagi. Dirancang untuk menawarkan pengalaman serupa dengan ESPN, aplikasi ini menyediakan liputan sukan terkini, membantu peminat kekal lengkap dengan hasil permainan terbaru, kedudukan liga, dan prestasi pasukan."
+      },
+      "project12": {
+        "title": "Penjejak Perbelanjaan (SplitTrack)",
+        "category": "Aplikasi Web",
+        "description": "Penjejak Perbelanjaan adalah aplikasi yang teguh yang dirancang untuk membantu pengguna menguruskan kewangan mereka dengan cekap. Jejak perbelanjaan anda setiap hari, setiap bulan, dan setiap tahun, dan dapatkan wawasan terperinci tentang tabiat perbelanjaan anda. Ciri-ciri utama termasuk penjejakan perbelanjaan, menguruskan perbelanjaan rakan, dan pengurusan perbelanjaan kumpulan yang berkesan semasa perjalanan."
+      },
+      "project13": {
+        "title": "Ethereum KL 2024 Hackathon (SassyDispute)",
+        "category": "Hackathon",
+        "description": "SassyDispute adalah platform yang membenarkan laman web e-dagang Web2/Web3 berkongsi dan menjambatani kes pertikaian mereka melalui IPFS, memfasilitasi perbualan dan penyelesaian terdesentralisasi. Pengguna boleh membuat ulasan tentang kes pertikaian, mencari dan menapis kes pertikaian dan penyedia pertikaian boleh menggunakan kontrak pintar siap-siap kami untuk menjambatani platform E-dagang Web3 mereka ke SassyDispute"
+      },
+      "project14": {
+        "title": "Canva Hackathon (Penjana Tinjauan Sekilas)",
+        "category": "Hackathon",
+        "description": "Poll Generator adalah platform terintegrasi Canva yang memudahkan penciptaan tinjauan sekilas dan survei sambil menyediakan visualisasi data masa nyata. Pengguna boleh merancang tinjauan yang menarik secara visual, mengedarkannya melalui kod QR atau laman web berdedikasi, dan melihat arah aliran respons serta-merta. Pelbagai tinjauan sekilas boleh disertakan dalam satu survei untuk pengumpulan data yang komprehensif."
+      },
+      "project15": {
+        "title": "Google Cloud Vertex AI Agent Builder Hackathon (PythonGPT)",
+        "category": "Hackathon",
+        "description": "PythonGPT adalah laman web dinamik yang dirancang untuk mengajar pemula cara membuat kod dalam Python. Ia menawarkan dokumentasi Python, contoh implementasi kod Python, latihan Python, Bantuan Chatbot AI"
+      },
+      "project16": {
+        "title": "Devmatch Hackathon (VoteChain)",
+        "category": "Hackathon",
+        "description": "Teknologi pengundian terdesentralisasi mengurangkan kos dengan menghapuskan keperluan untuk tempat pengundian fizikal dan membenarkan pengundian jauh, meningkatkan penyertaan demokrasi. Ia juga boleh digunakan dalam organisasi, membolehkan pekerja mengundi tentang keputusan dan menjana laporan reputasi berdasarkan ketepatan dan aktiviti. Laporan ini boleh memaklumkan keputusan perekrutan untuk peranan yang memerlukan kemahiran membuat keputusan yang kuat, seperti audit HR dan perekrutan."
+      }
+    }
   },
   "certificates": {
     "title": "Sijil",
