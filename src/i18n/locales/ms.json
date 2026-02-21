@@ -17,7 +17,15 @@
     "studentTitle": "Pelajar Sains Komputer",
     "developerDescription": "Saya pakar dalam mencipta aplikasi web moden dan responsif menggunakan teknologi terkini. Dari konsep hingga pelancaran, saya menghidupkan idea dengan kod yang bersih dan boleh diselenggara.",
     "designerDescription": "Saya percaya reka bentuk yang hebat adalah tidak kelihatan. Fokus saya adalah mencipta pengalaman pengguna yang intuitif dan menyenangkan yang terasa semula jadi dan mudah untuk dinavigasi.",
-    "studentDescription": "Kini sedang mengikuti ijazah Sains Komputer saya untuk mendalami kepakaran teknikal saya. Saya bersemangat tentang pembelajaran berterusan dan projek praktikal yang menggabungkan penyelesaian masalah praktikal dan inovasi."
+    "studentDescription": "Kini sedang mengikuti ijazah Sains Komputer saya untuk mendalami kepakaran teknikal saya. Saya bersemangat tentang pembelajaran berterusan dan projek praktikal yang menggabungkan penyelesaian masalah praktikal dan inovasi.",
+    "tabContent": {
+      "developerP1": "Dengan 5 tahun pengalaman pembangunan perisian yang bermula di sekolah menengah, saya telah menajamkan kemahiran saya dalam pelbagai teknologi. Saya percaya pada pentingnya kedua-dua fungsi dan reka bentuk.",
+      "developerP2": "Saya berusaha untuk mencipta penyelesaian yang secantik mungkin mereka berkuat kuasa, tertumpu pada pengalaman pengguna dan prestasi.",
+      "designerP1": "Saya mendekatkan reka bentuk dengan mata yang tajam untuk perincian dan fokus pada pengalaman berpusat pengguna. Falsafah reka bentuk saya berpusat pada penciptaan antara muka intuitif yang membimbing pengguna secara semula jadi.",
+      "designerP2": "Saya percaya bahawa reka bentuk yang hebat adalah tidak kelihatan, membenarkan pengguna mencapai matlamat mereka tanpa geseran atau kekeliruan.",
+      "studentP1": "Menyelesaikan Diploma 2 tahun dalam Kejuruteraan Perisian dan kini mengejar ijazah Sains Komputer untuk memperdalam kepakaran teknikal saya.",
+      "studentP2": "Saya bersemangat tentang pembelajaran berterusan dan projek amalikal yang menggabungkan penyelesaian masalah praktikal dan inovasi."
+    }
   },
   "header": {
     "home": "Utama",

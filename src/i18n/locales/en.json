@@ -17,7 +17,15 @@
     "studentTitle": "Computer Science Student",
     "developerDescription": "I specialize in creating modern, responsive web applications using cutting-edge technologies. From concept to deployment, I bring ideas to life with clean, maintainable code.",
     "designerDescription": "I believe great design is invisible. My focus is on creating intuitive, delightful user experiences that feel natural and effortless to navigate.",
-    "studentDescription": "Currently pursuing my Computer Science degree to deepen my technical expertise. I'm passionate about continuous learning and hands-on projects that combine both practical problem-solving and innovation."
+    "studentDescription": "Currently pursuing my Computer Science degree to deepen my technical expertise. I'm passionate about continuous learning and hands-on projects that combine both practical problem-solving and innovation.",
+    "tabContent": {
+      "developerP1": "With 5 years of software development experience that began in high school, I've honed my skills in various technologies. I believe in the importance of both functionality and design.",
+      "developerP2": "I strive to create solutions that are as visually appealing as they are effective, focusing on user experience and performance.",
+      "designerP1": "I approach design with a keen eye for detail and a focus on user-centered experiences. My design philosophy centers around creating intuitive interfaces that guide users naturally.",
+      "designerP2": "I believe that great design should be invisible, allowing users to accomplish their goals without friction or confusion.",
+      "studentP1": "Completed a 2-year Diploma in Software Engineering and currently pursuing a Computer Science degree to deepen my technical expertise.",
+      "studentP2": "I'm passionate about continuous learning and hands-on projects that combine both practical problem-solving and innovation."
+    }
   },
   "header": {
     "home": "Home",

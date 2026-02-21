@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import {
   motion,
@@ -131,6 +132,7 @@ const BackgroundAtmosphere = () => {
 };
 
 export default function HeroSection() {
+  const t = useTranslations("hero");
   const [isMounted, setIsMounted] = useState(false);
   const { isMobile } = useDeviceType();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -156,55 +158,39 @@ export default function HeroSection() {
   };
 
   const tabs = [
-    { id: "developer", label: "Developer", icon: Code2 },
-    { id: "designer", label: "Designer", icon: Palette },
-    { id: "student", label: "Student", icon: GraduationCap },
+    { id: "developer", label: t("tabs.developer"), icon: Code2 },
+    { id: "designer", label: t("tabs.designer"), icon: Palette },
+    { id: "student", label: t("tabs.student"), icon: GraduationCap },
   ];
 
   const tabContent = {
     developer: (
       <div className="space-y-4">
         <p className="text-base md:text-lg leading-relaxed text-gray-200">
-          With <span className="text-[#FF9D7A] font-medium">5 years</span> of
-          software development experience that began in high school, I've honed
-          my skills in various technologies. I believe in the importance of both
-          functionality and design.
+          {t("tabContent.developerP1")}
         </p>
         <p className="text-base md:text-lg text-gray-300">
-          I strive to create solutions that are as visually appealing as they
-          are effective, focusing on user experience and performance.
+          {t("tabContent.developerP2")}
         </p>
       </div>
     ),
     designer: (
       <div className="space-y-4">
         <p className="text-base md:text-lg leading-relaxed text-gray-200">
-          I approach design with a keen eye for detail and a focus on{" "}
-          <span className="text-[#FF9D7A] font-medium">
-            user-centered experiences
-          </span>
-          . My design philosophy centers around creating intuitive interfaces
-          that guide users naturally.
+          {t("tabContent.designerP1")}
         </p>
         <p className="text-base md:text-lg text-gray-300">
-          I believe that great design should be invisible, allowing users to
-          accomplish their goals without friction or confusion.
+          {t("tabContent.designerP2")}
         </p>
       </div>
     ),
     student: (
       <div className="space-y-4">
         <p className="text-base md:text-lg leading-relaxed text-gray-200">
-          Completed a 2-year Diploma in Software Engineering and currently
-          pursuing a{" "}
-          <span className="text-[#FF9D7A] font-medium">
-            Computer Science degree
-          </span>{" "}
-          to deepen my technical expertise.
+          {t("tabContent.studentP1")}
         </p>
         <p className="text-base md:text-lg text-gray-300">
-          I'm passionate about continuous learning and hands-on projects that
-          combine both practical problem-solving and innovation.
+          {t("tabContent.studentP2")}
         </p>
       </div>
     ),
@@ -333,7 +319,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.3 }}
                 className="inline-block px-4 py-1.5 rounded-full bg-[#763CAC]/20 text-[#FF9D7A] text-sm font-medium border border-[#763CAC]/30 backdrop-blur-md"
               >
-                Available for New Projects
+                {t("availableForProjects")}
               </motion.span>
 
               <motion.div
@@ -342,12 +328,12 @@ export default function HeroSection() {
                 transition={{ delay: 0.4 }}
               >
                 <h2 className="text-xl md:text-2xl text-gray-400 font-light mb-1">
-                  Hello, I'm
+                  {t("greeting")}
                 </h2>
                 <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-white font-primary">
-                  Ian Gan{" "}
+                  {t("firstName")}{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9D7A] to-[#FFD166]">
-                    Jian Hao
+                    {t("lastName")}
                   </span>
                 </h1>
               </motion.div>
@@ -358,11 +344,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.6 }}
                 className="text-lg md:text-xl text-gray-300 max-w-lg leading-relaxed"
               >
-                Crafting{" "}
-                <span className="text-white font-medium">
-                  exceptional digital experiences
-                </span>{" "}
-                where design meets flawless implementation.
+                {t("tagline")}
               </motion.p>
 
               {/* Socials */}
@@ -413,7 +395,7 @@ export default function HeroSection() {
                           "relative flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-medium transition-all duration-300",
                           activeTab === tab.id
                             ? "text-white"
-                            : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                            : "text-gray-400 hover:text-gray-200 hover:bg-white/5",
                         )}
                       >
                         {activeTab === tab.id && (
@@ -432,7 +414,7 @@ export default function HeroSection() {
                             "w-4 h-4 relative z-10",
                             activeTab === tab.id
                               ? "text-[#FF9D7A]"
-                              : "text-gray-500"
+                              : "text-gray-500",
                           )}
                         />
                         <span className="relative z-10 hidden sm:inline">
@@ -457,10 +439,10 @@ export default function HeroSection() {
                       <Sparkles className="w-5 h-5 text-[#FF9D7A]" />
                       <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
                         {activeTab === "developer"
-                          ? "Full-stack Developer"
+                          ? t("developerTitle")
                           : activeTab === "designer"
-                          ? "UI/UX Designer"
-                          : "Computer Science Student"}
+                            ? t("designerTitle")
+                            : t("studentTitle")}
                       </h3>
                     </div>
                     {tabContent[activeTab as keyof typeof tabContent]}
@@ -470,7 +452,7 @@ export default function HeroSection() {
                       whileTap={{ scale: 0.98 }}
                       className="mt-8 group flex items-center gap-2 text-sm font-semibold text-[#FF9D7A]"
                     >
-                      Learn more about my journey
+                      {t("learnMore")}
                       <motion.span
                         animate={{ x: [0, 5, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
@@ -495,7 +477,7 @@ export default function HeroSection() {
           onClick={scrollToContent}
         >
           <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-gray-400">
-            Scroll
+            {t("scroll")}
           </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
