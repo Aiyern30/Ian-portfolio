@@ -154,7 +154,7 @@ export default function Home() {
     <div className="content relative">
       <Header activeSection={activeSection} />
       <div className="fixed inset-0 -z-10 pointer-events-none">
-        <Meteors number={100} />
+        {/* <Meteors number={100} /> */}
       </div>
       <motion.div
         className="progress-bar"
@@ -162,13 +162,13 @@ export default function Home() {
       />
 
       {/* Global Grid Overlay */}
-      <div
+      {/* <div
         className="fixed inset-0 opacity-[0.03] pointer-events-none -z-10"
         style={{
           backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
           backgroundSize: "50px 50px",
         }}
-      />
+      /> */}
 
       <section id="home">
         <HeroSection />
@@ -204,7 +204,7 @@ export default function Home() {
         icon="pi pi-arrow-up text-base"
       />
 
-      {isClient && !isMobile && (
+      {/* {isClient && !isMobile && (
         <Dock
           model={items.map((item) => ({
             label: item.label,
@@ -214,10 +214,10 @@ export default function Home() {
           position="right"
           className="fixed"
         />
-      )}
+      )} */}
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <FloatingIcon count={3} />
+        {/* <FloatingIcon count={3} /> */}
       </div>
     </div>
   );

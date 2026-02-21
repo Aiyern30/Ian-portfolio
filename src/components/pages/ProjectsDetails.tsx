@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import {
   Github,
   ExternalLink,
@@ -34,6 +35,7 @@ const allCategories = Array.from(
 );
 
 export default function ProjectsSection() {
+  const t = useTranslations("projects");
   const { isMobile, isTablet } = useDeviceType();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -134,44 +136,27 @@ export default function ProjectsSection() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-[#FF9D7A] font-medium tracking-wider uppercase text-sm">
               <span className="w-8 h-[1px] bg-[#FF9D7A]" />
-              Portfolio
+              {t("label")}
             </div>
             <h2 className="text-4xl md:text-6xl font-bold font-primary">
-              Featured{" "}
+              {t("headingPart1")}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF9D7A] to-[#FFD166]">
-                Projects
+                {t("headingHighlight")}
               </span>
             </h2>
             <p className="text-gray-400 max-w-xl text-lg font-secondary">
-              A curated selection of my most challenging and impactful work,
-              spanning <span className="text-white font-medium">Web3</span>,{" "}
-              <span className="text-white font-medium">AI Integration</span>,
-              and{" "}
-              <span className="text-white font-medium">
-                Enterprise Solutions
-              </span>
-              .
+              {t("descriptionStart")}{" "}
+              <span className="text-white font-medium">{t("descriptionHighlight1")}</span>
+              {", "}
+              {t("descriptionMiddle")}{" "}
+              <span className="text-white font-medium">{t("descriptionHighlight2")}</span>
+              {", and "}
+              <span className="text-white font-medium">{t("descriptionHighlight3")}</span>
+              {t("descriptionEnd")}
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Explore Interactive Flow Button */}
-            <Link href="/Projects">
-              <motion.button
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-6 py-3 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-xl font-bold overflow-hidden transition-all hover:shadow-[0_0_30px_#763CAC66] flex items-center gap-2"
-              >
-                <Workflow className="w-5 h-5" />
-                <span className="relative z-10">Explore Interactive Flow</span>
-                <Sparkles className="w-4 h-4 animate-pulse" />
-                <div className="absolute inset-0 bg-white/20 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
-              </motion.button>
-            </Link>
-
             {/* Search Box */}
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-xl blur opacity-0 group-focus-within:opacity-20 transition duration-500" />
@@ -179,7 +164,7 @@ export default function ProjectsSection() {
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
                   type="text"
-                  placeholder="Search projects..."
+                  placeholder={t("searchPlaceholder")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full sm:w-64 pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[#FF9D7A]/50 transition-all placeholder:text-gray-600 text-sm"
