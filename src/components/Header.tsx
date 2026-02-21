@@ -123,7 +123,7 @@ export default function Header({
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden xl:flex items-center gap-6">
+        <div className="hidden xl:flex items-center gap-4">
           <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}

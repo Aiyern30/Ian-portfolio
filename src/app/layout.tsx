@@ -4,6 +4,7 @@ import "./custom.css";
 import { PrimeReactProvider } from "primereact/api";
 import { Toaster } from "@/components/ui";
 import { Analytics } from "@vercel/analytics/react";
+import FloatingLanguageSwitcher from "@/components/FloatingLanguageSwitcher";
 // import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -163,6 +164,7 @@ export default function RootLayout({
           {/* <CustomCursor /> */}
           <Toaster />
           <Analytics />
+          <FloatingLanguageSwitcher />
           {children}
         </body>
       </html>
