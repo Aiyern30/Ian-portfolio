@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
 import Link from "next/link";
 
-// Extract all unique technologies 
+// Extract all unique technologies
 const allTechnologies = Array.from(
   new Set(projects.flatMap((project) => project.label)),
 );
@@ -70,8 +70,8 @@ export default function ProjectsSection() {
       projects.map((project) => {
         const data = getProjectData(project.id);
         return data.category;
-      })
-    )
+      }),
+    ),
   );
 
   // Handle scroll lock when modal is open
@@ -106,7 +106,7 @@ export default function ProjectsSection() {
   // Filter projects based on search term, category, and technology
   const filteredProjects = projects.filter((project) => {
     const projectData = getProjectData(project.id);
-    
+
     const matchesSearch =
       projectData.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       projectData.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -817,13 +817,6 @@ export default function ProjectsSection() {
                 </>
               );
             })()}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsDetailModalOpen(false)}
-              className="fixed inset-0 bg-black/95 backdrop-blur-2xl pointer-events-auto"
-            />
           </div>
         )}
       </AnimatePresence>
