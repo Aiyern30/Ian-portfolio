@@ -289,48 +289,6 @@
     "viewCertificate": "Lihat Sijil",
     "issuedBy": "Dikeluarkan oleh"
   },
-  "contact": {
-    "title": "Hubungi Saya",
-    "subtitle": "Mari Bekerjasama",
-    "description": "Saya sentiasa terbuka untuk membincangkan projek baru, idea kreatif, atau peluang untuk menjadi sebahagian daripada visi anda. Jangan teragak-agak untuk menghubungi!",
-    "form": {
-      "firstName": "Nama Pertama",
-      "lastName": "Nama Keluarga",
-      "email": "Alamat E-mel",
-      "contactNumber": "Nombor Telefon (Pilihan)",
-      "message": "Mesej Anda",
-      "submit": "Hantar Mesej",
-      "submitting": "Menghantar...",
-      "firstNamePlaceholder": "Masukkan nama pertama anda",
-      "lastNamePlaceholder": "Masukkan nama keluarga anda",
-      "emailPlaceholder": "your.email@example.com",
-      "contactNumberPlaceholder": "+60 12-345 6789",
-      "messagePlaceholder": "Beritahu saya tentang projek atau idea anda...",
-      "validation": {
-        "firstNameMin": "Nama pertama mestilah sekurang-kurangnya 2 aksara.",
-        "lastNameMin": "Nama keluarga mestilah sekurang-kurangnya 2 aksara.",
-        "emailInvalid": "Sila masukkan alamat e-mel yang sah.",
-        "messageMin": "Mesej mestilah sekurang-kurangnya 10 aksara."
-      },
-      "success": {
-        "title": "Mesej dihantar!",
-        "description": "Kami akan menghubungi anda secepat mungkin."
-      },
-      "error": {
-        "title": "Gagal menghantar mesej.",
-        "description": "Sila cuba lagi kemudian."
-      }
-    },
-    "socialLinks": {
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "instagram": "Instagram",
-      "discord": "Discord",
-      "whatsapp": "WhatsApp",
-      "source": "Kod Sumber"
-    },
-    "connectWithMe": "Berhubung dengan saya di media sosial"
-  },
   "payment": {
     "title": "Sokong Kerja Saya",
     "subtitle": "Belikan Saya Kopi",
@@ -411,7 +369,7 @@
         "firstName": "Ahmad",
         "lastName": "Abdullah",
         "email": "ianbian2@gmail.com",
-        "contact": "+60 18...",
+        "contact": "+60 18 213 3211",
         "message": "Terangkan secara ringkas visi anda..."
       },
       "validation": {

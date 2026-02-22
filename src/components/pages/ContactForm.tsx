@@ -80,14 +80,10 @@ export default function ContactForm() {
     firstName: z
       .string()
       .min(2, { message: t("form.validation.firstNameMin") }),
-    lastName: z
-      .string()
-      .min(2, { message: t("form.validation.lastNameMin") }),
+    lastName: z.string().min(2, { message: t("form.validation.lastNameMin") }),
     email: z.string().email({ message: t("form.validation.emailInvalid") }),
     contactNumber: z.string().optional(),
-    message: z
-      .string()
-      .min(10, { message: t("form.validation.messageMin") }),
+    message: z.string().min(10, { message: t("form.validation.messageMin") }),
   });
 
   type FormValues = z.infer<typeof formSchema>;
@@ -118,7 +114,7 @@ export default function ContactForm() {
         "service_kgb3j15",
         "template_2vj3nql",
         formData,
-        "deYKZbFxD1zzhjpFe"
+        "deYKZbFxD1zzhjpFe",
       )
       .then(() => {
         toast({
@@ -167,7 +163,10 @@ export default function ContactForm() {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent leading-tight">
-            {t("heading").split(" ").slice(0, -1).join(" ")} <span className="text-[#FF9D7A]">{t("heading").split(" ").slice(-1)}</span>
+            {t("heading").split(" ").slice(0, -1).join(" ")}{" "}
+            <span className="text-[#FF9D7A]">
+              {t("heading").split(" ").slice(-1)}
+            </span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
@@ -230,7 +229,9 @@ export default function ContactForm() {
                                 <div className="relative group">
                                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
-                                    placeholder={t("form.placeholders.firstName")}
+                                    placeholder={t(
+                                      "form.placeholders.firstName",
+                                    )}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -252,7 +253,9 @@ export default function ContactForm() {
                                 <div className="relative group">
                                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
-                                    placeholder={t("form.placeholders.lastName")}
+                                    placeholder={t(
+                                      "form.placeholders.lastName",
+                                    )}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -319,13 +322,13 @@ export default function ContactForm() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                {t("form.message")}
-                              </FormLabel>
-                              <FormControl>
-                                <div className="relative group">
-                                  <MessageSquare className="absolute left-4 top-5 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
-                                  <Textarea
-                                    placeholder={t("form.placeholders.message")}
+                              {t("form.message")}
+                            </FormLabel>
+                            <FormControl>
+                              <div className="relative group">
+                                <MessageSquare className="absolute left-4 top-5 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
+                                <Textarea
+                                  placeholder={t("form.placeholders.message")}
                                   className="min-h-[160px] bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 pt-5 rounded-[2rem] text-white transition-all resize-none"
                                   {...field}
                                 />
@@ -371,8 +374,15 @@ export default function ContactForm() {
             {/* Value Proposition Card */}
             <div className="p-10 bg-gradient-to-br from-[#1a0b2e]/60 to-transparent border border-white/10 rounded-[3rem] backdrop-blur-xl flex-1 flex flex-col justify-center">
               <h3 className="text-4xl font-bold font-primary mb-6 leading-tight">
-                Digital <span className="text-[#FF9D7A]">{t("value.headingHighlight1")}</span> for
-                Modern <span className="text-[#FFD166]">{t("value.headingHighlight2")}</span>.
+                Digital{" "}
+                <span className="text-[#FF9D7A]">
+                  {t("value.headingHighlight1")}
+                </span>{" "}
+                for Modern{" "}
+                <span className="text-[#FFD166]">
+                  {t("value.headingHighlight2")}
+                </span>
+                .
               </h3>
               <p className="text-gray-400 font-secondary text-lg leading-relaxed mb-8">
                 {t("value.description")}

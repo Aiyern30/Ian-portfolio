@@ -289,48 +289,6 @@
     "viewCertificate": "View Certificate",
     "issuedBy": "Issued by"
   },
-  "contact": {
-    "title": "Get In Touch",
-    "subtitle": "Let's Work Together",
-    "description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!",
-    "form": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "email": "Email Address",
-      "contactNumber": "Contact Number (Optional)",
-      "message": "Your Message",
-      "submit": "Send Message",
-      "submitting": "Sending...",
-      "firstNamePlaceholder": "Enter your first name",
-      "lastNamePlaceholder": "Enter your last name",
-      "emailPlaceholder": "your.email@example.com",
-      "contactNumberPlaceholder": "+60 12-345 6789",
-      "messagePlaceholder": "Tell me about your project or idea...",
-      "validation": {
-        "firstNameMin": "First name must be at least 2 characters.",
-        "lastNameMin": "Last name must be at least 2 characters.",
-        "emailInvalid": "Please enter a valid email address.",
-        "messageMin": "Message must be at least 10 characters."
-      },
-      "success": {
-        "title": "Message sent!",
-        "description": "We'll get back to you as soon as possible."
-      },
-      "error": {
-        "title": "Failed to send message.",
-        "description": "Please try again later."
-      }
-    },
-    "socialLinks": {
-      "github": "GitHub",
-      "linkedin": "LinkedIn",
-      "instagram": "Instagram",
-      "discord": "Discord",
-      "whatsapp": "WhatsApp",
-      "source": "Source Code"
-    },
-    "connectWithMe": "Connect with me on social media"
-  },
   "payment": {
     "title": "Support My Work",
     "subtitle": "Buy Me a Coffee",
@@ -385,8 +343,6 @@
       "title": "Copied to clipboard!",
       "description": "{name} details copied successfully."
     },
-    "recommended": "Recommended",
-    "securePayment": "Secure Payment",
     "selectAmount": "Select Amount",
     "customAmount": "Custom Amount",
     "proceedToPayment": "Proceed to Payment",
@@ -413,7 +369,7 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "ianbian2@gmail.com",
-        "contact": "+60 18...",
+        "contact": "+60 18 213 3211",
         "message": "Briefly describe your vision..."
       },
       "validation": {

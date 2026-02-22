@@ -289,48 +289,6 @@
     "viewCertificate": "查看证书",
     "issuedBy": "颁发机构"
   },
-  "contact": {
-    "title": "联系我",
-    "subtitle": "让我们一起合作",
-    "description": "我随时欢迎讨论新项目、创意想法或成为您愿景的一部分的机会。请随时联系我！",
-    "form": {
-      "firstName": "名字",
-      "lastName": "姓氏",
-      "email": "电子邮件地址",
-      "contactNumber": "联系电话（可选）",
-      "message": "您的信息",
-      "submit": "发送消息",
-      "submitting": "发送中...",
-      "firstNamePlaceholder": "输入您的名字",
-      "lastNamePlaceholder": "输入您的姓氏",
-      "emailPlaceholder": "your.email@example.com",
-      "contactNumberPlaceholder": "+60 12-345 6789",
-      "messagePlaceholder": "告诉我关于您的项目或想法...",
-      "validation": {
-        "firstNameMin": "名字必须至少2个字符。",
-        "lastNameMin": "姓氏必须至少2个字符。",
-        "emailInvalid": "请输入有效的电子邮件地址。",
-        "messageMin": "消息必须至少10个字符。"
-      },
-      "success": {
-        "title": "消息已发送！",
-        "description": "我们会尽快回复您。"
-      },
-      "error": {
-        "title": "发送消息失败。",
-        "description": "请稍后再试。"
-      }
-    },
-    "socialLinks": {
-      "github": "GitHub",
-      "linkedin": "领英",
-      "instagram": "Instagram",
-      "discord": "Discord",
-      "whatsapp": "WhatsApp",
-      "source": "源代码"
-    },
-    "connectWithMe": "在社交媒体上与我联系"
-  },
   "payment": {
     "title": "支持我的工作",
     "subtitle": "请我喝杯咖啡",
@@ -411,7 +369,7 @@
         "firstName": "建豪",
         "lastName": "颜",
         "email": "ianbian2@gmail.com",
-        "contact": "+60 18...",
+        "contact": "+60 18 213 3211",
         "message": "简要描述您的构想..."
       },
       "validation": {
