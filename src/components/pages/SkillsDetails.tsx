@@ -1,58 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { FcAlarmClock } from "react-icons/fc";
 import { IoDesktopOutline } from "react-icons/io5";
 import { FaLightbulb, FaRocket } from "react-icons/fa";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/Marquee";
 import { Tabs, TabsList, TabsTrigger } from "../ui";
 import { useDeviceType } from "@/lib/useDeviceTypes";
 import { User, Sparkles } from "lucide-react";
-
-// About qualities
-const qualities = [
-  {
-    id: 1,
-    icon: <FcAlarmClock size={45} />,
-    title: "Fast",
-    details: "Fast load times and lag-free interaction, my highest priority.",
-    color: "from-blue-600 to-blue-800",
-    hoverColor: "group-hover:from-blue-500 group-hover:to-blue-700",
-    iconBg: "bg-blue-500/20",
-  },
-  {
-    id: 2,
-    icon: <IoDesktopOutline color="white" size={45} />,
-    title: "Responsive",
-    details: "My layouts will work on any device, big or small.",
-    color: "from-purple-600 to-purple-800",
-    hoverColor: "group-hover:from-purple-500 group-hover:to-purple-700",
-    iconBg: "bg-purple-500/20",
-  },
-  {
-    id: 3,
-    icon: <FaLightbulb color="yellow" size={45} />,
-    title: "Intuitive",
-    details: "Strong preference for easy-to-use, intuitive UX/UI.",
-    color: "from-amber-500 to-amber-700",
-    hoverColor: "group-hover:from-amber-400 group-hover:to-amber-600",
-    iconBg: "bg-amber-500/20",
-  },
-  {
-    id: 4,
-    icon: <FaRocket color="orange" size={45} />,
-    title: "Dynamic",
-    details:
-      "Websites don't have to be static; I love making pages come to life.",
-    color: "from-rose-600 to-rose-800",
-    hoverColor: "group-hover:from-rose-500 group-hover:to-rose-700",
-    iconBg: "bg-rose-500/20",
-  },
-];
 
 // Programming languages and frameworks - using Devicon for colorful icons
 const programmingTech = [
@@ -279,8 +239,49 @@ const MobileTechGrid = ({
 );
 
 export default function SkillsDetails() {
+  const t = useTranslations("skills");
   const [activeTab, setActiveTab] = useState("all");
   const { isMobile } = useDeviceType();
+
+  // About qualities with translations
+  const qualities = useMemo(() => [
+    {
+      id: 1,
+      icon: <FcAlarmClock size={45} />,
+      title: t("qualities.fast.title"),
+      details: t("qualities.fast.details"),
+      color: "from-blue-600 to-blue-800",
+      hoverColor: "group-hover:from-blue-500 group-hover:to-blue-700",
+      iconBg: "bg-blue-500/20",
+    },
+    {
+      id: 2,
+      icon: <IoDesktopOutline color="white" size={45} />,
+      title: t("qualities.responsive.title"),
+      details: t("qualities.responsive.details"),
+      color: "from-purple-600 to-purple-800",
+      hoverColor: "group-hover:from-purple-500 group-hover:to-purple-700",
+      iconBg: "bg-purple-500/20",
+    },
+    {
+      id: 3,
+      icon: <FaLightbulb color="yellow" size={45} />,
+      title: t("qualities.intuitive.title"),
+      details: t("qualities.intuitive.details"),
+      color: "from-amber-500 to-amber-700",
+      hoverColor: "group-hover:from-amber-400 group-hover:to-amber-600",
+      iconBg: "bg-amber-500/20",
+    },
+    {
+      id: 4,
+      icon: <FaRocket color="orange" size={45} />,
+      title: t("qualities.dynamic.title"),
+      details: t("qualities.dynamic.details"),
+      color: "from-rose-600 to-rose-800",
+      hoverColor: "group-hover:from-rose-500 group-hover:to-rose-700",
+      iconBg: "bg-rose-500/20",
+    },
+  ], [t]);
 
   return (
     <div className="relative py-24 md:py-32 px-4 md:px-8 lg:px-12 overflow-hidden">
@@ -300,17 +301,16 @@ export default function SkillsDetails() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
             <User className="w-4 h-4 text-[#FF9D7A]" />
             <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
-              The Developer
+              {t("badge")}
             </span>
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
-            Crafting Digital <span className="text-[#FF9D7A]">Excellence</span>
+            {t("heading").split(" ")[0]} {t("heading").split(" ")[1]} <span className="text-[#FF9D7A]">{t("heading").split(" ")[2]}</span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
-            A developer passionate about creating fast, responsive, and
-            intuitive web experiences that leave a lasting impression.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -372,11 +372,11 @@ export default function SkillsDetails() {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
               <Sparkles className="w-4 h-4 text-[#FF9D7A]" />
               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">
-                Tech Ecosystem
+                {t("techStack.badge")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold font-primary mb-12">
-              My <span className="text-[#FF9D7A]">Stack</span> Architecture
+              {t("techStack.heading").split(" ")[0]} <span className="text-[#FF9D7A]">{t("techStack.heading").split(" ")[1]}</span> {t("techStack.heading").split(" ")[2]}
             </h2>
 
             {/* Premium Tabs */}
@@ -395,7 +395,7 @@ export default function SkillsDetails() {
                             : "text-gray-500 hover:text-white"
                         )}
                       >
-                        {tab === "programming" ? "Languages" : tab}
+                        {tab === "programming" ? t("techStack.tabProgramming") : t(`techStack.tab${tab.charAt(0).toUpperCase() + tab.slice(1)}`)}
                       </button>
                     )
                   )}
@@ -411,7 +411,7 @@ export default function SkillsDetails() {
               activeTab === "programming") && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
-                  Languages & Frameworks
+                  {t("techStack.sectionProgramming")}
                 </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={programmingTech} />
@@ -428,7 +428,7 @@ export default function SkillsDetails() {
             {(isMobile || activeTab === "all" || activeTab === "backend") && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
-                  Databases & Infrastructure
+                  {t("techStack.sectionBackend")}
                 </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={backendTech} />
@@ -449,7 +449,7 @@ export default function SkillsDetails() {
             {(isMobile || activeTab === "all" || activeTab === "tools") && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
-                  Development Power-Tools
+                  {t("techStack.sectionTools")}
                 </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={toolsTech} />
@@ -466,7 +466,7 @@ export default function SkillsDetails() {
             {(isMobile || activeTab === "all" || activeTab === "web3") && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mb-8 text-center">
-                  Web3 & Digital Assets
+                  {t("techStack.sectionWeb3")}
                 </h4>
                 {isMobile ? (
                   <MobileTechGrid techs={web3Tech} />

@@ -39,6 +39,9 @@
   "skills": {
     "title": "About Me",
     "subtitle": "What I Bring to the Table",
+    "badge": "The Developer",
+    "heading": "Crafting Digital Excellence",
+    "description": "A developer passionate about creating fast, responsive, and intuitive web experiences that leave a lasting impression.",
     "qualities": {
       "fast": {
         "title": "Fast",
@@ -56,6 +59,19 @@
         "title": "Dynamic",
         "details": "Websites don't have to be static; I love making pages come to life."
       }
+    },
+    "techStack": {
+      "badge": "Tech Ecosystem",
+      "heading": "My Stack Architecture",
+      "tabAll": "all",
+      "tabProgramming": "Languages",
+      "tabBackend": "backend",
+      "tabTools": "tools",
+      "tabWeb3": "web3",
+      "sectionProgramming": "Languages & Frameworks",
+      "sectionBackend": "Databases & Infrastructure",
+      "sectionTools": "Development Power-Tools",
+      "sectionWeb3": "Web3 & Digital Assets"
     },
     "tabs": {
       "programming": "Programming",

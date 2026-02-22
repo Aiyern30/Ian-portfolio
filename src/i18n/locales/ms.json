@@ -39,6 +39,9 @@
   "skills": {
     "title": "Tentang Saya",
     "subtitle": "Apa Yang Saya Tawarkan",
+    "badge": "Pembangun",
+    "heading": "Mencipta Kecemerlangan Digital",
+    "description": "Seorang pembangun yang bersemangat tentang mencipta pengalaman web yang pantas, responsif, dan intuitif yang meninggalkan kesan yang berkekalan.",
     "qualities": {
       "fast": {
         "title": "Pantas",
@@ -56,6 +59,19 @@
         "title": "Dinamik",
         "details": "Laman web tidak perlu statik; saya suka menghidupkan halaman."
       }
+    },
+    "techStack": {
+      "badge": "Ekosistem Teknologi",
+      "heading": "Seni Bina Stack Saya",
+      "tabAll": "semua",
+      "tabProgramming": "Bahasa",
+      "tabBackend": "backend",
+      "tabTools": "alatan",
+      "tabWeb3": "web3",
+      "sectionProgramming": "Bahasa & Kerangka Kerja",
+      "sectionBackend": "Pangkalan Data & Infrastruktur",
+      "sectionTools": "Alatan Kuasa Pembangunan",
+      "sectionWeb3": "Web3 & Aset Digital"
     },
     "tabs": {
       "programming": "Pengaturcaraan",

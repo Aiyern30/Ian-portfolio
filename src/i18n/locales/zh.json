@@ -39,6 +39,9 @@
   "skills": {
     "title": "关于我",
     "subtitle": "我能为您提供什么",
+    "badge": "开发者",
+    "heading": "打造数字卓越",
+    "description": "一位热衷于创建快速、响应式和直观的网络体验，留下持久印象的开发者。",
     "qualities": {
       "fast": {
         "title": "快速",
@@ -56,6 +59,19 @@
         "title": "动态",
         "details": "网站不必是静态的；我喜欢让页面生动起来。"
       }
+    },
+    "techStack": {
+      "badge": "技术生态系统",
+      "heading": "我的技术架构",
+      "tabAll": "全部",
+      "tabProgramming": "语言",
+      "tabBackend": "后端",
+      "tabTools": "工具",
+      "tabWeb3": "web3",
+      "sectionProgramming": "语言和框架",
+      "sectionBackend": "数据库和基础设施",
+      "sectionTools": "开发工具",
+      "sectionWeb3": "Web3 和数字资产"
     },
     "tabs": {
       "programming": "编程",
