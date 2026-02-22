@@ -125,6 +125,20 @@
     "interactiveTitle": "Penjelajah Projek Interaktif",
     "interactiveDescription": "Terokai semua projek dalam gambar aliran interaktif! Seret, zoom, dan navigasi melalui portfolio saya dengan pengalaman visual yang mendalam.",
     "exploreNow": "Jelajahi Sekarang",
+    "archiveTitle": "Projek",
+    "archiveHighlight": "Arkib",
+    "emptyState": {
+      "title": "Tiada Projek Ditemui",
+      "description": "Tiada projek yang sepadan dengan penapis semasa anda. Cuba sesuaikan carian atau pilihan kategori anda.",
+      "clearButton": "Kosongkan Semua Penapis"
+    },
+    "shortcuts": {
+      "title": "Pintasan:",
+      "fitView": "Sesuaikan paparan",
+      "lock": "Kunci",
+      "unlock": "Buka kunci",
+      "clear": "Bersihkan"
+    },
     "projectsData": {
       "project0": {
         "title": "YTL Concrete Hub (Platform Bertenaga AI)",

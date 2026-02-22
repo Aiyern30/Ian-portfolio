@@ -125,6 +125,20 @@
     "interactiveTitle": "Interactive Project Explorer",
     "interactiveDescription": "Explore all projects in an interactive flow diagram! Drag, zoom, and navigate through my portfolio with an immersive visual experience.",
     "exploreNow": "Explore Now",
+    "archiveTitle": "Project",
+    "archiveHighlight": "Archive",
+    "emptyState": {
+      "title": "No Projects Found",
+      "description": "No projects match your current filters. Try adjusting your search or category selection.",
+      "clearButton": "Clear All Filters"
+    },
+    "shortcuts": {
+      "title": "Shortcuts:",
+      "fitView": "Fit view",
+      "lock": "Lock",
+      "unlock": "Unlock",
+      "clear": "Clear"
+    },
     "projectsData": {
       "project0": {
         "title": "YTL Concrete Hub (AI-Powered Platform)",

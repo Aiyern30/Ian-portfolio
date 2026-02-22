@@ -50,7 +50,10 @@ type EnrichedProject = (typeof projectsData)[0] & {
 // Add IDs and year to projects for the flow diagram
 const getProjectsWithTranslations = (
   data: typeof projectsData,
-  projectTranslations: Record<string, { title: string; category: string; description: string }>
+  projectTranslations: Record<
+    string,
+    { title: string; category: string; description: string }
+  >,
 ): EnrichedProject[] => {
   return data.map((project, index: number) => ({
     ...project,
@@ -174,7 +177,10 @@ export default function ProjectsPage() {
 
   // Get translated project data
   const projectsWithTranslations = useMemo(() => {
-    const projectTranslations: Record<string, { title: string; category: string; description: string }> = {};
+    const projectTranslations: Record<
+      string,
+      { title: string; category: string; description: string }
+    > = {};
     projectsData.forEach((project) => {
       projectTranslations[project.id] = {
         title: t(`projectsData.${project.id}.title`),
@@ -189,8 +195,9 @@ export default function ProjectsPage() {
 
   // Get categories from enriched projects
   const allCategories = useMemo(
-    (): string[] => Array.from(new Set(projects.map((p: EnrichedProject) => p.category))),
-    [projects]
+    (): string[] =>
+      Array.from(new Set(projects.map((p: EnrichedProject) => p.category))),
+    [projects],
   );
 
   // Filter projects
@@ -342,9 +349,9 @@ export default function ProjectsPage() {
                 {/* Title */}
                 <div>
                   <h1 className="text-3xl font-bold text-white mb-1">
-                    Project{" "}
+                    {t("archiveTitle")}{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#763CAC] to-[#B794F4]">
-                      Archive
+                      {t("archiveHighlight")}
                     </span>
                   </h1>
                   <p className="text-gray-400 text-sm">
@@ -386,7 +393,7 @@ export default function ProjectsPage() {
                   >
                     All
                   </Button>
-                    {allCategories.map((category: string) => (
+                  {allCategories.map((category: string) => (
                     <Button
                       key={category}
                       size="sm"
@@ -409,7 +416,7 @@ export default function ProjectsPage() {
           </Panel>
 
           {/* Zoom Indicator & Controls */}
-          <Panel position="bottom-left" className="m-4 space-y-2">
+          <Panel position="bottom-left" className="m-4 pb-24 space-y-2">
             {/* Zoom Controls */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -483,18 +490,20 @@ export default function ProjectsPage() {
               transition={{ delay: 0.15 }}
               className="bg-gray-900/90 backdrop-blur px-3 py-2 rounded-lg border border-gray-800 text-xs text-gray-400 space-y-1"
             >
-              <div className="font-semibold text-gray-300 mb-1">Shortcuts:</div>
+              <div className="font-semibold text-gray-300 mb-1">
+                {t("shortcuts.title")}
+              </div>
               <div>
-                <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">F</kbd> Fit
-                view
+                <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">F</kbd>{" "}
+                {t("shortcuts.fitView")}
               </div>
               <div>
                 <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">L</kbd>{" "}
-                {isLocked ? "Unlock" : "Lock"}
+                {isLocked ? t("shortcuts.unlock") : t("shortcuts.lock")}
               </div>
               <div>
                 <kbd className="px-1.5 py-0.5 bg-gray-800 rounded">ESC</kbd>{" "}
-                Clear
+                {t("shortcuts.clear")}
               </div>
             </motion.div>
           </Panel>
@@ -509,17 +518,16 @@ export default function ProjectsPage() {
               >
                 <div className="text-6xl mb-4">🔍</div>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  No Projects Found
+                  {t("emptyState.title")}
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  No projects match your current filters. Try adjusting your
-                  search or category selection.
+                  {t("emptyState.description")}
                 </p>
                 <button
                   onClick={handleResetView}
                   className="px-4 py-2 bg-[#763CAC] hover:bg-[#9D50BB] text-white rounded-lg transition-colors font-medium"
                 >
-                  Clear All Filters
+                  {t("emptyState.clearButton")}
                 </button>
               </motion.div>
             </Panel>

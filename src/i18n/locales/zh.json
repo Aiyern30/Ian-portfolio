@@ -125,6 +125,20 @@
     "interactiveTitle": "交互式项目浏览器",
     "interactiveDescription": "在交互式流程图中探索所有项目！拖动、缩放并浏览我的投资组合，获得沉浸式的视觉体验。",
     "exploreNow": "立即探索",
+    "archiveTitle": "精选",
+    "archiveHighlight": "项目",
+    "emptyState": {
+      "title": "未找到项目",
+      "description": "没有项目与您当前的过滤条件匹配。请尝试调整您的搜索或类别选择。",
+      "clearButton": "清除所有过滤"
+    },
+    "shortcuts": {
+      "title": "快捷键：",
+      "fitView": "适应视图",
+      "lock": "锁定",
+      "unlock": "解锁",
+      "clear": "清除"
+    },
     "projectsData": {
       "project0": {
         "title": "YTL 混凝土中心（AI 驱动平台）",
