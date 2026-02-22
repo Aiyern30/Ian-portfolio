@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { X, ChevronDown } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface HeaderProps {
   activeSection?: string;
@@ -16,7 +16,9 @@ export default function Header({
   activeSection: activeSectionProp,
 }: HeaderProps) {
   const t = useTranslations("header");
+  const locale = useLocale();
   const pathname = usePathname();
+  const localePrefix = `/${locale}`;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -26,26 +28,53 @@ export default function Header({
   // Navigation items with translations
   const navItems = useMemo(
     () => [
-      { name: t("home"), href: "/", section: "home" },
-      { name: t("tools"), href: "/#tools", section: "tools" },
-      { name: t("projects"), href: "/#projects", section: "projects" },
-      { name: t("archive"), href: "/Projects", section: "Projects" },
-      { name: t("certificates"), href: "/#certs", section: "certs" },
-      { name: t("about"), href: "/#about", section: "about" },
-      { name: t("supportMe"), href: "/#support-me", section: "support-me" },
-      { name: t("contactUs"), href: "/#contact-us", section: "contact-us" },
-      { name: t("journey"), href: "/Journey", section: "Journey" },
+      { name: t("home"), href: localePrefix, section: "home" },
+      { name: t("tools"), href: `${localePrefix}/#tools`, section: "tools" },
+      {
+        name: t("projects"),
+        href: `${localePrefix}/#projects`,
+        section: "projects",
+      },
+      {
+        name: t("archive"),
+        href: `${localePrefix}/Projects`,
+        section: "Projects",
+      },
+      {
+        name: t("certificates"),
+        href: `${localePrefix}/#certs`,
+        section: "certs",
+      },
+      { name: t("about"), href: `${localePrefix}/#about`, section: "about" },
+      {
+        name: t("supportMe"),
+        href: `${localePrefix}/#support-me`,
+        section: "support-me",
+      },
+      {
+        name: t("contactUs"),
+        href: `${localePrefix}/#contact-us`,
+        section: "contact-us",
+      },
+      {
+        name: t("journey"),
+        href: `${localePrefix}/Journey`,
+        section: "Journey",
+      },
     ],
-    [t],
+    [localePrefix, t],
   );
 
   // Determine which section is active:
   // 1. If we're on /Journey or /Projects, that's active.
   // 2. Otherwise use the prop passed from observer.
+  const normalizedPathname = pathname.startsWith(localePrefix)
+    ? pathname.slice(localePrefix.length) || "/"
+    : pathname;
   const activeSection =
-    pathname === "/Journey"
+    normalizedPathname === "/Journey"
       ? "Journey"
-      : pathname === "/Projects"
+      : normalizedPathname === "/Projects"
         ? "Projects"
         : activeSectionProp;
 
@@ -114,7 +143,7 @@ export default function Header({
       )}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
-        <Link href="/" className="relative z-10">
+        <Link href={localePrefix} className="relative z-10">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}

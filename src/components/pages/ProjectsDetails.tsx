@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Github,
   ExternalLink,
@@ -33,6 +33,7 @@ const allTechnologies = Array.from(
 
 export default function ProjectsSection() {
   const t = useTranslations("projects");
+  const locale = useLocale();
   const { isMobile, isTablet } = useDeviceType();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -525,7 +526,7 @@ export default function ProjectsSection() {
               <p className="text-gray-400 mb-6 leading-relaxed">
                 {t("interactiveDescription")}
               </p>
-              <Link href="/Projects">
+              <Link href={`/${locale}/Projects`}>
                 <button className="group relative px-8 py-4 bg-gradient-to-r from-[#763CAC] to-[#FF9D7A] rounded-full font-bold overflow-hidden transition-all hover:shadow-[0_0_40px_#763CAC88] flex items-center gap-3 mx-auto">
                   <Sparkles className="w-5 h-5 animate-pulse" />
                   <span className="relative z-10">{t("exploreNow")}</span>

@@ -24,6 +24,7 @@ import {
 import Header from "@/components/Header";
 import { cn } from "@/lib/utils";
 import { Meteors } from "@/components/magicui/index";
+import { useLocale } from "next-intl";
 
 const journeyData = [
   {
@@ -184,6 +185,7 @@ const TimelineItem = ({
 };
 
 export default function JourneyTimeline() {
+  const locale = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -320,7 +322,7 @@ export default function JourneyTimeline() {
               together.
             </p>
             <button
-              onClick={() => (window.location.href = "/#contact-us")}
+              onClick={() => (window.location.href = `/${locale}/#contact-us`)}
               className="px-10 py-5 bg-white text-black font-bold rounded-2xl hover:scale-105 transition-transform shadow-xl"
             >
               Get In Touch
