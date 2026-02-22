@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Card,
   CardContent,
@@ -85,32 +86,8 @@ const paymentMethods = [
   },
 ];
 
-// Support tiers
-const supportTiers = [
-  {
-    name: "Coffee",
-    amount: "RM 15",
-    value: 15,
-    description: "Buy me a coffee to fuel late night coding sessions",
-    icon: <Coffee className="h-6 w-6" />,
-  },
-  {
-    name: "Pizza",
-    amount: "RM 30",
-    value: 30,
-    description: "Help me stay energized with a delicious pizza",
-    icon: <Gift className="h-6 w-6" />,
-  },
-  {
-    name: "Premium",
-    amount: "RM 100",
-    value: 100,
-    description: "Support ongoing development of my projects",
-    icon: <Heart className="h-6 w-6" fill="#FF6B6B" />,
-  },
-];
-
 export default function SupportMe() {
+  const t = useTranslations("payment");
   const [selectedMethod, setSelectedMethod] = useState<
     (typeof paymentMethods)[0] | null
   >(null);
@@ -118,6 +95,31 @@ export default function SupportMe() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
   const { toast } = useToast();
+
+  // Support tiers with translations
+  const supportTiers = useMemo(() => [
+    {
+      name: t("tiers.coffee.name"),
+      amount: t("tiers.coffee.amount"),
+      value: 15,
+      description: t("tiers.coffee.description"),
+      icon: <Coffee className="h-6 w-6" />,
+    },
+    {
+      name: t("tiers.pizza.name"),
+      amount: t("tiers.pizza.amount"),
+      value: 30,
+      description: t("tiers.pizza.description"),
+      icon: <Gift className="h-6 w-6" />,
+    },
+    {
+      name: t("tiers.premium.name"),
+      amount: t("tiers.premium.amount"),
+      value: 100,
+      description: t("tiers.premium.description"),
+      icon: <Heart className="h-6 w-6" fill="#FF6B6B" />,
+    },
+  ], [t]);
 
   // Prevent background scrolling when dialog is open
   useEffect(() => {
@@ -136,8 +138,8 @@ export default function SupportMe() {
     setCopied(name);
 
     toast({
-      title: "Copied to clipboard!",
-      description: `${name} details copied successfully.`,
+      title: t("toast.title"),
+      description: t("toast.description", { name }),
     });
 
     setTimeout(() => setCopied(null), 2000);
@@ -188,17 +190,16 @@ export default function SupportMe() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
             <Heart className="w-4 h-4 text-[#FF9D7A]" fill="#FF9D7A" />
             <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
-              Support The Journey
+              {t("badge")}
             </span>
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent leading-tight">
-            Support My <span className="text-[#FF9D7A]">Creative</span> Work
+            {t("heading").split(" ").slice(0, -2).join(" ")} <span className="text-[#FF9D7A]">{t("heading").split(" ").slice(-2).join(" ")}</span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
-            Your contributions fuel my late-night coding sessions and help me
-            maintain high-quality open-source projects for the community.
+            {t("headingDescription")}
           </p>
         </motion.div>
 
@@ -238,7 +239,7 @@ export default function SupportMe() {
                       }}
                       className="w-full py-3 bg-white/5 border border-white/10 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-[#FF9D7A] hover:border-[#FF9D7A] hover:text-white transition-all duration-300"
                     >
-                      Support {tier.amount}
+                      {t("supportButton")} {tier.amount}
                     </button>
                   </div>
                 </motion.div>
@@ -256,9 +257,9 @@ export default function SupportMe() {
                   <div className="w-12 h-12 rounded-full border border-[#FF9D7A]/30 flex items-center justify-center">
                     <Gift className="w-5 h-5 text-[#FF9D7A]" />
                   </div>
-                  <h4 className="font-primary font-bold">Custom Tip</h4>
+                  <h4 className="font-primary font-bold">{t("customTip.title")}</h4>
                   <p className="text-xs text-gray-500 font-secondary">
-                    Every little bit counts towards the next big release.
+                    {t("customTip.description")}
                   </p>
                 </div>
               </motion.div>
@@ -272,12 +273,10 @@ export default function SupportMe() {
               viewport={{ once: true }}
             >
               <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-4">
-                Sustainability & Impact
+                {t("impact.title")}
               </h4>
               <p className="text-gray-400 font-secondary text-sm leading-relaxed">
-                100% of your contributions go directly towards server costs,
-                research tools, and development time. Your support enables me to
-                keep my projects ad-free and open for everyone.
+                {t("impact.description")}
               </p>
             </motion.div>
           </div>
@@ -292,7 +291,7 @@ export default function SupportMe() {
             >
               <div className="p-8 md:p-10 bg-[#1a0b2e]/60 border border-white/10 rounded-[3rem] backdrop-blur-xl shadow-2xl">
                 <h3 className="text-2xl font-bold font-primary mb-8 text-center lg:text-left">
-                  Choose Platform
+                  {t("choosePlatform")}
                 </h3>
 
                 <div className="space-y-4">
@@ -317,7 +316,7 @@ export default function SupportMe() {
                             {method.name}
                           </p>
                           <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest">
-                            {method.featured ? "Recommended" : "Secure Payment"}
+                            {method.featured ? t("recommended") : t("securePayment")}
                           </p>
                         </div>
                       </div>
@@ -328,7 +327,7 @@ export default function SupportMe() {
 
                 <div className="mt-10 pt-8 border-t border-white/5 text-center">
                   <p className="text-xs text-gray-500 font-secondary mb-2">
-                    Secure encrypted redirection
+                    {t("secureRedirection")}
                   </p>
                   <div className="flex justify-center gap-4 grayscale opacity-30">
                     {/* Placeholder for security badges/icons */}
@@ -374,7 +373,7 @@ export default function SupportMe() {
                         />
                       </div>
                       <h3 className="text-3xl font-bold font-primary">
-                        Checkout Result
+                        {t("dialog.title")}
                       </h3>
                       <p className="text-gray-400 font-secondary text-sm">
                         {selectedMethod.description}
@@ -391,7 +390,7 @@ export default function SupportMe() {
                   <div className="space-y-6">
                     <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
                       <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest text-[#FF9D7A]">
-                        <span>ID / Wallet Address</span>
+                        <span>{t("dialog.idLabel")}</span>
                         <button
                           onClick={() =>
                             handleCopy(
@@ -401,7 +400,7 @@ export default function SupportMe() {
                           }
                           className="hover:text-white transition-colors"
                         >
-                          {copied === selectedMethod.name ? "Copied!" : "Copy"}
+                          {copied === selectedMethod.name ? t("dialog.copied") : t("dialog.copy")}
                         </button>
                       </div>
                       <p className="font-mono text-lg break-all text-white/90">
@@ -412,15 +411,15 @@ export default function SupportMe() {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="p-4 rounded-xl border border-white/5 bg-white/5">
                         <p className="text-[10px] text-gray-500 uppercase font-bold mb-1">
-                          Status
+                          {t("dialog.statusLabel")}
                         </p>
                         <p className="text-xs text-green-500 font-bold">
-                          Encrypted Link Ready
+                          {t("dialog.statusReady")}
                         </p>
                       </div>
                       <div className="p-4 rounded-xl border border-white/5 bg-white/5">
                         <p className="text-[10px] text-gray-500 uppercase font-bold mb-1">
-                          Type
+                          {t("dialog.typeLabel")}
                         </p>
                         <p className="text-xs text-white font-bold">
                           {selectedMethod.name}
@@ -434,14 +433,14 @@ export default function SupportMe() {
                       onClick={() => window.open(getDynamicLink(), "_blank")}
                       className="w-full py-5 bg-[#FF9D7A] text-white font-bold rounded-2xl shadow-[0_10px_30px_rgba(255,157,122,0.3)] hover:bg-[#FF9D7A]/90 hover:scale-[1.02] transition-all flex items-center justify-center gap-3"
                     >
-                      Proceed to Secure Payment{" "}
+                      {t("dialog.proceedButton")}{" "}
                       <ExternalLink className="w-5 h-5" />
                     </button>
                     <p className="text-center text-[10px] text-gray-600 font-medium">
-                      Redirecting to {selectedMethod.name}.{" "}
+                      {t("dialog.redirecting")} {selectedMethod.name}.{" "}
                       {selectedAmount
-                        ? `Amount RM${selectedAmount} pre-filled.`
-                        : "Secure transactions encrypted by provider."}
+                        ? t("dialog.amountPrefilled", { amount: selectedAmount })
+                        : t("dialog.secureTransactions")}
                     </p>
                   </div>
                 </div>

@@ -335,8 +335,56 @@
     "title": "Sokong Kerja Saya",
     "subtitle": "Belikan Saya Kopi",
     "description": "Jika anda menikmati kerja saya dan ingin menyokong saya, anda boleh membelikan saya kopi! Sokongan anda membantu saya mencipta lebih banyak projek yang menakjubkan.",
+    "badge": "Sokong Perjalanan",
+    "heading": "Sokong Kerja Kreatif Saya",
+    "headingDescription": "Sumbangan anda menyemarakkan sesi pengekodan larut malam saya dan membantu saya mengekalkan projek sumber terbuka berkualiti tinggi untuk komuniti.",
+    "tiers": {
+      "coffee": {
+        "name": "Kopi",
+        "amount": "RM 15",
+        "description": "Belikan saya kopi untuk menyemarakkan sesi pengekodan larut malam"
+      },
+      "pizza": {
+        "name": "Pizza",
+        "amount": "RM 30",
+        "description": "Bantu saya kekal bertenaga dengan pizza yang lazat"
+      },
+      "premium": {
+        "name": "Premium",
+        "amount": "RM 100",
+        "description": "Sokong pembangunan berterusan projek saya"
+      }
+    },
+    "customTip": {
+      "title": "Tip Tersuai",
+      "description": "Setiap sedikit dikira untuk keluaran besar seterusnya."
+    },
+    "impact": {
+      "title": "Kemampanan & Impak",
+      "description": "100% sumbangan anda terus kepada kos pelayan, alat penyelidikan, dan masa pembangunan. Sokongan anda membolehkan saya mengekalkan projek saya bebas iklan dan terbuka untuk semua orang."
+    },
+    "choosePlatform": "Pilih Platform",
     "recommended": "Disyorkan",
     "securePayment": "Pembayaran Selamat",
+    "secureRedirection": "Ubah hala disulitkan selamat",
+    "supportButton": "Sokong",
+    "dialog": {
+      "title": "Hasil Pembayaran",
+      "idLabel": "ID / Alamat Dompet",
+      "copy": "Salin",
+      "copied": "Disalin!",
+      "statusLabel": "Status",
+      "statusReady": "Pautan Disulitkan Sedia",
+      "typeLabel": "Jenis",
+      "proceedButton": "Teruskan ke Pembayaran Selamat",
+      "redirecting": "Mengalih ke",
+      "amountPrefilled": "Jumlah RM{amount} telah diisi.",
+      "secureTransactions": "Transaksi selamat disulitkan oleh pembekal."
+    },
+    "toast": {
+      "title": "Disalin ke papan keratan!",
+      "description": "Butiran {name} berjaya disalin."
+    },
     "selectAmount": "Pilih Jumlah",
     "customAmount": "Jumlah Tersuai",
     "proceedToPayment": "Teruskan ke Pembayaran",

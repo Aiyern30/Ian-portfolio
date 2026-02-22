@@ -335,8 +335,56 @@
     "title": "支持我的工作",
     "subtitle": "请我喝杯咖啡",
     "description": "如果您喜欢我的工作并想支持我，可以请我喝杯咖啡！您的支持帮助我创建更多精彩的项目。",
+    "badge": "支持这段旅程",
+    "heading": "支持我的创意工作",
+    "headingDescription": "您的贡献为我的深夜编程会议提供动力，并帮助我为社区维护高质量的开源项目。",
+    "tiers": {
+      "coffee": {
+        "name": "咖啡",
+        "amount": "RM 15",
+        "description": "请我喝杯咖啡，为深夜编程提供动力"
+      },
+      "pizza": {
+        "name": "比萨",
+        "amount": "RM 30",
+        "description": "帮助我用美味的比萨保持活力"
+      },
+      "premium": {
+        "name": "高级",
+        "amount": "RM 100",
+        "description": "支持我项目的持续开发"
+      }
+    },
+    "customTip": {
+      "title": "自定义小费",
+      "description": "每一点都对下一个重大发布有帮助。"
+    },
+    "impact": {
+      "title": "可持续性和影响",
+      "description": "100% 的贡献直接用于服务器成本、研究工具和开发时间。您的支持使我能够保持我的项目无广告并对所有人开放。"
+    },
+    "choosePlatform": "选择平台",
     "recommended": "推荐",
     "securePayment": "安全支付",
+    "secureRedirection": "安全加密重定向",
+    "supportButton": "支持",
+    "dialog": {
+      "title": "结账结果",
+      "idLabel": "ID / 钱包地址",
+      "copy": "复制",
+      "copied": "已复制！",
+      "statusLabel": "状态",
+      "statusReady": "加密链接就绪",
+      "typeLabel": "类型",
+      "proceedButton": "继续安全支付",
+      "redirecting": "重定向到",
+      "amountPrefilled": "金额 RM{amount} 已预填。",
+      "secureTransactions": "由提供商加密的安全交易。"
+    },
+    "toast": {
+      "title": "已复制到剪贴板！",
+      "description": "{name} 详细信息复制成功。"
+    },
     "selectAmount": "选择金额",
     "customAmount": "自定义金额",
     "proceedToPayment": "继续支付",

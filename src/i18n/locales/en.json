@@ -335,6 +335,56 @@
     "title": "Support My Work",
     "subtitle": "Buy Me a Coffee",
     "description": "If you enjoy my work and would like to support me, you can buy me a coffee! Your support helps me create more amazing projects.",
+    "badge": "Support The Journey",
+    "heading": "Support My Creative Work",
+    "headingDescription": "Your contributions fuel my late-night coding sessions and help me maintain high-quality open-source projects for the community.",
+    "tiers": {
+      "coffee": {
+        "name": "Coffee",
+        "amount": "RM 15",
+        "description": "Buy me a coffee to fuel late night coding sessions"
+      },
+      "pizza": {
+        "name": "Pizza",
+        "amount": "RM 30",
+        "description": "Help me stay energized with a delicious pizza"
+      },
+      "premium": {
+        "name": "Premium",
+        "amount": "RM 100",
+        "description": "Support ongoing development of my projects"
+      }
+    },
+    "customTip": {
+      "title": "Custom Tip",
+      "description": "Every little bit counts towards the next big release."
+    },
+    "impact": {
+      "title": "Sustainability & Impact",
+      "description": "100% of your contributions go directly towards server costs, research tools, and development time. Your support enables me to keep my projects ad-free and open for everyone."
+    },
+    "choosePlatform": "Choose Platform",
+    "recommended": "Recommended",
+    "securePayment": "Secure Payment",
+    "secureRedirection": "Secure encrypted redirection",
+    "supportButton": "Support",
+    "dialog": {
+      "title": "Checkout Result",
+      "idLabel": "ID / Wallet Address",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "statusLabel": "Status",
+      "statusReady": "Encrypted Link Ready",
+      "typeLabel": "Type",
+      "proceedButton": "Proceed to Secure Payment",
+      "redirecting": "Redirecting to",
+      "amountPrefilled": "Amount RM{amount} pre-filled.",
+      "secureTransactions": "Secure transactions encrypted by provider."
+    },
+    "toast": {
+      "title": "Copied to clipboard!",
+      "description": "{name} details copied successfully."
+    },
     "recommended": "Recommended",
     "securePayment": "Secure Payment",
     "selectAmount": "Select Amount",
