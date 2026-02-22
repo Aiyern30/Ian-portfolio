@@ -396,6 +396,59 @@
       "stripe": "Kad Kredit"
     }
   },
+  "contact": {
+    "badge": "Tersedia untuk projek",
+    "heading": "Mari Mulakan Perbualan",
+    "description": "Ada soalan atau cadangan? Saya sentiasa terbuka untuk membincangkan projek baharu, idea kreatif atau peluang untuk menjadi sebahagian daripada visi anda.",
+    "form": {
+      "title": "Butiran Pertanyaan",
+      "firstName": "Nama Pertama",
+      "lastName": "Nama Keluarga",
+      "email": "Alamat E-mel",
+      "contact": "Hubungan (Pilihan)",
+      "message": "Penerangan Projek",
+      "placeholders": {
+        "firstName": "Ahmad",
+        "lastName": "Abdullah",
+        "email": "ianbian2@gmail.com",
+        "contact": "+60 18...",
+        "message": "Terangkan secara ringkas visi anda..."
+      },
+      "validation": {
+        "firstNameMin": "Nama pertama mestilah sekurang-kurangnya 2 aksara.",
+        "lastNameMin": "Nama keluarga mestilah sekurang-kurangnya 2 aksara.",
+        "emailInvalid": "Sila masukkan alamat e-mel yang sah.",
+        "messageMin": "Mesej mestilah sekurang-kurangnya 10 aksara."
+      },
+      "submit": "Hantar Mesej",
+      "submitting": "Memproses..."
+    },
+    "success": {
+      "title": "Mesej Telah Dihantar!",
+      "description": "Terima kasih kerana menghubungi. Saya telah menerima pertanyaan anda dan akan membalas dalam masa 24 jam.",
+      "sendAnother": "Hantar Mesej Lain"
+    },
+    "toast": {
+      "successTitle": "Mesej dihantar!",
+      "successDescription": "Kami akan menghubungi anda secepat mungkin.",
+      "errorTitle": "Gagal menghantar mesej.",
+      "errorDescription": "Sila cuba lagi nanti."
+    },
+    "value": {
+      "heading": "Penyelesaian Digital untuk Visi Moden.",
+      "headingHighlight1": "Penyelesaian",
+      "headingHighlight2": "Visi",
+      "description": "Saya pakar dalam aplikasi web berprestasi tinggi yang menggabungkan estetika yang menakjubkan dengan kejuruteraan yang kukuh. Mari bincangkan bagaimana saya boleh membantu pasukan anda berkembang.",
+      "tags": {
+        "fullStack": "Pembangunan Full-Stack",
+        "cloud": "Infrastruktur Awan",
+        "web3": "Integrasi Web3"
+      }
+    },
+    "social": {
+      "title": "Ekosistem Rangkaian"
+    }
+  },
   "globalSection": {
     "title": "Teknologi Yang Saya Gunakan",
     "subtitle": "Timbunan Teknologi Saya",

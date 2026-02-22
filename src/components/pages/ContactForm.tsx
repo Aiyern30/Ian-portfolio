@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import {
   Input,
@@ -33,23 +34,6 @@ import {
   Code,
   Loader2,
 } from "lucide-react";
-
-// Schema definition
-const formSchema = z.object({
-  firstName: z
-    .string()
-    .min(2, { message: "First name must be at least 2 characters." }),
-  lastName: z
-    .string()
-    .min(2, { message: "Last name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  contactNumber: z.string().optional(),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
 
 // Social links data
 const socialLinks = [
@@ -86,9 +70,27 @@ const socialLinks = [
 ];
 
 export default function ContactForm() {
+  const t = useTranslations("contact");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { toast } = useToast();
+
+  // Schema definition with translations
+  const formSchema = z.object({
+    firstName: z
+      .string()
+      .min(2, { message: t("form.validation.firstNameMin") }),
+    lastName: z
+      .string()
+      .min(2, { message: t("form.validation.lastNameMin") }),
+    email: z.string().email({ message: t("form.validation.emailInvalid") }),
+    contactNumber: z.string().optional(),
+    message: z
+      .string()
+      .min(10, { message: t("form.validation.messageMin") }),
+  });
+
+  type FormValues = z.infer<typeof formSchema>;
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -120,8 +122,8 @@ export default function ContactForm() {
       )
       .then(() => {
         toast({
-          title: "Message sent!",
-          description: "We'll get back to you as soon as possible.",
+          title: t("toast.successTitle"),
+          description: t("toast.successDescription"),
         });
         form.reset();
         setFormSubmitted(true);
@@ -129,8 +131,8 @@ export default function ContactForm() {
       })
       .catch(() => {
         toast({
-          title: "Failed to send message.",
-          description: "Please try again later.",
+          title: t("toast.errorTitle"),
+          description: t("toast.errorDescription"),
           variant: "destructive",
         });
       })
@@ -160,18 +162,16 @@ export default function ContactForm() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
             <MessageSquare className="w-4 h-4 text-[#FF9D7A]" />
             <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
-              Available for projects
+              {t("badge")}
             </span>
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent leading-tight">
-            Let's Start a <span className="text-[#FF9D7A]">Conversation</span>
+            {t("heading").split(" ").slice(0, -1).join(" ")} <span className="text-[#FF9D7A]">{t("heading").split(" ").slice(-1)}</span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
-            Have a question or a proposal? I'm always open to discussing new
-            projects, creative ideas or opportunities to be part of your
-            visions.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -195,23 +195,22 @@ export default function ContactForm() {
                     <Send className="w-10 h-10 text-[#FF9D7A]" />
                   </div>
                   <h3 className="text-3xl font-bold font-primary mb-4">
-                    Message Transmitted!
+                    {t("success.title")}
                   </h3>
                   <p className="text-gray-400 font-secondary max-w-sm mx-auto mb-10 leading-relaxed">
-                    Thank you for reaching out. I've received your inquiry and
-                    will respond within 24 hours.
+                    {t("success.description")}
                   </p>
                   <button
                     onClick={() => setFormSubmitted(false)}
                     className="px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-[#FF9D7A] hover:border-[#FF9D7A] hover:text-white transition-all duration-300"
                   >
-                    Send Another Message
+                    {t("success.sendAnother")}
                   </button>
                 </motion.div>
               ) : (
                 <>
                   <h3 className="text-2xl font-bold font-primary mb-10 text-white/90">
-                    Inquiry Details
+                    {t("form.title")}
                   </h3>
                   <Form {...form}>
                     <form
@@ -225,13 +224,13 @@ export default function ContactForm() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                First Name
+                                {t("form.firstName")}
                               </FormLabel>
                               <FormControl>
                                 <div className="relative group">
                                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
-                                    placeholder="John"
+                                    placeholder={t("form.placeholders.firstName")}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -247,13 +246,13 @@ export default function ContactForm() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                Last Name
+                                {t("form.lastName")}
                               </FormLabel>
                               <FormControl>
                                 <div className="relative group">
                                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
-                                    placeholder="Doe"
+                                    placeholder={t("form.placeholders.lastName")}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -272,14 +271,14 @@ export default function ContactForm() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                Email Address
+                                {t("form.email")}
                               </FormLabel>
                               <FormControl>
                                 <div className="relative group">
                                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
                                     type="email"
-                                    placeholder="hello@example.com"
+                                    placeholder={t("form.placeholders.email")}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -295,14 +294,14 @@ export default function ContactForm() {
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                                Contact (Optional)
+                                {t("form.contact")}
                               </FormLabel>
                               <FormControl>
                                 <div className="relative group">
                                   <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
                                   <Input
                                     type="tel"
-                                    placeholder="+60 18..."
+                                    placeholder={t("form.placeholders.contact")}
                                     className="h-14 bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 rounded-2xl text-white transition-all"
                                     {...field}
                                   />
@@ -320,13 +319,13 @@ export default function ContactForm() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-xs font-bold uppercase tracking-widest text-gray-500">
-                              Project Description
-                            </FormLabel>
-                            <FormControl>
-                              <div className="relative group">
-                                <MessageSquare className="absolute left-4 top-5 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
-                                <Textarea
-                                  placeholder="Briefly describe your vision..."
+                                {t("form.message")}
+                              </FormLabel>
+                              <FormControl>
+                                <div className="relative group">
+                                  <MessageSquare className="absolute left-4 top-5 text-gray-600 group-focus-within:text-[#FF9D7A] transition-colors w-4 h-4" />
+                                  <Textarea
+                                    placeholder={t("form.placeholders.message")}
                                   className="min-h-[160px] bg-white/[0.03] border-white/5 focus:border-[#FF9D7A]/50 focus:bg-white/[0.05] pl-12 pt-5 rounded-[2rem] text-white transition-all resize-none"
                                   {...field}
                                 />
@@ -345,12 +344,12 @@ export default function ContactForm() {
                         {isSubmitting ? (
                           <>
                             <Loader2 className="w-5 h-5 animate-spin" />
-                            Processing...
+                            {t("form.submitting")}
                           </>
                         ) : (
                           <>
                             <Send className="w-5 h-5" />
-                            Transmit Message
+                            {t("form.submit")}
                           </>
                         )}
                       </button>
@@ -372,24 +371,22 @@ export default function ContactForm() {
             {/* Value Proposition Card */}
             <div className="p-10 bg-gradient-to-br from-[#1a0b2e]/60 to-transparent border border-white/10 rounded-[3rem] backdrop-blur-xl flex-1 flex flex-col justify-center">
               <h3 className="text-4xl font-bold font-primary mb-6 leading-tight">
-                Digital <span className="text-[#FF9D7A]">Solutions</span> for
-                Modern <span className="text-[#FFD166]">Visions</span>.
+                Digital <span className="text-[#FF9D7A]">{t("value.headingHighlight1")}</span> for
+                Modern <span className="text-[#FFD166]">{t("value.headingHighlight2")}</span>.
               </h3>
               <p className="text-gray-400 font-secondary text-lg leading-relaxed mb-8">
-                I specialize in high-performance web applications that combine
-                stunning aesthetics with robust engineering. Let's discuss how I
-                can help your team scale.
+                {t("value.description")}
               </p>
 
               <div className="flex flex-wrap gap-4 mt-auto">
                 <div className="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#FF9D7A]">
-                  Full-Stack Development
+                  {t("value.tags.fullStack")}
                 </div>
                 <div className="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#FF9D7A]">
-                  Cloud Infrastructure
+                  {t("value.tags.cloud")}
                 </div>
                 <div className="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#FF9D7A]">
-                  Web3 Integration
+                  {t("value.tags.web3")}
                 </div>
               </div>
             </div>
@@ -397,7 +394,7 @@ export default function ContactForm() {
             {/* Social Grid */}
             <div className="p-10 bg-[#1a0b2e]/40 border border-white/10 rounded-[3rem] backdrop-blur-md">
               <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500 mb-8">
-                Network Ecosystem
+                {t("social.title")}
               </h4>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((link, index) => (

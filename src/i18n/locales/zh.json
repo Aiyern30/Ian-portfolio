@@ -396,6 +396,59 @@
       "stripe": "信用卡"
     }
   },
+  "contact": {
+    "badge": "接受项目咨询",
+    "heading": "让我们开始对话",
+    "description": "有问题或提案吗？我总是乐于讨论新项目、创意想法或成为您愿景一部分的机会。",
+    "form": {
+      "title": "咨询详情",
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "电子邮件地址",
+      "contact": "联系方式（可选）",
+      "message": "项目描述",
+      "placeholders": {
+        "firstName": "建豪",
+        "lastName": "颜",
+        "email": "ianbian2@gmail.com",
+        "contact": "+60 18...",
+        "message": "简要描述您的构想..."
+      },
+      "validation": {
+        "firstNameMin": "名字至少需要2个字符。",
+        "lastNameMin": "姓氏至少需要2个字符。",
+        "emailInvalid": "请输入有效的电子邮件地址。",
+        "messageMin": "消息至少需要10个字符。"
+      },
+      "submit": "发送消息",
+      "submitting": "处理中..."
+    },
+    "success": {
+      "title": "消息已发送！",
+      "description": "感谢您的联系。我已收到您的咨询，将在24小时内回复。",
+      "sendAnother": "发送另一条消息"
+    },
+    "toast": {
+      "successTitle": "消息已发送！",
+      "successDescription": "我们会尽快与您联系。",
+      "errorTitle": "发送消息失败。",
+      "errorDescription": "请稍后再试。"
+    },
+    "value": {
+      "heading": "为现代愿景提供数字解决方案。",
+      "headingHighlight1": "解决方案",
+      "headingHighlight2": "愿景",
+      "description": "我专注于结合惊艳美学与强大工程的高性能网络应用程序。让我们讨论如何帮助您的团队扩展。",
+      "tags": {
+        "fullStack": "全栈开发",
+        "cloud": "云基础设施",
+        "web3": "Web3 集成"
+      }
+    },
+    "social": {
+      "title": "网络生态系统"
+    }
+  },
   "globalSection": {
     "title": "我使用的技术",
     "subtitle": "我的技术栈",

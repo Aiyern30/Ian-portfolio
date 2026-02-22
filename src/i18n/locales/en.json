@@ -398,6 +398,59 @@
       "stripe": "Credit Card"
     }
   },
+  "contact": {
+    "badge": "Available for projects",
+    "heading": "Let's Start a Conversation",
+    "description": "Have a question or a proposal? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
+    "form": {
+      "title": "Inquiry Details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "contact": "Contact (Optional)",
+      "message": "Project Description",
+      "placeholders": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "ianbian2@gmail.com",
+        "contact": "+60 18...",
+        "message": "Briefly describe your vision..."
+      },
+      "validation": {
+        "firstNameMin": "First name must be at least 2 characters.",
+        "lastNameMin": "Last name must be at least 2 characters.",
+        "emailInvalid": "Please enter a valid email address.",
+        "messageMin": "Message must be at least 10 characters."
+      },
+      "submit": "Transmit Message",
+      "submitting": "Processing..."
+    },
+    "success": {
+      "title": "Message Transmitted!",
+      "description": "Thank you for reaching out. I've received your inquiry and will respond within 24 hours.",
+      "sendAnother": "Send Another Message"
+    },
+    "toast": {
+      "successTitle": "Message sent!",
+      "successDescription": "We'll get back to you as soon as possible.",
+      "errorTitle": "Failed to send message.",
+      "errorDescription": "Please try again later."
+    },
+    "value": {
+      "heading": "Digital Solutions for Modern Visions.",
+      "headingHighlight1": "Solutions",
+      "headingHighlight2": "Visions",
+      "description": "I specialize in high-performance web applications that combine stunning aesthetics with robust engineering. Let's discuss how I can help your team scale.",
+      "tags": {
+        "fullStack": "Full-Stack Development",
+        "cloud": "Cloud Infrastructure",
+        "web3": "Web3 Integration"
+      }
+    },
+    "social": {
+      "title": "Network Ecosystem"
+    }
+  },
   "globalSection": {
     "title": "Technologies I Use",
     "subtitle": "My Tech Stack",

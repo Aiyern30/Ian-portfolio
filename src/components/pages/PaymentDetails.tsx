@@ -97,29 +97,32 @@ export default function SupportMe() {
   const { toast } = useToast();
 
   // Support tiers with translations
-  const supportTiers = useMemo(() => [
-    {
-      name: t("tiers.coffee.name"),
-      amount: t("tiers.coffee.amount"),
-      value: 15,
-      description: t("tiers.coffee.description"),
-      icon: <Coffee className="h-6 w-6" />,
-    },
-    {
-      name: t("tiers.pizza.name"),
-      amount: t("tiers.pizza.amount"),
-      value: 30,
-      description: t("tiers.pizza.description"),
-      icon: <Gift className="h-6 w-6" />,
-    },
-    {
-      name: t("tiers.premium.name"),
-      amount: t("tiers.premium.amount"),
-      value: 100,
-      description: t("tiers.premium.description"),
-      icon: <Heart className="h-6 w-6" fill="#FF6B6B" />,
-    },
-  ], [t]);
+  const supportTiers = useMemo(
+    () => [
+      {
+        name: t("tiers.coffee.name"),
+        amount: t("tiers.coffee.amount"),
+        value: 15,
+        description: t("tiers.coffee.description"),
+        icon: <Coffee className="h-6 w-6" />,
+      },
+      {
+        name: t("tiers.pizza.name"),
+        amount: t("tiers.pizza.amount"),
+        value: 30,
+        description: t("tiers.pizza.description"),
+        icon: <Gift className="h-6 w-6" />,
+      },
+      {
+        name: t("tiers.premium.name"),
+        amount: t("tiers.premium.amount"),
+        value: 100,
+        description: t("tiers.premium.description"),
+        icon: <Heart className="h-6 w-6" fill="#FF6B6B" />,
+      },
+    ],
+    [t],
+  );
 
   // Prevent background scrolling when dialog is open
   useEffect(() => {
@@ -147,7 +150,7 @@ export default function SupportMe() {
 
   const openPaymentDialog = (
     method: (typeof paymentMethods)[0],
-    amount?: number
+    amount?: number,
   ) => {
     setSelectedMethod(method);
     if (amount) setSelectedAmount(amount);
@@ -195,7 +198,10 @@ export default function SupportMe() {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent leading-tight">
-            {t("heading").split(" ").slice(0, -2).join(" ")} <span className="text-[#FF9D7A]">{t("heading").split(" ").slice(-2).join(" ")}</span>
+            {t("heading").split(" ").slice(0, -2).join(" ")}{" "}
+            <span className="text-[#FF9D7A]">
+              {t("heading").split(" ").slice(-2).join(" ")}
+            </span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
@@ -257,7 +263,9 @@ export default function SupportMe() {
                   <div className="w-12 h-12 rounded-full border border-[#FF9D7A]/30 flex items-center justify-center">
                     <Gift className="w-5 h-5 text-[#FF9D7A]" />
                   </div>
-                  <h4 className="font-primary font-bold">{t("customTip.title")}</h4>
+                  <h4 className="font-primary font-bold">
+                    {t("customTip.title")}
+                  </h4>
                   <p className="text-xs text-gray-500 font-secondary">
                     {t("customTip.description")}
                   </p>
@@ -316,7 +324,9 @@ export default function SupportMe() {
                             {method.name}
                           </p>
                           <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest">
-                            {method.featured ? t("recommended") : t("securePayment")}
+                            {method.featured
+                              ? t("recommended")
+                              : t("securePayment")}
                           </p>
                         </div>
                       </div>
@@ -395,12 +405,14 @@ export default function SupportMe() {
                           onClick={() =>
                             handleCopy(
                               selectedMethod.copyText,
-                              selectedMethod.name
+                              selectedMethod.name,
                             )
                           }
                           className="hover:text-white transition-colors"
                         >
-                          {copied === selectedMethod.name ? t("dialog.copied") : t("dialog.copy")}
+                          {copied === selectedMethod.name
+                            ? t("dialog.copied")
+                            : t("dialog.copy")}
                         </button>
                       </div>
                       <p className="font-mono text-lg break-all text-white/90">
@@ -439,7 +451,9 @@ export default function SupportMe() {
                     <p className="text-center text-[10px] text-gray-600 font-medium">
                       {t("dialog.redirecting")} {selectedMethod.name}.{" "}
                       {selectedAmount
-                        ? t("dialog.amountPrefilled", { amount: selectedAmount })
+                        ? t("dialog.amountPrefilled", {
+                            amount: selectedAmount,
+                          })
                         : t("dialog.secureTransactions")}
                     </p>
                   </div>
@@ -449,7 +463,7 @@ export default function SupportMe() {
                 <div
                   className={cn(
                     "h-2 w-full bg-gradient-to-r",
-                    selectedMethod?.color
+                    selectedMethod?.color,
                   )}
                 />
               </motion.div>
