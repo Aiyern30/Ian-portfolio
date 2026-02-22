@@ -24,17 +24,20 @@ export default function Header({
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Navigation items with translations
-  const navItems = useMemo(() => [
-    { name: t("home"), href: "/", section: "home" },
-    { name: t("tools"), href: "/#tools", section: "tools" },
-    { name: t("projects"), href: "/#projects", section: "projects" },
-    { name: t("archive"), href: "/Projects", section: "Projects" },
-    { name: t("certificates"), href: "/#certs", section: "certs" },
-    { name: t("about"), href: "/#about", section: "about" },
-    { name: t("supportMe"), href: "/#support-me", section: "support-me" },
-    { name: t("contactUs"), href: "/#contact-us", section: "contact-us" },
-    { name: t("journey"), href: "/Journey", section: "Journey" },
-  ], [t]);
+  const navItems = useMemo(
+    () => [
+      { name: t("home"), href: "/", section: "home" },
+      { name: t("tools"), href: "/#tools", section: "tools" },
+      { name: t("projects"), href: "/#projects", section: "projects" },
+      { name: t("archive"), href: "/Projects", section: "Projects" },
+      { name: t("certificates"), href: "/#certs", section: "certs" },
+      { name: t("about"), href: "/#about", section: "about" },
+      { name: t("supportMe"), href: "/#support-me", section: "support-me" },
+      { name: t("contactUs"), href: "/#contact-us", section: "contact-us" },
+      { name: t("journey"), href: "/Journey", section: "Journey" },
+    ],
+    [t],
+  );
 
   // Determine which section is active:
   // 1. If we're on /Journey or /Projects, that's active.
@@ -121,7 +124,9 @@ export default function Header({
             <span className="bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] bg-clip-text text-transparent">
               Ian's
             </span>
-            <span className="ml-2">{t("portfolio").split(" ")[1] || "Portfolio"}</span>
+            <span className="ml-2">
+              {t("portfolio").split(" ")[1] || "Portfolio"}
+            </span>
           </motion.div>
         </Link>
 
@@ -191,7 +196,9 @@ export default function Header({
               onClick={toggleMenu}
               aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
             >
-              <span className="text-sm font-medium text-white">{t("menu")}</span>
+              <span className="text-sm font-medium text-white">
+                {t("menu")}
+              </span>
               {isMenuOpen ? (
                 <X className="w-4 h-4 text-white" />
               ) : (

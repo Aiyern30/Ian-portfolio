@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import ReactFlow, {
   Background,
   Controls,
@@ -37,20 +38,32 @@ import { projects as projectsData } from "@/data/projects";
 import { Meteors } from "@/components/magicui/index";
 import { FloatingIcon } from "@/components/FloatingIcon";
 
-// Add IDs and year to projects for the flow diagram
-const projects = projectsData.map((project, index) => ({
-  ...project,
-  id: String(index + 1),
-  year: "2024", // You can customize this per project if needed
-}));
+// Type for enriched project with translations
+type EnrichedProject = (typeof projectsData)[0] & {
+  id: string;
+  year: string;
+  title: string;
+  category: string;
+  description: string;
+};
 
-// Extract unique categories
-const allCategories = Array.from(
-  new Set(projects.map((project) => project.category)),
-);
+// Add IDs and year to projects for the flow diagram
+const getProjectsWithTranslations = (
+  data: typeof projectsData,
+  projectTranslations: Record<string, { title: string; category: string; description: string }>
+): EnrichedProject[] => {
+  return data.map((project, index: number) => ({
+    ...project,
+    id: String(index + 1),
+    year: "2024",
+    title: projectTranslations[project.id]?.title || "Untitled",
+    category: projectTranslations[project.id]?.category || "Project",
+    description: projectTranslations[project.id]?.description || "",
+  }));
+};
 
 // Calculate initial node positions - optimized for all projects
-const calculateNodePositions = (projectsData: typeof projects) => {
+const calculateNodePositions = (projectsData: EnrichedProject[]) => {
   const nodeWidth = 450;
   const nodeHeight = 700; // Increased to accommodate full descriptions and all badges
   const horizontalSpacing = 250;
@@ -146,11 +159,12 @@ const BackgroundAtmosphere = () => {
 };
 
 // Generate edges connecting similar projects
-const generateEdges = (projectsData: typeof projects): Edge[] => {
+const generateEdges = (projectsData: EnrichedProject[]): Edge[] => {
   return []; // No automatic edges
 };
 
 export default function ProjectsPage() {
+  const t = useTranslations("projects");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"flow" | "grid">("flow");
@@ -158,13 +172,34 @@ export default function ProjectsPage() {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
   const [isLocked, setIsLocked] = useState(false);
 
+  // Get translated project data
+  const projectsWithTranslations = useMemo(() => {
+    const projectTranslations: Record<string, { title: string; category: string; description: string }> = {};
+    projectsData.forEach((project) => {
+      projectTranslations[project.id] = {
+        title: t(`projectsData.${project.id}.title`),
+        category: t(`projectsData.${project.id}.category`),
+        description: t(`projectsData.${project.id}.description`),
+      };
+    });
+    return getProjectsWithTranslations(projectsData, projectTranslations);
+  }, [t]);
+
+  const projects = projectsWithTranslations;
+
+  // Get categories from enriched projects
+  const allCategories = useMemo(
+    (): string[] => Array.from(new Set(projects.map((p: EnrichedProject) => p.category))),
+    [projects]
+  );
+
   // Filter projects
   const filteredProjects = useMemo(() => {
-    return projects.filter((project) => {
+    return projects.filter((project: EnrichedProject) => {
       const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.label.some((tech) =>
+        project.label.some((tech: string) =>
           tech.toLowerCase().includes(searchTerm.toLowerCase()),
         );
 
@@ -174,7 +209,7 @@ export default function ProjectsPage() {
 
       return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory, projects]);
 
   const initialNodes = useMemo(
     () => calculateNodePositions(filteredProjects),
@@ -351,7 +386,7 @@ export default function ProjectsPage() {
                   >
                     All
                   </Button>
-                  {allCategories.map((category) => (
+                    {allCategories.map((category: string) => (
                     <Button
                       key={category}
                       size="sm"
