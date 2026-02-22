@@ -28,13 +28,21 @@
     }
   },
   "header": {
+    "portfolio": "Ian's Portfolio",
     "home": "Home",
     "tools": "Tools",
     "projects": "Projects",
+    "archive": "Archive",
     "certificates": "Certificates",
     "about": "About",
     "supportMe": "Support Me",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "journey": "Journey",
+    "menu": "Menu",
+    "downloadCV": "Download CV",
+    "downloadCVShort": "CV",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "skills": {
     "title": "About Me",

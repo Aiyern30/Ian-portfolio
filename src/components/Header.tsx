@@ -1,37 +1,40 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { X, ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface HeaderProps {
   activeSection?: string;
 }
 
-const navItems = [
-  { name: "Home", href: "/", section: "home" },
-  { name: "Tools", href: "/#tools", section: "tools" },
-  { name: "Projects", href: "/#projects", section: "projects" },
-  { name: "Archive", href: "/Projects", section: "Projects" },
-  { name: "Certificates", href: "/#certs", section: "certs" },
-  { name: "About", href: "/#about", section: "about" },
-  { name: "Support Me", href: "/#support-me", section: "support-me" },
-  { name: "Contact", href: "/#contact-us", section: "contact-us" },
-  { name: "Journey", href: "/Journey", section: "Journey" },
-];
-
 export default function Header({
   activeSection: activeSectionProp,
 }: HeaderProps) {
+  const t = useTranslations("header");
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [currentYear, setCurrentYear] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Navigation items with translations
+  const navItems = useMemo(() => [
+    { name: t("home"), href: "/", section: "home" },
+    { name: t("tools"), href: "/#tools", section: "tools" },
+    { name: t("projects"), href: "/#projects", section: "projects" },
+    { name: t("archive"), href: "/Projects", section: "Projects" },
+    { name: t("certificates"), href: "/#certs", section: "certs" },
+    { name: t("about"), href: "/#about", section: "about" },
+    { name: t("supportMe"), href: "/#support-me", section: "support-me" },
+    { name: t("contactUs"), href: "/#contact-us", section: "contact-us" },
+    { name: t("journey"), href: "/Journey", section: "Journey" },
+  ], [t]);
 
   // Determine which section is active:
   // 1. If we're on /Journey or /Projects, that's active.
@@ -90,7 +93,7 @@ export default function Header({
       <header className="fixed top-0 left-0 right-0 z-50 py-5 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center">
           <div className="text-[20px] font-bold text-white">
-            <span className="text-white">Ian's Portfolio</span>
+            <span className="text-white">{t("portfolio")}</span>
           </div>
           <div className="w-10 h-10"></div>
         </div>
@@ -118,7 +121,7 @@ export default function Header({
             <span className="bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] bg-clip-text text-transparent">
               Ian's
             </span>
-            <span className="ml-2">Portfolio</span>
+            <span className="ml-2">{t("portfolio").split(" ")[1] || "Portfolio"}</span>
           </motion.div>
         </Link>
 
@@ -165,7 +168,7 @@ export default function Header({
             transition={{ duration: 0.5, delay: 0.2 }}
             className="px-5 py-2 rounded-full bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-sm hover:shadow-[0_0_20px_rgba(255,157,122,0.4)] transition-all active:scale-95 whitespace-nowrap"
           >
-            Download CV
+            {t("downloadCV")}
           </motion.a>
         </div>
 
@@ -176,7 +179,7 @@ export default function Header({
             download="Ian Gan Jian Hao CV.pdf"
             className="hidden sm:block px-4 py-2 rounded-full bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-xs"
           >
-            CV
+            {t("downloadCVShort")}
           </motion.a>
 
           <div className="relative" ref={menuRef}>
@@ -186,9 +189,9 @@ export default function Header({
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#320F85]/60 hover:bg-[#4A1D9A] transition-colors"
               onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
             >
-              <span className="text-sm font-medium text-white">Menu</span>
+              <span className="text-sm font-medium text-white">{t("menu")}</span>
               {isMenuOpen ? (
                 <X className="w-4 h-4 text-white" />
               ) : (
@@ -230,7 +233,7 @@ export default function Header({
                         className="flex items-center justify-center w-full py-2 rounded-lg bg-gradient-to-r from-[#FF9D7A] to-[#FFD166] text-black font-bold text-sm"
                         onClick={handleLinkClick}
                       >
-                        Download CV
+                        {t("downloadCV")}
                       </a>
                     </li>
                   </ul>

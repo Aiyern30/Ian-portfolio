@@ -28,13 +28,21 @@
     }
   },
   "header": {
+    "portfolio": "Ian's 作品集",
     "home": "首页",
     "tools": "工具",
     "projects": "项目",
+    "archive": "归档",
     "certificates": "证书",
     "about": "关于",
     "supportMe": "支持我",
-    "contactUs": "联系我"
+    "contactUs": "联系我",
+    "journey": "旅程",
+    "menu": "菜单",
+    "downloadCV": "下载简历",
+    "downloadCVShort": "简历",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
   },
   "skills": {
     "title": "关于我",

@@ -28,13 +28,21 @@
     }
   },
   "header": {
+    "portfolio": "Ian's Portfolio",
     "home": "Utama",
     "tools": "Alatan",
     "projects": "Projek",
+    "archive": "Arkib",
     "certificates": "Sijil",
     "about": "Tentang",
     "supportMe": "Sokong Saya",
-    "contactUs": "Hubungi Kami"
+    "contactUs": "Hubungi Kami",
+    "journey": "Perjalanan",
+    "menu": "Menu",
+    "downloadCV": "Muat Turun CV",
+    "downloadCVShort": "CV",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu"
   },
   "skills": {
     "title": "Tentang Saya",
