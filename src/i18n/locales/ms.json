@@ -213,6 +213,56 @@
         "validation": "Disahkan oleh institusi yang diiktiraf di peringkat global."
       }
     },
+    "data": {
+      "cert0": {
+        "title": "Sijil Hackathon Devmatch",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "Ogos 2024",
+        "category": "Hackathon"
+      },
+      "cert1": {
+        "title": "Sijil Hackathon Devmatch 2",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "Ogos 2025",
+        "category": "Hackathon"
+      },
+      "cert2": {
+        "title": "Algoritma JavaScript dan Struktur Data",
+        "organization": "FreeCodeCamp",
+        "date": "27 September 2024",
+        "category": "Pengaturcaraan"
+      },
+      "cert3": {
+        "title": "Pembelajaran Mesin dengan Python",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "September 2024",
+        "category": "AI & ML"
+      },
+      "cert4": {
+        "title": "Chatbot AI Berkuasa Python",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "September 2024",
+        "category": "AI & ML"
+      },
+      "cert5": {
+        "title": "Reka Bentuk Web Responsif",
+        "organization": "FreeCodeCamp",
+        "date": "Januari 2023",
+        "category": "Pembangunan Web"
+      },
+      "cert6": {
+        "title": "ThreeJS",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "September 2024",
+        "category": "Pembangunan Web"
+      },
+      "cert7": {
+        "title": "Sijil Hackathon X2",
+        "organization": "Universiti Teknologi Asia Pasifik",
+        "date": "September 2024",
+        "category": "Hackathon"
+      }
+    },
     "category": {
       "all": "Semua Sijil",
       "webDevelopment": "Pembangunan Web",

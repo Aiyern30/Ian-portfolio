@@ -213,6 +213,56 @@
         "validation": "得到全球认可机构的验证。"
       }
     },
+    "data": {
+      "cert0": {
+        "title": "Devmatch 黑客松证书",
+        "organization": "亚太科技大学",
+        "date": "2024年8月",
+        "category": "黑客松"
+      },
+      "cert1": {
+        "title": "Devmatch 2 黑客松证书",
+        "organization": "亚太科技大学",
+        "date": "2025年8月",
+        "category": "黑客松"
+      },
+      "cert2": {
+        "title": "JavaScript 算法和数据结构",
+        "organization": "FreeCodeCamp",
+        "date": "2024年9月27日",
+        "category": "编程"
+      },
+      "cert3": {
+        "title": "Python 机器学习",
+        "organization": "亚太科技大学",
+        "date": "2024年9月",
+        "category": "AI 与 ML"
+      },
+      "cert4": {
+        "title": "Python AI 聊天机器人",
+        "organization": "亚太科技大学",
+        "date": "2024年9月",
+        "category": "AI 与 ML"
+      },
+      "cert5": {
+        "title": "响应式网页设计",
+        "organization": "FreeCodeCamp",
+        "date": "2023年1月",
+        "category": "网页开发"
+      },
+      "cert6": {
+        "title": "ThreeJS",
+        "organization": "亚太科技大学",
+        "date": "2024年9月",
+        "category": "网页开发"
+      },
+      "cert7": {
+        "title": "X2 黑客松证书",
+        "organization": "亚太科技大学",
+        "date": "2024年9月",
+        "category": "黑客松"
+      }
+    },
     "category": {
       "all": "所有证书",
       "webDevelopment": "网页开发",

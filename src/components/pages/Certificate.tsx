@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -8,85 +8,85 @@ import { useDeviceType } from "@/lib/useDeviceTypes";
 import { Calendar, Award, ExternalLink, X, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Certificate data
-const certificates = [
-  {
-    title: "Devmatch Hackathon Certificate",
-    organization: "Asia Pacific University of Technology",
-    date: "August 2024",
-    imageUrl: "/Certs/Devmatch.jpg",
-    link: "/Certs/Devmatch.jpg",
-    category: "Hackathon",
-  },
-  {
-    title: "Devmatch 2 Hackathon Certificate",
-    organization: "Asia Pacific University of Technology",
-    date: "August 2025",
-    imageUrl: "/Certs/Devmatch2.jpg",
-    link: "/Certs/Devmatch2.jpg",
-    category: "Hackathon",
-  },
-  {
-    title: "JavaScript Algorithms and Data Structures",
-    organization: "FreeCodeCamp",
-    date: "27 September 2024",
-    imageUrl: "/Certs/JavaScript.png",
-    link: "https://www.freecodecamp.org/certification/Aiyern30/javascript-algorithms-and-data-structures-v8",
-    category: "Programming",
-  },
-  {
-    title: "Machine Learning with Python",
-    organization: "Asia Pacific University of Technology",
-    date: "September 2024",
-    imageUrl: "/Certs/Machine-Learning.jpg",
-    link: "/Certs/Machine-Learning.pdf",
-    category: "AI & ML",
-  },
-  {
-    title: "Python Powered AI Chatbot",
-    organization: "Asia Pacific University of Technology",
-    date: "September 2024",
-    imageUrl: "/Certs/Python ai e-cert.jpg",
-    link: "/Certs/Python ai e-cert.pdf",
-    category: "AI & ML",
-  },
-  {
-    title: "Responsive Web Design",
-    organization: "FreeCodeCamp",
-    date: "January 2023",
-    imageUrl: "/Certs/Responsive-Web-Design.png",
-    link: "https://www.freecodecamp.org/certification/Aiyern30/responsive-web-design",
-    category: "Web Development",
-  },
-  {
-    title: "ThreeJS",
-    organization: "Asia Pacific University of Technology",
-    date: "September 2024",
-    imageUrl: "/Certs/ThreeJS.jpg",
-    link: "/Certs/ThreeJS.pdf",
-    category: "Web Development",
-  },
-  {
-    title: "X2 Hackathon Certificate",
-    organization: "Asia Pacific University of Technology",
-    date: "September 2024",
-    imageUrl: "/Certs/X2 Hackathon Certificate.jpg",
-    link: "/Certs/X2 Hackathon Certificate.pdf",
-    category: "Hackathon",
-  },
-];
-
-// Extract unique organizations and categories
-const organizations = Array.from(
-  new Set(certificates.map((cert) => cert.organization)),
-);
-const categories = Array.from(
-  new Set(certificates.map((cert) => cert.category)),
-);
-
 export default function CertificateShowcase() {
   const t = useTranslations("certificates");
   const { isMobile } = useDeviceType();
+
+  // Certificate data with translations
+  const certificates = useMemo(() => [
+    {
+      title: t("data.cert0.title"),
+      organization: t("data.cert0.organization"),
+      date: t("data.cert0.date"),
+      imageUrl: "/Certs/Devmatch.jpg",
+      link: "/Certs/Devmatch.jpg",
+      category: t("data.cert0.category"),
+    },
+    {
+      title: t("data.cert1.title"),
+      organization: t("data.cert1.organization"),
+      date: t("data.cert1.date"),
+      imageUrl: "/Certs/Devmatch2.jpg",
+      link: "/Certs/Devmatch2.jpg",
+      category: t("data.cert1.category"),
+    },
+    {
+      title: t("data.cert2.title"),
+      organization: t("data.cert2.organization"),
+      date: t("data.cert2.date"),
+      imageUrl: "/Certs/JavaScript.png",
+      link: "https://www.freecodecamp.org/certification/Aiyern30/javascript-algorithms-and-data-structures-v8",
+      category: t("data.cert2.category"),
+    },
+    {
+      title: t("data.cert3.title"),
+      organization: t("data.cert3.organization"),
+      date: t("data.cert3.date"),
+      imageUrl: "/Certs/Machine-Learning.jpg",
+      link: "/Certs/Machine-Learning.pdf",
+      category: t("data.cert3.category"),
+    },
+    {
+      title: t("data.cert4.title"),
+      organization: t("data.cert4.organization"),
+      date: t("data.cert4.date"),
+      imageUrl: "/Certs/Python ai e-cert.jpg",
+      link: "/Certs/Python ai e-cert.pdf",
+      category: t("data.cert4.category"),
+    },
+    {
+      title: t("data.cert5.title"),
+      organization: t("data.cert5.organization"),
+      date: t("data.cert5.date"),
+      imageUrl: "/Certs/Responsive-Web-Design.png",
+      link: "https://www.freecodecamp.org/certification/Aiyern30/responsive-web-design",
+      category: t("data.cert5.category"),
+    },
+    {
+      title: t("data.cert6.title"),
+      organization: t("data.cert6.organization"),
+      date: t("data.cert6.date"),
+      imageUrl: "/Certs/ThreeJS.jpg",
+      link: "/Certs/ThreeJS.pdf",
+      category: t("data.cert6.category"),
+    },
+    {
+      title: t("data.cert7.title"),
+      organization: t("data.cert7.organization"),
+      date: t("data.cert7.date"),
+      imageUrl: "/Certs/X2 Hackathon Certificate.jpg",
+      link: "/Certs/X2 Hackathon Certificate.pdf",
+      category: t("data.cert7.category"),
+    },
+  ], [t]);
+
+  // Extract unique organizations and categories
+  const organizations = Array.from(
+    new Set(certificates.map((cert) => cert.organization)),
+  );
+  const categories = Array.from(
+    new Set(certificates.map((cert) => cert.category)),
+  );
   const [selectedCertificate, setSelectedCertificate] = useState<
     (typeof certificates)[0] | null
   >(null);
@@ -113,7 +113,7 @@ export default function CertificateShowcase() {
     Promise.all(imagePromises).then(() => {
       setImagesPreloaded(true);
     });
-  }, []);
+  }, [certificates]);
 
   // Filter certificates based on selected organization and category
   const filteredCertificates = certificates.filter((cert) => {

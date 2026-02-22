@@ -213,6 +213,56 @@
         "validation": "Validated by globally recognized institutions."
       }
     },
+    "data": {
+      "cert0": {
+        "title": "Devmatch Hackathon Certificate",
+        "organization": "Asia Pacific University of Technology",
+        "date": "August 2024",
+        "category": "Hackathon"
+      },
+      "cert1": {
+        "title": "Devmatch 2 Hackathon Certificate",
+        "organization": "Asia Pacific University of Technology",
+        "date": "August 2025",
+        "category": "Hackathon"
+      },
+      "cert2": {
+        "title": "JavaScript Algorithms and Data Structures",
+        "organization": "FreeCodeCamp",
+        "date": "27 September 2024",
+        "category": "Programming"
+      },
+      "cert3": {
+        "title": "Machine Learning with Python",
+        "organization": "Asia Pacific University of Technology",
+        "date": "September 2024",
+        "category": "AI & ML"
+      },
+      "cert4": {
+        "title": "Python Powered AI Chatbot",
+        "organization": "Asia Pacific University of Technology",
+        "date": "September 2024",
+        "category": "AI & ML"
+      },
+      "cert5": {
+        "title": "Responsive Web Design",
+        "organization": "FreeCodeCamp",
+        "date": "January 2023",
+        "category": "Web Development"
+      },
+      "cert6": {
+        "title": "ThreeJS",
+        "organization": "Asia Pacific University of Technology",
+        "date": "September 2024",
+        "category": "Web Development"
+      },
+      "cert7": {
+        "title": "X2 Hackathon Certificate",
+        "organization": "Asia Pacific University of Technology",
+        "date": "September 2024",
+        "category": "Hackathon"
+      }
+    },
     "category": {
       "all": "All Certificates",
       "webDevelopment": "Web Development",
