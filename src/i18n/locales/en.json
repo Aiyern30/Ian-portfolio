@@ -192,6 +192,27 @@
   "certificates": {
     "title": "Certificates",
     "subtitle": "Professional Achievements",
+    "badge": "Recognition",
+    "heading": "Awards & Certificates",
+    "description": "Validation of my technical expertise and continuous learning journey through recognized institutions.",
+    "allAchievements": "All Achievements",
+    "noResults": {
+      "title": "No certificates matching your filters",
+      "description": "Try clearing your selection to see all achievements.",
+      "resetButton": "Reset Filters"
+    },
+    "modal": {
+      "verificationIdAvailable": "Verification ID Available",
+      "verifyCredential": "Verify Credential",
+      "descriptionTitle": "Description",
+      "descriptionText": "This certificate validates the successful completion of rigorous coursework and assessments in {category}. It demonstrates proficiency in industry-standard tools and methodologies as verified by {organization}.",
+      "impactTitle": "Achievement Impact",
+      "impactItems": {
+        "principles": "Deep technical understanding of core principles.",
+        "experience": "Hands-on experience with real-world applications.",
+        "validation": "Validated by globally recognized institutions."
+      }
+    },
     "category": {
       "all": "All Certificates",
       "webDevelopment": "Web Development",

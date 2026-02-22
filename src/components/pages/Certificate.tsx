@@ -3,24 +3,8 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useDeviceType } from "@/lib/useDeviceTypes";
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui";
 import { Calendar, Award, ExternalLink, X, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -94,13 +78,14 @@ const certificates = [
 
 // Extract unique organizations and categories
 const organizations = Array.from(
-  new Set(certificates.map((cert) => cert.organization))
+  new Set(certificates.map((cert) => cert.organization)),
 );
 const categories = Array.from(
-  new Set(certificates.map((cert) => cert.category))
+  new Set(certificates.map((cert) => cert.category)),
 );
 
 export default function CertificateShowcase() {
+  const t = useTranslations("certificates");
   const { isMobile } = useDeviceType();
   const [selectedCertificate, setSelectedCertificate] = useState<
     (typeof certificates)[0] | null
@@ -183,17 +168,16 @@ export default function CertificateShowcase() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
             <Award className="w-4 h-4 text-[#FF9D7A]" />
             <span className="text-[10px] font-bold text-[#FF9D7A] uppercase tracking-[0.2em]">
-              Recognition
+              {t("badge")}
             </span>
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold font-primary mb-6 bg-gradient-to-r from-white via-white to-white/50 bg-clip-text text-transparent">
-            Awards & <span className="text-[#FF9D7A]">Certificates</span>
+            {t("heading").split(" & ")[0]} & <span className="text-[#FF9D7A]">{t("heading").split(" & ")[1]}</span>
           </h2>
 
           <p className="text-gray-400 font-secondary max-w-2xl mx-auto text-lg leading-relaxed">
-            Validation of my technical expertise and continuous learning journey
-            through recognized institutions.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -213,10 +197,10 @@ export default function CertificateShowcase() {
                 "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border backdrop-blur-md",
                 !selectedCategory
                   ? "bg-[#FF9D7A] border-[#FF9D7A] text-white shadow-[0_4px_20px_rgba(255,157,122,0.3)]"
-                  : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+                  : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white",
               )}
             >
-              All Achievements
+              {t("allAchievements")}
             </button>
             {categories.map((category) => (
               <button
@@ -226,7 +210,7 @@ export default function CertificateShowcase() {
                   "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border backdrop-blur-md",
                   selectedCategory === category
                     ? "bg-[#FF9D7A] border-[#FF9D7A] text-white shadow-[0_4px_20px_rgba(255,157,122,0.3)]"
-                    : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white"
+                    : "bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white",
                 )}
               >
                 {category}
@@ -241,14 +225,14 @@ export default function CertificateShowcase() {
                 key={org}
                 onClick={() =>
                   setSelectedOrganization(
-                    selectedOrganization === org ? null : org
+                    selectedOrganization === org ? null : org,
                   )
                 }
                 className={cn(
                   "px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all duration-300 border",
                   selectedOrganization === org
                     ? "bg-white/15 border-white/30 text-white"
-                    : "bg-transparent border-white/5 text-gray-500 hover:border-white/20 hover:text-gray-300"
+                    : "bg-transparent border-white/5 text-gray-500 hover:border-white/20 hover:text-gray-300",
                 )}
               >
                 {org}
@@ -332,16 +316,16 @@ export default function CertificateShowcase() {
           >
             <Search className="w-16 h-16 text-white/10 mx-auto mb-6" />
             <h3 className="text-2xl font-bold font-primary mb-2">
-              No certificates matching your filters
+              {t("noResults.title")}
             </h3>
             <p className="text-gray-500 font-secondary mb-8">
-              Try clearing your selection to see all achievements.
+              {t("noResults.description")}
             </p>
             <button
               onClick={resetFilters}
               className="px-8 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-colors"
             >
-              Reset Filters
+              {t("noResults.resetButton")}
             </button>
           </motion.div>
         )}
@@ -398,7 +382,7 @@ export default function CertificateShowcase() {
                           </span>
                           <div className="h-4 w-[1px] bg-white/10" />
                           <span className="text-gray-500 text-xs font-medium uppercase tracking-widest">
-                            Verification ID Available
+                            {t("modal.verificationIdAvailable")}
                           </span>
                         </div>
 
@@ -429,7 +413,7 @@ export default function CertificateShowcase() {
                           }
                           className="flex items-center gap-3 px-8 py-4 bg-[#FF9D7A] text-white font-bold rounded-2xl hover:bg-[#FF9D7A]/90 transition-all shadow-[0_10px_30px_rgba(255,157,122,0.2)]"
                         >
-                          Verify Credential <ExternalLink className="w-5 h-5" />
+                          {t("modal.verifyCredential")} <ExternalLink className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
@@ -438,33 +422,31 @@ export default function CertificateShowcase() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/5 pt-12">
                       <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 space-y-4">
                         <h4 className="text-white font-bold uppercase tracking-widest text-sm">
-                          Description
+                          {t("modal.descriptionTitle")}
                         </h4>
                         <p className="text-gray-400 font-secondary leading-relaxed">
-                          This certificate validates the successful completion
-                          of rigorous coursework and assessments in{" "}
-                          {selectedCertificate.category}. It demonstrates
-                          proficiency in industry-standard tools and
-                          methodologies as verified by{" "}
-                          {selectedCertificate.organization}.
+                          {t("modal.descriptionText", {
+                            category: selectedCertificate.category,
+                            organization: selectedCertificate.organization
+                          })}
                         </p>
                       </div>
                       <div className="p-8 rounded-3xl bg-gradient-to-br from-[#FF9D7A]/5 to-transparent border border-[#FF9D7A]/10 space-y-4">
                         <h4 className="text-[#FF9D7A] font-bold uppercase tracking-widest text-sm">
-                          Achievement Impact
+                          {t("modal.impactTitle")}
                         </h4>
                         <ul className="space-y-3 text-gray-400 font-secondary text-sm">
                           <li className="flex gap-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
-                            Deep technical understanding of core principles.
+                            {t("modal.impactItems.principles")}
                           </li>
                           <li className="flex gap-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
-                            Hands-on experience with real-world applications.
+                            {t("modal.impactItems.experience")}
                           </li>
                           <li className="flex gap-2">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#FF9D7A] mt-1.5" />
-                            Validated by globally recognized institutions.
+                            {t("modal.impactItems.validation")}
                           </li>
                         </ul>
                       </div>

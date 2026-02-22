@@ -192,6 +192,27 @@
   "certificates": {
     "title": "证书",
     "subtitle": "专业成就",
+    "badge": "认可",
+    "heading": "奖项和证书",
+    "description": "通过认可机构验证我的技术专长和持续学习之旅。",
+    "allAchievements": "所有成就",
+    "noResults": {
+      "title": "没有符合您筛选条件的证书",
+      "description": "尝试清除选择以查看所有成就。",
+      "resetButton": "重置筛选"
+    },
+    "modal": {
+      "verificationIdAvailable": "验证 ID 可用",
+      "verifyCredential": "验证凭证",
+      "descriptionTitle": "描述",
+      "descriptionText": "此证书验证了在{category}方面成功完成严格的课程和评估。它展示了{organization}验证的行业标准工具和方法的熟练程度。",
+      "impactTitle": "成就影响",
+      "impactItems": {
+        "principles": "对核心原则的深刻技术理解。",
+        "experience": "实际应用的实践经验。",
+        "validation": "得到全球认可机构的验证。"
+      }
+    },
     "category": {
       "all": "所有证书",
       "webDevelopment": "网页开发",

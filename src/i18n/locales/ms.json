@@ -192,6 +192,27 @@
   "certificates": {
     "title": "Sijil",
     "subtitle": "Pencapaian Profesional",
+    "badge": "Pengiktirafan",
+    "heading": "Anugerah & Sijil",
+    "description": "Pengesahan kepakaran teknikal saya dan perjalanan pembelajaran berterusan melalui institusi yang diiktiraf.",
+    "allAchievements": "Semua Pencapaian",
+    "noResults": {
+      "title": "Tiada sijil yang sepadan dengan penapis anda",
+      "description": "Cuba kosongkan pemilihan anda untuk melihat semua pencapaian.",
+      "resetButton": "Tetapkan Semula Penapis"
+    },
+    "modal": {
+      "verificationIdAvailable": "ID Pengesahan Tersedia",
+      "verifyCredential": "Sahkan Kelayakan",
+      "descriptionTitle": "Penerangan",
+      "descriptionText": "Sijil ini mengesahkan penyiapan kerja kursus dan penilaian yang ketat dalam {category}. Ia menunjukkan kemahiran dalam alat dan metodologi standard industri seperti yang disahkan oleh {organization}.",
+      "impactTitle": "Kesan Pencapaian",
+      "impactItems": {
+        "principles": "Pemahaman teknikal mendalam tentang prinsip teras.",
+        "experience": "Pengalaman langsung dengan aplikasi dunia sebenar.",
+        "validation": "Disahkan oleh institusi yang diiktiraf di peringkat global."
+      }
+    },
     "category": {
       "all": "Semua Sijil",
       "webDevelopment": "Pembangunan Web",
