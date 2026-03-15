@@ -168,7 +168,7 @@ export const projects = [
       "Lucide React",
     ],
     imageUrl: "/RY-electrics.png",
-    livePreviewUrl: "https://ry-electric-works.ryelectric828.workers.dev/",
+    livePreviewUrl: "https://ryelectricworks.com/",
     githubRepo: "",
   },
   {
