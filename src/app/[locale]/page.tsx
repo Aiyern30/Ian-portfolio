@@ -230,7 +230,7 @@ export default function Home() {
           exit={{ opacity: 0 }}
           transition={{ duration: 2 }}
         >
-          <FloatingIcon count={8} />
+          <FloatingIcon count={2} />
         </motion.div>
       </AnimatePresence>
     </div>
