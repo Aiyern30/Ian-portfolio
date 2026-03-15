@@ -185,6 +185,11 @@
         "category": "Website",
         "description": "A professional, multilingual company profile for RY Electric Works. The platform showcases specialized electrical services including Internal Electrical Wiring, Telekom Works, and Street lighting. It features English and Chinese language support, a comprehensive project portfolio, and a service-oriented design as a strategic digital identity for the company."
       },
+      "project7-a": {
+        "title": "FixerWeb",
+        "category": "Web Application",
+        "description": "FixerWeb is a modern company profile website designed to present and promote web development services. The platform showcases the company's background, services, and contact information in a clean and professional interface. It highlights services such as custom website development, website hosting, and SEO optimization, helping businesses establish a strong online presence. Built with Next.js, the site focuses on performance, responsive design, and clear service presentation to attract and convert potential clients."
+      },
       "project8": {
         "title": "Gamer Token Hub (Web3 NFT Marketplace)",
         "category": "Web Application",

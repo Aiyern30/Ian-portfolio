@@ -185,6 +185,11 @@
         "category": "Laman Web",
         "description": "Profil syarikat berbilang bahasa yang profesional untuk RY Electric Works. Platform ini mempamerkan layanan elektrikal khusus termasuk Pendawaian Elektrikal Dalaman, Kerja Telekom, dan pencahayaan jalan. Ia memaparkan sokongan bahasa Inggeris dan Cina, portfolio projek yang komprehensif, dan reka bentuk berorientasikan perkhidmatan sebagai identiti digital strategik untuk syarikat."
       },
+      "project7-a": {
+        "title": "FixerWeb",
+        "category": "Aplikasi Web",
+        "description": "FixerWeb ialah laman web profil syarikat moden yang direka untuk memaparkan dan mempromosikan perkhidmatan pembangunan laman web. Platform ini memperkenalkan latar belakang syarikat, perkhidmatan yang ditawarkan, serta maklumat hubungan melalui antara muka yang bersih dan profesional. Ia menonjolkan perkhidmatan seperti pembangunan laman web tersuai, hosting laman web, dan pengoptimuman SEO bagi membantu perniagaan membina kehadiran dalam talian yang kukuh. Dibangunkan menggunakan Next.js, laman ini memberi tumpuan kepada prestasi tinggi, reka bentuk responsif, dan penyampaian perkhidmatan yang jelas untuk menarik serta menukar bakal pelanggan."
+      },
       "project8": {
         "title": "Gamer Token Hub (Pasaran NFT Web3)",
         "category": "Aplikasi Web",
