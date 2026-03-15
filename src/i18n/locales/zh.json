@@ -140,6 +140,11 @@
       "clear": "清除"
     },
     "projectsData": {
+      "project-1": {
+        "title": "SweetDays",
+        "category": "Web应用程序",
+        "description": "SweetDays 是一款为情侣打造、设计精美且功能丰富的网页应用。你们可以一起创造珍贵回忆、分享充满心意的数字信件、记录恋爱里的重要里程碑，并通过游戏、问答和共同目标让彼此的关系更加紧密。"
+      },
       "project0": {
         "title": "YTL 混凝土中心（AI 驱动平台）",
         "category": "Web应用程序",

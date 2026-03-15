@@ -140,6 +140,11 @@
       "clear": "Bersihkan"
     },
     "projectsData": {
+      "project-1": {
+        "title": "SweetDays",
+        "category": "Aplikasi Web",
+        "description": "SweetDays ialah aplikasi web yang direka dengan cantik dan penuh ciri khas untuk pasangan. Cipta kenangan yang berkekalan, kongsi surat digital yang penuh makna, jejak pencapaian hubungan, dan eratkan hubungan anda melalui permainan, kuiz, serta matlamat bersama."
+      },
       "project0": {
         "title": "YTL Concrete Hub (Platform Bertenaga AI)",
         "category": "Aplikasi Web",

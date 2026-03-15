@@ -2,6 +2,26 @@
 // Translatable content (title, category, description) comes from i18n JSON files
 export const projects = [
   {
+    id: "project-1",
+    label: [
+      "NextJS",
+      "Tailwind CSS",
+      "Framer Motion",
+      "React",
+      "Vercel",
+      "TypeScript",
+      "Shadcn UI",
+      "Supabase",
+      "Google Client",
+      "Brevo API",
+      "Cron",
+      "Phaser 3",
+    ],
+    imageUrl: "/SweetDays.png",
+    livePreviewUrl: "https://sweetdays.vercel.app/",
+    githubRepo: "https://github.com/Aiyern30/SweetDays",
+  },
+  {
     id: "project0",
     label: [
       "NextJS",

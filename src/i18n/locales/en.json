@@ -140,6 +140,11 @@
       "clear": "Clear"
     },
     "projectsData": {
+      "project-1": {
+        "title": "SweetDays",
+        "category": "Web Application",
+        "description": "SweetDays is a beautifully designed, feature-rich web application built for couples. Create lasting memories, share heartfelt digital letters, track relationship milestones, and strengthen your bond together through games, quizzes, and shared goals."
+      },
       "project0": {
         "title": "YTL Concrete Hub (AI-Powered Platform)",
         "category": "Web Application",
