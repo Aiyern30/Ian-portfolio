@@ -172,6 +172,21 @@ export const projects = [
     githubRepo: "",
   },
   {
+    id: "project7-a",
+    label: [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Framer Motion",
+      "Lucide React",
+    ],
+    imageUrl: "/FixerWeb.png",
+    livePreviewUrl: "https://fixerweb.vercel.app/",
+    githubRepo: "",
+  },
+  {
     id: "project8",
     label: [
       "NextJS",
