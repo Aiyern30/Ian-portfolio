@@ -198,17 +198,17 @@ export default function Home() {
         <ContactForm />
       </section>
 
-      {isClient && !isMobile && (
+      {/* {isClient && !isMobile && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <Dock model={items} position="bottom" className="bg-black/50" />
         </div>
-      )}
+      )} */}
 
       <ScrollTop
         className={cn(
           "rounded-full shadow-md flex items-center justify-center",
           "bg-white text-black hover:bg-white/90",
-          "w-14 h-14"
+          "w-14 h-14",
         )}
         icon={
           <svg
